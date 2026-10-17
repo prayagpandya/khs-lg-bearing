@@ -20,7 +20,7 @@ export function Logo({ className }: {className?: string;}) {
         'group inline-flex items-center transition-transform duration-300 ease-precision hover:scale-[1.02]',
         className
       )}>
-      <div className="flex items-center justify-center rounded-md bg-black px-3 py-1.5 sm:px-3.5 sm:py-2 border border-neutral-800 shadow-sm transition-all duration-300 group-hover:border-signal/40">
+      <div className="khs-logo-box flex items-center justify-center rounded-md bg-black px-3 py-1.5 sm:px-3.5 sm:py-2 border border-neutral-800 shadow-sm transition-all duration-300 group-hover:border-signal/40">
         <img
           src="/khslogo-clean.png"
           alt="KHS-LG"

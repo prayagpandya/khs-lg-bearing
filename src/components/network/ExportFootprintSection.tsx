@@ -179,10 +179,10 @@ export function ExportFootprintSection() {
                 })}
 
                 <g aria-label="India origin">
-                  <circle cx={origin[0]} cy={origin[1]} r="18" fill="rgba(255,245,138,0.13)" className="network-pulse" />
-                  <circle cx={origin[0]} cy={origin[1]} r="7" fill="#fff58a" stroke="#fffbd1" strokeWidth="2" filter="url(#export-map-glow)" />
-                  <text x={origin[0] + 12} y={origin[1] - 12} fill="#fff58a" fontSize="11" fontFamily="JetBrains Mono, monospace" letterSpacing="1.5">INDIA</text>
-                  <text x={origin[0] + 12} y={origin[1] + 2} fill="#7d858b" fontSize="8" fontFamily="JetBrains Mono, monospace" letterSpacing="1.2">ORIGIN</text>
+                  <circle cx={origin[0]} cy={origin[1]} r="18" fill="rgba(0,240,255,0.18)" className="network-pulse" />
+                  <circle cx={origin[0]} cy={origin[1]} r="7" fill="#00F0FF" stroke="#A5F3FC" strokeWidth="2" filter="url(#export-map-glow)" />
+                  <text x={origin[0] + 12} y={origin[1] - 12} fill="#00F0FF" fontSize="11" fontFamily="JetBrains Mono, monospace" letterSpacing="1.5">INDIA</text>
+                  <text x={origin[0] + 12} y={origin[1] + 2} fill="#38BDF8" fontSize="8" fontFamily="JetBrains Mono, monospace" letterSpacing="1.2">ORIGIN</text>
                 </g>
 
                 {exportCountries.map((country) => {

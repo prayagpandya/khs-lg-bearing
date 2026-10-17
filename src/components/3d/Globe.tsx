@@ -91,16 +91,21 @@ function createEarthTexture(): THREE.CanvasTexture {
   ctx.stroke();
 
   // 3. Clear Official India Map (Survey of India):
-  // Solid landmass fill covers all of India (Jammu, Kashmir, Ladakh, Aksai Chin, etc.)
-  // Seamlessly covering and erasing any neighboring border cuts into Indian territory
-  ctx.fillStyle = '#1c2836';
+  // Distinct deep sapphire-slate tone to highlight the source nation
+  ctx.fillStyle = '#153243';
   ctx.beginPath();
   path(indiaOfficial as unknown as GeoJSON.GeoJsonObject);
   ctx.fill();
 
-  // 4. Official sovereign international boundary outline of India in warm amber-gold
-  ctx.strokeStyle = 'rgba(245, 196, 0, 0.70)';
-  ctx.lineWidth = 1.3;
+  // Luminous electric cyan tint overlay across sovereign Indian territory
+  ctx.fillStyle = 'rgba(0, 240, 255, 0.16)';
+  ctx.beginPath();
+  path(indiaOfficial as unknown as GeoJSON.GeoJsonObject);
+  ctx.fill();
+
+  // 4. Official sovereign international boundary outline of India in glowing electric cyan
+  ctx.strokeStyle = '#00F0FF';
+  ctx.lineWidth = 1.7;
   ctx.beginPath();
   path(indiaOfficial as unknown as GeoJSON.GeoJsonObject);
   ctx.stroke();
@@ -116,7 +121,6 @@ function createEarthTexture(): THREE.CanvasTexture {
   ctx.fillStyle = 'rgba(245, 196, 0, 0.035)';
   ctx.beginPath();
   path(otherCountries as unknown as GeoJSON.GeoJsonObject);
-  path(indiaOfficial as unknown as GeoJSON.GeoJsonObject);
   ctx.fill();
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -125,59 +129,6 @@ function createEarthTexture(): THREE.CanvasTexture {
   return texture;
 }
 
-/**
- * Creates precision industrial badge for KHS-LG Mumbai, India source origin.
- */
-function createLogoBadgeTexture(): THREE.CanvasTexture {
-  const canvas = document.createElement('canvas');
-  canvas.width = 420;
-  canvas.height = 170;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return new THREE.CanvasTexture(canvas);
-
-  // Background rounded industrial plate
-  ctx.fillStyle = 'rgba(10, 14, 22, 0.96)';
-  ctx.strokeStyle = '#F5C400';
-  ctx.lineWidth = 4;
-  const r = 16;
-  const x = 6, y = 6, w = 408, h = 158;
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
-
-  // Accent divider line
-  ctx.strokeStyle = 'rgba(245, 196, 0, 0.45)';
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(25, 96);
-  ctx.lineTo(395, 96);
-  ctx.stroke();
-
-  // "★ KHS-LG — MUMBAI, INDIA"
-  ctx.fillStyle = '#F5C400';
-  ctx.font = 'bold 27px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('★ KHS-LG — MUMBAI, INDIA', 210, 54);
-
-  // "GLOBAL SUPPLY HUB • HEAD OFFICE"
-  ctx.fillStyle = '#FFFFFF';
-  ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-  ctx.fillText('GLOBAL SUPPLY ORIGIN • HEAD OFFICE', 210, 130);
-
-  const tex = new THREE.CanvasTexture(canvas);
-  return tex;
-}
 
 export interface GlobeProps {
   className?: string;
@@ -200,6 +151,8 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
 
   // Floating name tag DOM refs for 60fps GPU-accelerated tracking
   const tagRef = useRef<HTMLDivElement>(null);
+  const tagBoxRef = useRef<HTMLDivElement>(null);
+  const tagArrowRef = useRef<HTMLDivElement>(null);
   const tagTitleRef = useRef<HTMLParagraphElement>(null);
   const tagSubRef = useRef<HTMLParagraphElement>(null);
   const tagIndicatorRef = useRef<HTMLSpanElement>(null);
@@ -275,39 +228,43 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
     geometries.push(destNodeGeo, destHaloGeo);
     materials.push(destNodeMat, destHaloMat);
 
-    // Mumbai source origin hub: High-radiance gold beacon
-    const hubNodeGeo = new THREE.SphereGeometry(0.052, 20, 20);
+    // Mumbai source origin hub: Radiant Electric Cyan beacon (High-contrast against gold arcs)
+    const hubNodeGeo = new THREE.SphereGeometry(0.058, 24, 24);
     const hubNodeMat = new THREE.MeshStandardMaterial({
-      color: '#F5C400',
-      metalness: 0.5,
-      roughness: 0.15,
-      emissive: '#F5C400',
-      emissiveIntensity: 1.2
+      color: '#00F0FF',
+      metalness: 0.2,
+      roughness: 0.1,
+      emissive: '#00E5FF',
+      emissiveIntensity: 1.8
     });
-    const hubHaloGeo = new THREE.SphereGeometry(0.12, 20, 20);
+    const hubHaloGeo = new THREE.SphereGeometry(0.14, 24, 24);
     const hubHaloMat = new THREE.MeshBasicMaterial({
-      color: '#F5C400',
+      color: '#00F0FF',
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
       depthWrite: false
     });
     geometries.push(hubNodeGeo, hubHaloGeo);
     materials.push(hubNodeMat, hubHaloMat);
 
-    // Prominent logo badge hovering over Mumbai
-    const badgeTexture = createLogoBadgeTexture();
-    const badgeMat = new THREE.SpriteMaterial({
-      map: badgeTexture,
+    // Dynamic pulsing radar ring around Mumbai source origin
+    const pulseRingGeo = new THREE.RingGeometry(0.045, 0.075, 32);
+    const pulseRingMat = new THREE.MeshBasicMaterial({
+      color: '#00F0FF',
       transparent: true,
+      opacity: 0.85,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
       depthWrite: false
     });
-    materials.push(badgeMat);
-    const badgeSprite = new THREE.Sprite(badgeMat);
-    badgeSprite.scale.set(0.48, 0.20, 1);
-    const badgePos = origin.clone().normalize().multiplyScalar(RADIUS * 1.16);
-    badgeSprite.position.copy(badgePos);
-    group.add(badgeSprite);
+    geometries.push(pulseRingGeo);
+    materials.push(pulseRingMat);
+    const pulseRing = new THREE.Mesh(pulseRingGeo, pulseRingMat);
+    pulseRing.position.copy(origin.clone().multiplyScalar(1.002));
+    pulseRing.lookAt(origin.clone().multiplyScalar(2));
+    group.add(pulseRing);
+
 
     // Track market meshes for raycasting and dynamic front-facing focus
     const nodeItems: {
@@ -330,6 +287,7 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
 
       const halo = new THREE.Mesh(isHome ? hubHaloGeo : destHaloGeo, isHome ? hubHaloMat : destHaloMat);
       halo.position.copy(pos);
+      halo.userData = { country: market.country, isHome, pos };
       group.add(halo);
 
       nodeItems.push({ market, node, halo, isHome });
@@ -368,20 +326,18 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
     // 360-Degree Interactive Drag and Pointer Hover
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
-    const interactiveMeshes = nodeItems.map((item) => item.node);
+    const interactiveMeshes = nodeItems.flatMap((item) => [item.node, item.halo]);
 
     let isDragging = false;
     let dragStartX = 0;
     let dragStartY = 0;
-    let userHasInteracted = false;
-    let dwellTimer = 3.5; // Dwells at Mumbai, India in the center (0, 0) before earth moves
+    let pulseTimer = 0;
 
     const domElement = ctx.renderer.domElement;
     domElement.style.cursor = 'grab';
 
     const handlePointerDown = (e: PointerEvent) => {
       isDragging = true;
-      userHasInteracted = true;
       dragStartX = e.clientX;
       dragStartY = e.clientY;
       domElement.style.cursor = 'grabbing';
@@ -418,9 +374,15 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
 
       if (intersects.length > 0) {
         const hitCountry = intersects[0].object.userData.country;
-        hoveredRef.current = hitCountry;
-        userHasInteracted = true;
-        onHoverCountryRef.current?.(hitCountry);
+        if (hoveredRef.current !== hitCountry) {
+          hoveredRef.current = hitCountry;
+          onHoverCountryRef.current?.(hitCountry);
+        }
+      } else {
+        if (hoveredRef.current) {
+          hoveredRef.current = null;
+          onHoverCountryRef.current?.(null);
+        }
       }
     };
 
@@ -433,7 +395,7 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
     };
 
     const handlePointerLeave = () => {
-      if (!isDragging && !hoveredRef.current) {
+      if (!isDragging) {
         hoveredRef.current = null;
         onHoverCountryRef.current?.(null);
       }
@@ -476,27 +438,21 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
           } else {
             // Smoothly ease X tilt back to Mumbai's baseline tilt
             group.rotation.x += (MUMBAI_ROT_X - group.rotation.x) * Math.min(delta * 2.0, 1);
-
-            // Initial dwell where India (Mumbai) stays perfectly in the center (0, 0), then the earth moves
-            if (!userHasInteracted && dwellTimer > 0) {
-              dwellTimer -= delta;
-              group.rotation.y = MUMBAI_ROT_Y;
-              group.rotation.x = MUMBAI_ROT_X;
-            } else {
-              // Smooth, continuous horizontal rotation
-              group.rotation.y += delta * 0.24;
-            }
+            // Smooth, continuous horizontal rotation when not hovering any country
+            group.rotation.y += delta * 0.24;
           }
         }
 
-        // Fade 3D badge based on whether Mumbai is on the front hemisphere facing camera
-        tempWorldPos.copy(origin).applyMatrix4(group.matrixWorld);
-        const facing = THREE.MathUtils.clamp((tempWorldPos.z - 0.20) / 0.40, 0, 1);
-        badgeMat.opacity = facing;
+        // Animate radiant electric cyan pulse ripple ring from Mumbai
+        pulseTimer += delta * 1.5;
+        const ringCycle = pulseTimer % 1;
+        const ringScale = 1.0 + ringCycle * 2.4;
+        pulseRing.scale.set(ringScale, ringScale, 1);
+        pulseRingMat.opacity = Math.max(0, (1 - ringCycle) * 0.85);
 
         // Highlight active node in center & position dynamic floating name tag
         let activeFound = false;
-        const activeCountryToTrack = currentHover || (!userHasInteracted && dwellTimer > 0 ? 'India' : null);
+        const activeCountryToTrack = currentHover;
 
         nodeItems.forEach((item) => {
           const isActive = Boolean(
@@ -521,12 +477,28 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
               const screenX = ((projected.x + 1) / 2) * w;
               const screenY = ((-projected.y + 1) / 2) * h;
 
+              const verticalOffset = item.isHome ? -42 : -22;
               tagRef.current.style.display = 'block';
               tagRef.current.style.opacity = '1';
-              tagRef.current.style.transform = `translate3d(${screenX}px, ${screenY}px, 0) translate(-50%, -100%) translateY(-14px)`;
+              tagRef.current.style.transform = `translate3d(${screenX}px, ${screenY}px, 0) translate(-50%, -100%) translateY(${verticalOffset}px)`;
 
+              if (tagBoxRef.current) {
+                tagBoxRef.current.className = `relative rounded-md border ${
+                  item.isHome
+                    ? 'border-cyan-400 shadow-[0_4px_24px_rgba(0,240,255,0.45)]'
+                    : 'border-signal shadow-[0_4px_24px_rgba(245,196,0,0.4)]'
+                } bg-ink-950/95 px-3.5 py-2 backdrop-blur-md`;
+              }
+              if (tagArrowRef.current) {
+                tagArrowRef.current.className = `absolute -bottom-1.5 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-b border-r ${
+                  item.isHome ? 'border-cyan-400' : 'border-signal'
+                } bg-ink-950`;
+              }
               if (tagTitleRef.current) {
-                tagTitleRef.current.textContent = item.isHome ? 'KHS-LG — MUMBAI, INDIA' : item.market.country;
+                tagTitleRef.current.textContent = item.isHome ? '★ KHS-LG — MUMBAI, INDIA' : item.market.country;
+                tagTitleRef.current.className = `font-mono text-xs font-bold uppercase tracking-wider ${
+                  item.isHome ? 'text-cyan-400' : 'text-signal'
+                }`;
               }
               if (tagSubRef.current) {
                 tagSubRef.current.textContent = item.isHome
@@ -535,7 +507,7 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
               }
               if (tagIndicatorRef.current) {
                 tagIndicatorRef.current.className = `h-2 w-2 rounded-full ${
-                  item.isHome ? 'bg-signal animate-ping' : 'bg-signal'
+                  item.isHome ? 'bg-cyan-400 animate-ping' : 'bg-signal'
                 }`;
               }
             }
@@ -558,7 +530,6 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
         domElement.removeEventListener('pointerleave', handlePointerLeave);
         env.dispose();
         earthTexture.dispose();
-        badgeTexture.dispose();
         geometries.forEach((g) => g.dispose());
         materials.forEach((m) => m.dispose());
         ctx.scene.environment = null;
@@ -583,14 +554,20 @@ export function Globe({ className, hoveredCountry, onHoverCountry }: GlobeProps)
         className="pointer-events-none absolute left-0 top-0 z-30 transition-opacity duration-200 opacity-0 hidden"
         style={{ willChange: 'transform, opacity' }}
       >
-        <div className="relative rounded-md border border-signal bg-ink-950/95 px-3.5 py-2 shadow-[0_4px_24px_rgba(245,196,0,0.4)] backdrop-blur-md">
+        <div
+          ref={tagBoxRef}
+          className="relative rounded-md border border-cyan-400 bg-ink-950/95 px-3.5 py-2 shadow-[0_4px_24px_rgba(0,240,255,0.45)] backdrop-blur-md"
+        >
           {/* Connecting downward pointer triangle */}
-          <div className="absolute -bottom-1.5 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-b border-r border-signal bg-ink-950" />
+          <div
+            ref={tagArrowRef}
+            className="absolute -bottom-1.5 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-b border-r border-cyan-400 bg-ink-950"
+          />
 
           <div className="flex items-center gap-2">
-            <span ref={tagIndicatorRef} className="h-2 w-2 rounded-full bg-signal" />
-            <p ref={tagTitleRef} className="font-mono text-xs font-bold uppercase tracking-wider text-signal">
-              KHS-LG — MUMBAI, INDIA
+            <span ref={tagIndicatorRef} className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
+            <p ref={tagTitleRef} className="font-mono text-xs font-bold uppercase tracking-wider text-cyan-400">
+              ★ KHS-LG — MUMBAI, INDIA
             </p>
           </div>
           <p ref={tagSubRef} className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-steel-300">

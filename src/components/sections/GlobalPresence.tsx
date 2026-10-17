@@ -50,13 +50,13 @@ export function GlobalPresence({ code = '06 / Global' }: { code?: string }) {
                   onClick={() => setHoveredCountry('India')}
                   className={`flex items-center gap-2 rounded px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                     isIndiaHovered
-                      ? 'bg-signal text-ink-950 shadow-[0_0_14px_rgba(245,196,0,0.5)] scale-[1.02]'
-                      : 'border border-signal/50 bg-signal/15 text-signal hover:bg-signal/25'
+                      ? 'bg-cyan-400 text-ink-950 shadow-[0_0_14px_rgba(0,240,255,0.6)] scale-[1.02]'
+                      : 'border border-cyan-400/50 bg-cyan-950/40 text-cyan-400 hover:bg-cyan-900/50'
                   }`}
                 >
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute h-full w-full rounded-full bg-signal animate-ping opacity-75" />
-                    <span className="relative h-2 w-2 rounded-full bg-signal" />
+                    <span className="absolute h-full w-full rounded-full bg-cyan-400 animate-ping opacity-75" />
+                    <span className="relative h-2 w-2 rounded-full bg-cyan-400" />
                   </span>
                   <span>★ Origin: Mumbai, India (Global Supply Hub)</span>
                 </button>

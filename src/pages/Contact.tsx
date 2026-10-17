@@ -14,7 +14,7 @@ import {
 import { PageHero } from '../components/layout/PageHero';
 import { MagneticButton } from '../components/ui/MagneticButton';
 import { TechnicalLabel } from '../components/ui/SectionHeading';
-import { company, COMPANY_PHONE_RAW } from '../data/company';
+import { company, COMPANY_PHONE_RAW, COMPANY_WHATSAPP_URL } from '../data/company';
 import { products } from '../data/products';
 import { useSeo } from '../hooks/useSeo';
 import { useSearchParams } from 'react-router-dom';

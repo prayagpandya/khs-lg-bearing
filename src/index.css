@@ -900,8 +900,32 @@ html.theme-light nav button.text-steel-300 {
 html.theme-light nav button.text-steel-300:hover {
   color: #854D0E !important;
 }
+/* Light Theme - Increased Logo Size & Decreased Padding in Black Box */
+html.theme-light .khs-logo-box {
+  padding: 2px 7px !important;
+  background-color: #000000 !important;
+  border-color: #1e293b !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) !important;
+}
+@media (min-width: 640px) {
+  html.theme-light .khs-logo-box {
+    padding: 3px 9px !important;
+  }
+}
+
 html.theme-light .khs-logo {
+  height: 38px !important;
   filter: none !important;
+}
+@media (min-width: 640px) {
+  html.theme-light .khs-logo {
+    height: 48px !important;
+  }
+}
+@media (min-width: 1024px) {
+  html.theme-light .khs-logo {
+    height: 52px !important;
+  }
 }
 
 /* 9. Form Inputs, Selects & Textareas in Light Mode */
