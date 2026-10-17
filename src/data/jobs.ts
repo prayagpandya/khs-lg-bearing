@@ -37,7 +37,24 @@ export interface ApplicationFormData {
 }
 
 export function generateWhatsAppMessage(job: Job, form: ApplicationFormData) {
-  return `Hello KHS-LG Team,\n\nI would like to apply for a position at KHS-LG.\n\nApplication Details:\n\nPosition: ${job.title}\nName: ${form.fullName}\nMobile: ${form.mobile}\nEmail: ${form.email}\nLocation: ${form.location || 'Not provided'}\nQualification: ${form.qualification || 'Not provided'}\nExperience: ${form.experience || 'Not provided'}\nCurrent Company: ${form.currentCompany || 'Not provided'}\nResume/CV: ${form.resumeLink || 'Not provided'}\nMessage: ${form.message || 'Not provided'}\n\nThank you.`;
+  return [
+    `*Job Application — KHS-LG Careers*`,
+    ``,
+    `*Position:* ${job.title} (${job.department})`,
+    `*Full Name:* ${form.fullName}`,
+    `*Mobile:* ${form.mobile}`,
+    `*Email:* ${form.email}`,
+    `*Current Location:* ${form.location || 'Not provided'}`,
+    `*Qualification:* ${form.qualification || 'Not provided'}`,
+    `*Experience:* ${form.experience || 'Not provided'}`,
+    `*Current Company:* ${form.currentCompany || 'Not provided'}`,
+    `*Resume / CV Link:* ${form.resumeLink || 'Not provided'}`,
+    ``,
+    `*Cover Note / Message:*`,
+    form.message || 'None provided',
+    ``,
+    `_Sent via KHS-LG Web Portal_`
+  ].join('\n');
 }
 
 export function openWhatsAppApplication(job: Job, form: ApplicationFormData) {

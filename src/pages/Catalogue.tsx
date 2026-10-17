@@ -22,6 +22,8 @@ import {
   searchCatalogues,
   submitCatalogueLead
 } from '../data/catalogues';
+import { sendCatalogueLeadEmail } from '../services/emailService';
+import { startSmoothScroll, stopSmoothScroll } from '../hooks/useSmoothScroll';
 import { useSeo } from '../hooks/useSeo';
 
 interface DownloadForm {
@@ -690,9 +692,11 @@ export function CatalogueDownloadModal({
   const [form, setForm] = useState<DownloadForm>(EMPTY_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof DownloadForm, string>>>({});
   const [state, setState] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const firstInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    stopSmoothScroll();
     firstInputRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && state !== 'processing') onClose();
@@ -701,6 +705,7 @@ export function CatalogueDownloadModal({
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', onKeyDown);
     return () => {
+      startSmoothScroll();
       document.body.style.overflow = prevOverflow;
       document.removeEventListener('keydown', onKeyDown);
     };
@@ -709,48 +714,102 @@ export function CatalogueDownloadModal({
   const update =
     (key: keyof DownloadForm) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setForm((cur) => ({ ...cur, [key]: event.target.value }));
+      let val = event.target.value;
+      if (key === 'mobile') {
+        val = val.replace(/\D/g, '').slice(0, 10);
+      }
+      setForm((cur) => ({ ...cur, [key]: val }));
       setErrors((cur) => ({ ...cur, [key]: undefined }));
+      setSubmitError(null);
     };
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
     const next: Partial<Record<keyof DownloadForm, string>> = {};
-    if (!form.fullName.trim()) next.fullName = 'Please enter your full name.';
-    if (!form.companyName.trim()) next.companyName = 'Please enter your company name.';
-    if (!/^\+?[\d\s().-]{8,}$/.test(form.mobile.trim()))
-      next.mobile = 'Please enter a valid mobile number.';
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim()))
-      next.email = 'Please enter a valid email address.';
-    if (!form.city.trim()) next.city = 'Please enter your city.';
+
+    const trimmedName = form.fullName.trim();
+    if (!trimmedName) {
+      next.fullName = 'Please enter your full name.';
+    } else if (trimmedName.length < 2) {
+      next.fullName = 'Name must be at least 2 characters.';
+    } else if (!/^[a-zA-Z\s.'-]+$/.test(trimmedName)) {
+      next.fullName = 'Name can only contain alphabetic letters and spaces.';
+    }
+
+    const trimmedCompany = form.companyName.trim();
+    if (!trimmedCompany) {
+      next.companyName = 'Please enter your company name.';
+    } else if (trimmedCompany.length < 2) {
+      next.companyName = 'Company name must be at least 2 characters.';
+    }
+
+    const cleanMobile = form.mobile.replace(/\D/g, '');
+    if (!cleanMobile) {
+      next.mobile = 'Please enter your mobile number.';
+    } else if (cleanMobile.length !== 10) {
+      next.mobile = 'Mobile number must be exactly 10 digits.';
+    } else if (!/^[6-9]\d{9}$/.test(cleanMobile)) {
+      next.mobile = 'Enter a valid 10-digit mobile number (e.g. 9876543210).';
+    }
+
+    const trimmedEmail = form.email.trim();
+    if (!trimmedEmail) {
+      next.email = 'Please enter your email address.';
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmedEmail)) {
+      next.email = 'Enter a valid email address (e.g. name@company.com).';
+    }
+
+    const trimmedCity = form.city.trim();
+    if (!trimmedCity) {
+      next.city = 'Please enter your city.';
+    } else if (trimmedCity.length < 2) {
+      next.city = 'City must be at least 2 characters.';
+    } else if (!/^[a-zA-Z\s,.-]+$/.test(trimmedCity)) {
+      next.city = 'City should contain only letters and spaces.';
+    }
 
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
     setState('processing');
-    window.setTimeout(() => {
-      try {
-        submitCatalogueLead(catalogue, form);
-        if (catalogue.pdfUrl) {
-          const link = document.createElement('a');
-          link.href = catalogue.pdfUrl;
-          link.download = catalogue.pdfFileName || `${catalogue.id}.pdf`;
-          link.target = '_blank';
-          link.rel = 'noreferrer';
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-        }
-        setState('success');
-      } catch {
+    setSubmitError(null);
+
+    try {
+      // 1. Dispatch lead via Email Service
+      const emailResult = await sendCatalogueLeadEmail(catalogue, form);
+
+      if (!emailResult.success) {
         setState('error');
+        setSubmitError(emailResult.error || 'Failed to submit brochure request to email service. Please try again.');
+        return;
       }
-    }, 400);
+
+      // 2. Save local backup of lead
+      submitCatalogueLead(catalogue, form);
+
+      // 3. Deliver / open PDF only after email is successfully sent
+      if (catalogue.pdfUrl) {
+        const link = document.createElement('a');
+        link.href = catalogue.pdfUrl;
+        link.download = catalogue.pdfFileName || `${catalogue.id}.pdf`;
+        link.target = '_blank';
+        link.rel = 'noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      }
+
+      setState('success');
+    } catch {
+      setState('error');
+      setSubmitError('Unable to send request. Please check your internet connection and try again.');
+    }
   };
 
   return (
     <div
-      className="fixed inset-0 z-[130] flex items-center justify-center overflow-y-auto bg-ink-950/85 px-4 py-6 backdrop-blur-md"
+      data-lenis-prevent="true"
+      className="fixed inset-0 z-[130] flex items-center justify-center overflow-y-auto overscroll-contain bg-ink-950/85 px-4 py-6 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-labelledby="catalogue-download-heading"
@@ -758,7 +817,10 @@ export function CatalogueDownloadModal({
         if (e.target === e.currentTarget && state !== 'processing') onClose();
       }}
     >
-      <div className="relative my-auto grid max-h-[calc(100vh-3rem)] w-full max-w-4xl overflow-y-auto border border-ink-700 bg-ink-950 shadow-2xl lg:grid-cols-[0.8fr_1.2fr]">
+      <div
+        data-lenis-prevent="true"
+        className="relative my-auto grid max-h-[calc(100vh-3rem)] w-full max-w-4xl overflow-y-auto overscroll-contain border border-ink-700 bg-ink-950 shadow-2xl lg:grid-cols-[0.8fr_1.2fr]"
+      >
         {/* Left Side: Product Details */}
         <div className="relative flex min-h-52 flex-col justify-between overflow-hidden border-b border-ink-800 bg-ink-900/90 p-7 lg:border-b-0 lg:border-r sm:p-8">
           <div className="industrial-grid absolute inset-0 opacity-20" aria-hidden />
@@ -813,22 +875,36 @@ export function CatalogueDownloadModal({
           {state === 'success' ? (
             <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
               <CheckCircle2Icon className="h-12 w-12 text-signal" aria-hidden />
-              <p className="mt-5 font-mono text-[10px] uppercase tracking-tech text-signal">
-                Request Confirmed
+              <p className="mt-5 font-mono text-[10px] uppercase tracking-tech text-signal font-semibold">
+                Request Confirmed & Details Sent
               </p>
               <h3 className="mt-2 font-display text-2xl font-bold uppercase text-steel-50">
-                Your brochure download is ready!
+                Your brochure is ready!
               </h3>
               <p className="mt-3 max-w-sm text-xs leading-relaxed text-steel-400">
-                Thank you for your interest. A copy has been opened in your browser, and our technical engineering department will follow up with complete specifications if needed.
+                Thank you, <strong className="text-steel-200">{form.fullName}</strong>. Your enquiry details have been delivered to our engineering sales desk, and your technical brochure has been opened.
               </p>
-              <button
-                type="button"
-                onClick={onClose}
-                className="mt-8 border border-signal bg-signal px-6 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-ink-950 hover:bg-signal-bright"
-              >
-                Close Window
-              </button>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                {catalogue.pdfUrl && (
+                  <a
+                    href={catalogue.pdfUrl}
+                    download={catalogue.pdfFileName || `${catalogue.id}.pdf`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 border border-signal bg-signal px-6 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-ink-950 hover:bg-signal-bright"
+                  >
+                    <DownloadIcon className="h-4 w-4" aria-hidden />
+                    Download Again / Open PDF
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="border border-ink-600 bg-ink-900 px-6 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-steel-300 hover:border-signal hover:text-signal"
+                >
+                  Close Window
+                </button>
+              </div>
             </div>
           ) : (
             <>
@@ -840,12 +916,12 @@ export function CatalogueDownloadModal({
                 Enter your details to download brochure
               </h2>
               <p className="mt-2 text-xs text-steel-400">
-                Please complete the form below to instantly access official technical drawings and load ratings.
+                Complete the verified form below. Your request will be transmitted directly to our sales team, and the technical drawing PDF will download immediately.
               </p>
 
               {state === 'error' && (
-                <p className="mt-4 border border-red-500/40 bg-red-500/10 px-3 py-2 font-mono text-xs text-red-200">
-                  An error occurred. Please try again.
+                <p className="mt-4 border border-red-500/40 bg-red-500/10 px-3 py-2 font-mono text-xs font-semibold text-red-500" role="alert">
+                  {submitError || 'An error occurred while submitting your brochure request. Please try again.'}
                 </p>
               )}
 
@@ -854,6 +930,7 @@ export function CatalogueDownloadModal({
                   ref={firstInputRef}
                   id="cat-name"
                   label="Full Name"
+                  placeholder="e.g. Rahul Sharma"
                   value={form.fullName}
                   onChange={update('fullName')}
                   error={errors.fullName}
@@ -862,6 +939,7 @@ export function CatalogueDownloadModal({
                 <CatalogueField
                   id="cat-company"
                   label="Company Name"
+                  placeholder="e.g. Acme Precision Ltd"
                   value={form.companyName}
                   onChange={update('companyName')}
                   error={errors.companyName}
@@ -871,6 +949,9 @@ export function CatalogueDownloadModal({
                   id="cat-mobile"
                   label="Mobile Number"
                   type="tel"
+                  inputMode="numeric"
+                  maxLength={10}
+                  placeholder="10-digit number (e.g. 9876543210)"
                   value={form.mobile}
                   onChange={update('mobile')}
                   error={errors.mobile}
@@ -880,6 +961,7 @@ export function CatalogueDownloadModal({
                   id="cat-email"
                   label="Email Address"
                   type="email"
+                  placeholder="e.g. rahul@example.com"
                   value={form.email}
                   onChange={update('email')}
                   error={errors.email}
@@ -888,6 +970,7 @@ export function CatalogueDownloadModal({
                 <CatalogueField
                   id="cat-city"
                   label="City / Location"
+                  placeholder="e.g. Pune, Maharashtra"
                   value={form.city}
                   onChange={update('city')}
                   error={errors.city}
@@ -900,8 +983,8 @@ export function CatalogueDownloadModal({
                   onChange={update('industry')}
                   placeholder="e.g. Automation, CNC, Steel"
                 />
-                <div className="sm:col-span-2">
-                  <label htmlFor="cat-msg" className="field-label">
+                <div className="flex flex-col sm:col-span-2">
+                  <label htmlFor="cat-msg" className="field-label text-xs">
                     Specific Requirements (Optional)
                   </label>
                   <textarea
@@ -941,26 +1024,48 @@ const CatalogueField = forwardRef<
     error?: string;
     required?: boolean;
     placeholder?: string;
+    maxLength?: number;
+    inputMode?: 'text' | 'search' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal';
   }
->(({ id, label, value, onChange, type = 'text', error, required, ...props }, ref) => (
-  <div>
-    <label htmlFor={id} className="field-label text-xs">
-      {label} {required && <span className="text-signal">*</span>}
-    </label>
-    <input
-      ref={ref}
-      id={id}
-      type={type}
-      value={value}
-      onChange={onChange}
-      className={`field-input text-xs ${error ? 'border-red-400/80' : ''}`}
-      aria-invalid={Boolean(error)}
-      {...props}
-    />
-    {error && (
-      <p className="mt-1 text-[11px] text-red-300" role="alert">
-        {error}
-      </p>
-    )}
-  </div>
-));
+>(
+  (
+    {
+      id,
+      label,
+      value,
+      onChange,
+      type = 'text',
+      error,
+      required,
+      placeholder,
+      maxLength,
+      inputMode,
+      ...props
+    },
+    ref
+  ) => (
+    <div className="flex flex-col">
+      <label htmlFor={id} className="field-label text-xs">
+        {label} {required && <span className="text-signal">*</span>}
+      </label>
+      <input
+        ref={ref}
+        id={id}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        inputMode={inputMode}
+        className={`field-input text-xs ${error ? 'border-red-400/80 ring-1 ring-red-400/30' : ''}`}
+        aria-invalid={Boolean(error)}
+        {...props}
+      />
+      {error && (
+        <p className="mt-1 text-[11px] font-medium text-red-500" role="alert">
+          {error}
+        </p>
+      )}
+    </div>
+  )
+);

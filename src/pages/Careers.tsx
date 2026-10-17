@@ -5,6 +5,7 @@ import { MagneticButton } from '../components/ui/MagneticButton';
 import { TechnicalLabel } from '../components/ui/SectionHeading';
 import { COMPANY_PHONE, COMPANY_PHONE_RAW } from '../data/company';
 import { ApplicationFormData, Job, jobs, openWhatsAppApplication } from '../data/jobs';
+import { startSmoothScroll, stopSmoothScroll } from '../hooks/useSmoothScroll';
 import { useSeo } from '../hooks/useSeo';
 
 const AREAS = [
@@ -28,7 +29,68 @@ export function Careers() {
 
   return <main>
     <PageHero code="Careers" eyebrow="Build your future in motion" lines={['Build your career', 'with KHS-LG']} body="Join KHS-LG and build your career with a growing organization in the industrial and bearing solutions sector. We are always looking for talented, motivated and ambitious individuals who want to learn, contribute and grow." />
-    <section className="relative overflow-hidden border-b border-ink-700 bg-ink-900 py-12 lg:py-18"><div className="industrial-grid pointer-events-none absolute inset-0 opacity-20" aria-hidden /><div className="relative mx-auto grid w-full max-w-[1600px] gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:gap-12"><div><TechnicalLabel code="01 / Growth">Grow with KHS-LG</TechnicalLabel><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,6vw,5.2rem)] font-bold uppercase leading-[0.9] text-steel-50">Learn. Contribute. <span className="text-signal">Grow.</span></h2><div className="mt-7 max-w-2xl space-y-4 text-base leading-relaxed text-steel-400"><p>Build your career with hands-on exposure to real industrial and bearing solutions, alongside a team that values initiative, learning and practical contribution.</p><p>Whether you are a fresher beginning your professional journey or an experienced professional ready for a new challenge, KHS-LG offers opportunities to develop sales, communication, customer-handling and technical business skills.</p></div><a href="#featured-jobs" className="mt-9 inline-flex items-center gap-3 font-display text-sm font-semibold uppercase tracking-[0.16em] text-signal hover:text-signal-bright">View open positions <ArrowDownIcon className="h-4 w-4" aria-hidden /></a></div><div className="relative hidden aspect-square max-w-[440px] justify-self-end lg:flex lg:items-center lg:justify-center"><div className="absolute inset-8 rounded-full border border-signal/15" aria-hidden /><div className="absolute inset-20 rounded-full border border-signal/20" aria-hidden /><div className="h-64 w-64 opacity-80"><div className="h-full w-full rounded-full border-[18px] border-signal/20 border-r-signal border-t-steel-500/30 shadow-[0_0_50px_rgba(255,245,138,0.12)]" /></div><span className="absolute bottom-4 right-0 font-mono text-[9px] uppercase tracking-tech text-steel-500">People / Precision / Progress</span></div></div></section>
+    {/* Section 01: Culture & Growth Pillars (Replaces redundant second hero layout) */}
+    <section className="relative overflow-hidden border-b border-ink-700 bg-ink-900 py-12 lg:py-16">
+      <div className="industrial-grid pointer-events-none absolute inset-0 opacity-20" aria-hidden />
+      <div className="relative mx-auto w-full max-w-[1600px] px-5 sm:px-8">
+        <div className="flex flex-col gap-5 border-b border-ink-700 pb-8 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <TechnicalLabel code="01 / Culture">Work & Growth at KHS-LG</TechnicalLabel>
+            <h2 className="mt-4 font-display text-3xl font-bold uppercase text-steel-50 sm:text-4xl">
+              Learn. Contribute. <span className="text-signal">Grow.</span>
+            </h2>
+          </div>
+          <p className="max-w-xl text-sm leading-relaxed text-steel-400">
+            Build your career with hands-on exposure to real industrial bearing solutions, alongside an experienced team that values initiative, continuous learning, and practical execution.
+          </p>
+        </div>
+
+        {/* 3 Distinct Growth Pillars */}
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="group border border-ink-700 bg-ink-950 p-6 transition-colors hover:border-signal/50">
+            <span className="font-mono text-[10px] uppercase tracking-tech text-signal">01 / Industry Exposure</span>
+            <h3 className="mt-3 font-display text-xl font-bold uppercase text-steel-50 group-hover:text-signal">
+              Real Industrial Impact
+            </h3>
+            <p className="mt-3 text-xs leading-relaxed text-steel-400">
+              Work with world-class bearing technologies and precision motion solutions across automotive, automation, steel mills, and heavy equipment sectors.
+            </p>
+          </div>
+
+          <div className="group border border-ink-700 bg-ink-950 p-6 transition-colors hover:border-signal/50">
+            <span className="font-mono text-[10px] uppercase tracking-tech text-signal">02 / Mentorship</span>
+            <h3 className="mt-3 font-display text-xl font-bold uppercase text-steel-50 group-hover:text-signal">
+              Mentorship & Learning
+            </h3>
+            <p className="mt-3 text-xs leading-relaxed text-steel-400">
+              Gain hands-on guidance from industry specialists with 50+ years of domain heritage, mastering customer consultation, technical sales, and commercial skills.
+            </p>
+          </div>
+
+          <div className="group border border-ink-700 bg-ink-950 p-6 transition-colors hover:border-signal/50">
+            <span className="font-mono text-[10px] uppercase tracking-tech text-signal">03 / Advancement</span>
+            <h3 className="mt-3 font-display text-xl font-bold uppercase text-steel-50 group-hover:text-signal">
+              Merit-Based Growth
+            </h3>
+            <p className="mt-3 text-xs leading-relaxed text-steel-400">
+              Whether you are a fresher or an experienced professional, KHS-LG recognizes ambition and performance with clear responsibilities and leadership avenues.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-2">
+          <a
+            href="#featured-jobs"
+            className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.14em] text-signal hover:text-signal-bright"
+          >
+            Explore open vacancies <ArrowDownIcon className="h-4 w-4" aria-hidden />
+          </a>
+          <span className="font-mono text-[10px] uppercase tracking-tech text-steel-500">
+            Head Office: Mumbai · Opportunities across Sales, Technical, Operations
+          </span>
+        </div>
+      </div>
+    </section>
     <section className="bg-ink-950 py-12 lg:py-18"><div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8"><TechnicalLabel code="02 / Areas">Explore your opportunity</TechnicalLabel><div className="mt-8 grid gap-px border border-ink-700 bg-ink-700 md:grid-cols-2 xl:grid-cols-4">{AREAS.map((area, index) => <article key={area.name} className="group bg-ink-950 p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-ink-800"><div className="flex items-start justify-between"><area.icon className="h-6 w-6 text-signal" strokeWidth={1.5} aria-hidden /><span className="font-mono text-[9px] tracking-tech text-steel-600">{String(index + 1).padStart(2, '0')}</span></div><h2 className="mt-10 font-display text-2xl font-semibold uppercase leading-none text-steel-50 group-hover:text-signal">{area.name}</h2><p className="mt-4 text-sm leading-relaxed text-steel-500">{area.description}</p></article>)}</div></div></section>
     <FeaturedJobs onApply={openApplication} />
     <section className="bg-ink-950 py-12 lg:py-18"><div className="mx-auto flex w-full max-w-[1200px] flex-col items-center px-5 text-center sm:px-8"><TechnicalLabel code="04 / Next step" className="justify-center">Ready to grow with KHS-LG?</TechnicalLabel><h2 className="mt-5 max-w-3xl font-display text-[clamp(2.5rem,6vw,5.5rem)] font-bold uppercase leading-[0.9] text-steel-50">Your next chapter <span className="text-signal">starts here.</span></h2><p className="mt-6 max-w-xl text-[15px] leading-relaxed text-steel-400">Explore our open positions and take the next step in your career.</p><div className="mt-9 flex flex-wrap justify-center gap-3"><MagneticButton href="#featured-jobs" variant="yellow" icon={<ArrowDownIcon className="h-4 w-4" aria-hidden />}>View open positions</MagneticButton><a href={`https://wa.me/${COMPANY_PHONE_RAW}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border border-ink-600 px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] text-steel-300 hover:border-signal hover:text-signal">Have a question? WhatsApp</a></div><p className="mt-6 font-mono text-[10px] uppercase tracking-tech text-steel-600">{COMPANY_PHONE}</p></div></section>
@@ -69,30 +131,274 @@ function ApplicationModal({ job, onClose }: { job: Job; onClose: () => void }) {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
+    stopSmoothScroll();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', onKeyDown);
-    return () => { document.body.style.overflow = previousOverflow; document.removeEventListener('keydown', onKeyDown); };
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+      startSmoothScroll();
+    };
   }, [onClose]);
 
-  const update = (key: keyof ApplicationFormData) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => { setForm((current) => ({ ...current, [key]: event.target.value })); setErrors((current) => ({ ...current, [key]: undefined })); };
+  const update =
+    (key: keyof ApplicationFormData) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      let val = event.target.value;
+      if (key === 'mobile') {
+        val = val.replace(/\D/g, '').slice(0, 10);
+      }
+      setForm((current) => ({ ...current, [key]: val }));
+      setErrors((current) => ({ ...current, [key]: undefined }));
+    };
 
   const submit = (event: FormEvent) => {
     event.preventDefault();
     const next: Partial<Record<keyof ApplicationFormData, string>> = {};
-    if (form.fullName.trim().length < 2) next.fullName = 'Enter your full name';
-    if (!/^\+?[\d\s().-]{8,}$/.test(form.mobile.trim())) next.mobile = 'Enter a valid mobile number';
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim())) next.email = 'Enter a valid email address';
+
+    const trimmedName = form.fullName.trim();
+    if (!trimmedName) {
+      next.fullName = 'Full name is required.';
+    } else if (trimmedName.length < 2) {
+      next.fullName = 'Name must be at least 2 characters.';
+    } else if (!/^[a-zA-Z\s.'-]+$/.test(trimmedName)) {
+      next.fullName = 'Name can only contain alphabetic letters and spaces.';
+    }
+
+    const cleanMobile = form.mobile.replace(/\D/g, '');
+    if (!cleanMobile) {
+      next.mobile = 'Mobile number is required.';
+    } else if (cleanMobile.length !== 10) {
+      next.mobile = 'Mobile number must be exactly 10 digits.';
+    } else if (!/^[6-9]\d{9}$/.test(cleanMobile)) {
+      next.mobile = 'Enter a valid 10-digit mobile number (e.g. 9876543210).';
+    }
+
+    const trimmedEmail = form.email.trim();
+    if (!trimmedEmail) {
+      next.email = 'Email address is required.';
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmedEmail)) {
+      next.email = 'Enter a valid email address (e.g. name@company.com).';
+    }
+
+    if (form.resumeLink.trim() && !/^https?:\/\/[^\s$.?#].[^\s]*$/i.test(form.resumeLink.trim())) {
+      next.resumeLink = 'Enter a valid link (starting with http:// or https://)';
+    }
+
     setErrors(next);
     if (Object.keys(next).length > 0) return;
     setSubmitting(true);
-    window.setTimeout(() => { openWhatsAppApplication(job, form); setSubmitting(false); onClose(); }, 450);
+    window.setTimeout(() => {
+      openWhatsAppApplication(job, form);
+      setSubmitting(false);
+      onClose();
+    }, 450);
   };
 
-  return <div className="fixed inset-0 z-[130] flex items-center justify-center overflow-y-auto bg-ink-950/85 px-4 py-6 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="application-heading" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}><div className="relative my-auto max-h-[calc(100vh-3rem)] w-full max-w-3xl overflow-y-auto border border-ink-600 bg-ink-950 p-6 shadow-2xl sm:p-9"><button type="button" onClick={onClose} aria-label="Close application form" className="absolute right-4 top-4 p-2 text-steel-500 hover:text-signal"><XIcon className="h-5 w-5" aria-hidden /></button><TechnicalLabel code="Application">Join the team</TechnicalLabel><h2 id="application-heading" className="mt-5 max-w-xl pr-8 font-display text-4xl font-bold uppercase leading-none text-steel-50">Apply for <span className="text-signal">{job.title}</span></h2><form onSubmit={submit} noValidate className="mt-8 grid gap-5 sm:grid-cols-2"><div className="sm:col-span-2"><label htmlFor="selected-position" className="field-label">Selected position</label><input id="selected-position" value={job.title} readOnly className="field-input text-signal" /></div><Field id="full-name" label="Full name" value={form.fullName} onChange={update('fullName')} required error={errors.fullName} /><Field id="mobile" label="Mobile number" type="tel" value={form.mobile} onChange={update('mobile')} required error={errors.mobile} /><Field id="email" label="Email address" type="email" value={form.email} onChange={update('email')} required error={errors.email} /><Field id="location" label="Current location" value={form.location} onChange={update('location')} /><Field id="qualification" label="Qualification" value={form.qualification} onChange={update('qualification')} /><Field id="experience" label="Total experience" value={form.experience} onChange={update('experience')} placeholder="e.g. 2 years" /><Field id="current-company" label="Current company" value={form.currentCompany} onChange={update('currentCompany')} /><div className="sm:col-span-2"><Field id="resume-link" label="Resume / CV link" value={form.resumeLink} onChange={update('resumeLink')} placeholder="Paste your Google Drive / OneDrive / portfolio resume link" hint="Please make sure the link is accessible." /></div><div className="sm:col-span-2"><label htmlFor="application-message" className="field-label">Message / cover note</label><textarea id="application-message" value={form.message} onChange={update('message')} rows={4} className="field-input resize-y" /></div><div className="flex flex-col gap-3 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-end"><button type="button" onClick={onClose} className="border border-ink-600 px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] text-steel-400 hover:border-signal hover:text-signal">Cancel</button><button type="submit" disabled={submitting} className="inline-flex items-center justify-center gap-2 bg-signal px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] text-ink-950 hover:bg-signal-bright disabled:cursor-wait disabled:opacity-70">{submitting ? 'Opening WhatsApp...' : 'Submit application'} <ArrowUpRightIcon className="h-4 w-4" aria-hidden /></button></div></form></div></div>;
+  return (
+    <div
+      data-lenis-prevent="true"
+      className="fixed inset-0 z-[130] flex items-center justify-center overflow-y-auto bg-ink-950/85 px-4 py-6 backdrop-blur-sm overscroll-contain"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="application-heading"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div
+        data-lenis-prevent="true"
+        className="relative my-auto max-h-[calc(100vh-3rem)] w-full max-w-3xl overflow-y-auto border border-ink-600 bg-ink-950 p-6 shadow-2xl sm:p-9 overscroll-contain"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close application form"
+          className="absolute right-4 top-4 p-2 text-steel-500 hover:text-signal"
+        >
+          <XIcon className="h-5 w-5" aria-hidden />
+        </button>
+
+        <TechnicalLabel code="Application">Join the team</TechnicalLabel>
+        <h2
+          id="application-heading"
+          className="mt-5 max-w-xl pr-8 font-display text-3xl font-bold uppercase leading-none text-steel-50 sm:text-4xl"
+        >
+          Apply for <span className="text-signal">{job.title}</span>
+        </h2>
+
+        <form onSubmit={submit} noValidate className="mt-8 grid gap-5 sm:grid-cols-2">
+          <div className="flex flex-col sm:col-span-2">
+            <label htmlFor="selected-position" className="field-label text-xs">
+              Selected position
+            </label>
+            <input
+              id="selected-position"
+              value={job.title}
+              readOnly
+              className="field-input text-xs font-semibold text-signal"
+            />
+          </div>
+
+          <Field
+            id="full-name"
+            label="Full name"
+            placeholder="e.g. Vikram Patil"
+            value={form.fullName}
+            onChange={update('fullName')}
+            required
+            error={errors.fullName}
+          />
+          <Field
+            id="mobile"
+            label="Mobile number"
+            type="tel"
+            inputMode="numeric"
+            maxLength={10}
+            placeholder="10-digit number (e.g. 9876543210)"
+            value={form.mobile}
+            onChange={update('mobile')}
+            required
+            error={errors.mobile}
+          />
+          <Field
+            id="email"
+            label="Email address"
+            type="email"
+            placeholder="e.g. vikram@example.com"
+            value={form.email}
+            onChange={update('email')}
+            required
+            error={errors.email}
+          />
+          <Field
+            id="location"
+            label="Current location"
+            placeholder="e.g. Pune, Maharashtra"
+            value={form.location}
+            onChange={update('location')}
+          />
+          <Field
+            id="qualification"
+            label="Qualification"
+            placeholder="e.g. B.E. Mechanical / Diploma"
+            value={form.qualification}
+            onChange={update('qualification')}
+          />
+          <Field
+            id="experience"
+            label="Total experience"
+            placeholder="e.g. 3 years in CNC precision machining"
+            value={form.experience}
+            onChange={update('experience')}
+          />
+          <Field
+            id="current-company"
+            label="Current company"
+            placeholder="e.g. Precision Engineering Works"
+            value={form.currentCompany}
+            onChange={update('currentCompany')}
+          />
+
+          <div className="flex flex-col sm:col-span-2">
+            <Field
+              id="resume-link"
+              label="Resume / CV link"
+              value={form.resumeLink}
+              onChange={update('resumeLink')}
+              placeholder="Paste your Google Drive / OneDrive / portfolio resume link"
+              hint="Please make sure the link is accessible."
+            />
+          </div>
+
+          <div className="flex flex-col sm:col-span-2">
+            <label htmlFor="application-message" className="field-label text-xs">
+              Message / cover note
+            </label>
+            <textarea
+              id="application-message"
+              value={form.message}
+              onChange={update('message')}
+              rows={4}
+              placeholder="Tell us about your experience, expertise, or reasons for applying..."
+              className="field-input resize-y text-xs"
+            />
+          </div>
+
+          <div className="flex flex-col gap-3 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-end">
+            <button
+              type="button"
+              onClick={onClose}
+              className="border border-ink-600 px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] text-steel-400 hover:border-signal hover:text-signal"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={submitting}
+              className="inline-flex items-center justify-center gap-2 bg-signal px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.14em] text-ink-950 hover:bg-signal-bright disabled:cursor-wait disabled:opacity-70"
+            >
+              {submitting ? 'Opening WhatsApp...' : 'Submit application'}
+              <ArrowUpRightIcon className="h-4 w-4" aria-hidden />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
-function Field({ id, label, value, onChange, type = 'text', placeholder, required, error, hint }: { id: string; label: string; value: string; onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; type?: string; placeholder?: string; required?: boolean; error?: string; hint?: string }) {
-  return <div><label htmlFor={id} className="field-label">{label} {required && <span className="text-signal">*</span>}</label><input id={id} type={type} value={value} onChange={onChange} placeholder={placeholder} className={`field-input ${error ? 'border-red-400/80' : ''}`} aria-invalid={Boolean(error)} />{hint && <p className="mt-2 text-[11px] text-steel-600">{hint}</p>}{error && <p className="mt-2 text-xs text-red-300" role="alert">{error}</p>}</div>;
+function Field({
+  id,
+  label,
+  value,
+  onChange,
+  type = 'text',
+  placeholder,
+  required,
+  error,
+  hint,
+  maxLength,
+  inputMode,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  placeholder?: string;
+  required?: boolean;
+  error?: string;
+  hint?: string;
+  maxLength?: number;
+  inputMode?: 'text' | 'search' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal';
+}) {
+  return (
+    <div className="flex flex-col">
+      <label htmlFor={id} className="field-label text-xs">
+        {label} {required && <span className="text-signal">*</span>}
+      </label>
+      <input
+        id={id}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        maxLength={maxLength}
+        inputMode={inputMode}
+        className={`field-input text-xs ${error ? 'border-red-400/80 ring-1 ring-red-400/30' : ''}`}
+        aria-invalid={Boolean(error)}
+      />
+      {hint && <p className="mt-1 text-[11px] text-steel-500">{hint}</p>}
+      {error && (
+        <p className="mt-1 text-xs font-medium text-red-500" role="alert">
+          {error}
+        </p>
+      )}
+    </div>
+  );
 }

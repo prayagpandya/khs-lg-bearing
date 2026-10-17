@@ -33,7 +33,17 @@ export function useSmoothScroll(): void {
   }, [reduced]);
 
   useEffect(() => {
-    if (lenisInstance) lenisInstance.scrollTo(0, { immediate: true });else
-    window.scrollTo(0, 0);
+    if (lenisInstance) lenisInstance.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
   }, [pathname]);
+}
+
+/** Suspends smooth scroll (e.g., when a modal or dialog is open) */
+export function stopSmoothScroll(): void {
+  lenisInstance?.stop();
+}
+
+/** Resumes smooth scroll */
+export function startSmoothScroll(): void {
+  lenisInstance?.start();
 }

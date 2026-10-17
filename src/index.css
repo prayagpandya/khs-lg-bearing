@@ -253,6 +253,43 @@ canvas {
   touch-action: pan-y;
 }
 
+/* Universal Base Form Controls (Applicable to all themes) */
+.field-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94A3B8;
+  margin-bottom: 0.4rem;
+}
+
+.field-input {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #334155;
+  background-color: #0B0E14;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: #F8FAFC;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.field-input::placeholder {
+  color: #64748B;
+  opacity: 0.75;
+}
+
+.field-input:focus {
+  border-color: #F5C400;
+  box-shadow: 0 0 0 1px #F5C400, 0 0 12px rgba(245, 196, 0, 0.15);
+  background-color: #121822;
+}
+
 html.theme-light,
 html.theme-light body,
 html.theme-light #root {
@@ -867,39 +904,117 @@ html.theme-light .khs-logo {
   filter: none !important;
 }
 
-/* 9. Form Inputs, Selects & Textareas */
-html.theme-light input,
+/* 9. Form Inputs, Selects & Textareas in Light Mode */
+html.theme-light input:not([type="checkbox"]):not([type="radio"]),
 html.theme-light select,
 html.theme-light textarea {
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 4px !important;
   background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
   color: #0f172a !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03) !important;
 }
+
 html.theme-light input::placeholder,
 html.theme-light textarea::placeholder {
   color: #94a3b8 !important;
+  opacity: 1 !important;
 }
+
+html.theme-light input:hover:not(:disabled):not(:focus),
+html.theme-light select:hover:not(:disabled):not(:focus),
+html.theme-light textarea:hover:not(:disabled):not(:focus) {
+  border-color: #94a3b8 !important;
+}
+
 html.theme-light input:focus,
 html.theme-light select:focus,
 html.theme-light textarea:focus {
   border-color: #CA8A04 !important;
-  box-shadow: 0 0 0 1px #CA8A04 !important;
+  box-shadow: 0 0 0 2px rgba(245, 196, 0, 0.28) !important;
+  background-color: #ffffff !important;
+  outline: none !important;
 }
+
 html.theme-light option {
   background-color: #ffffff !important;
   color: #0f172a !important;
 }
+
+html.theme-light .field-label {
+  display: block !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+  font-size: 0.6875rem !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 0.4rem !important;
+}
+
 html.theme-light .field-input {
-  border-color: #cbd5e1 !important;
+  display: block !important;
+  width: 100% !important;
+  border: 1.5px solid #cbd5e1 !important;
   background-color: #ffffff !important;
   color: #0f172a !important;
+  padding: 0.625rem 0.875rem !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.25rem !important;
 }
+
+html.theme-light .field-input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+html.theme-light .field-input:hover:not(:focus) {
+  border-color: #94a3b8 !important;
+}
+
 html.theme-light .field-input:focus {
   border-color: #CA8A04 !important;
-  box-shadow: 0 0 0 1px #CA8A04 !important;
+  box-shadow: 0 0 0 2px rgba(245, 196, 0, 0.3) !important;
+  background-color: #ffffff !important;
 }
-html.theme-light .field-label {
+
+/* Modals & Dialogs in Light Mode */
+html.theme-light [role="dialog"] > div {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.2), 0 0 25px rgba(245, 196, 0, 0.12) !important;
+}
+
+html.theme-light [role="dialog"] .bg-ink-900\/90,
+html.theme-light [role="dialog"] .bg-ink-900,
+html.theme-light [role="dialog"] [class*="bg-ink-900"] {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.theme-light [role="dialog"] .border-ink-800,
+html.theme-light [role="dialog"] .border-ink-700,
+html.theme-light [role="dialog"] .border-ink-600 {
+  border-color: #e2e8f0 !important;
+}
+
+html.theme-light [role="dialog"] h2,
+html.theme-light [role="dialog"] h3 {
+  color: #0f172a !important;
+}
+
+html.theme-light [role="dialog"] p.text-steel-400,
+html.theme-light [role="dialog"] p.text-steel-500 {
   color: #475569 !important;
+}
+
+html.theme-light [role="dialog"] button[aria-label^="Close"] {
+  color: #64748b !important;
+}
+html.theme-light [role="dialog"] button[aria-label^="Close"]:hover {
+  color: #854D0E !important;
+  background-color: #f1f5f9 !important;
+  border-radius: 4px !important;
 }
 
 /* 10. Subtle Precision Grid in Light Mode */
