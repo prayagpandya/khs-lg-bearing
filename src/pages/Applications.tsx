@@ -33,7 +33,7 @@ export function Applications() {
           </div>
           <div className="hidden h-px flex-1 max-w-md bg-ink-800 lg:block" />
           <span className="font-mono text-[10px] uppercase tracking-tech text-steel-500">
-            KHS-LG &bull; 4,500+ Specifications Available
+            KHS-LG &bull; 13,500+ Specifications Available
           </span>
         </div>
       </section>

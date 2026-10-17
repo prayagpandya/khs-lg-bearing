@@ -256,66 +256,656 @@ canvas {
 html.theme-light,
 html.theme-light body,
 html.theme-light #root {
-  background-color: #f7f7f5;
+  background-color: #f8fafc;
 }
 html.theme-light body {
-  color: #111111;
+  color: #0f172a;
 }
-html.theme-light .bg-ink-950 { background-color: #ffffff !important; }
-html.theme-light .bg-ink-900 { background-color: #f7f7f5 !important; }
-html.theme-light .bg-ink-800 { background-color: #eeeeeb !important; }
-html.theme-light .bg-ink-700 { background-color: #d8d8d4 !important; }
-html.theme-light .bg-ink-600 { background-color: #c7c7c2 !important; }
-html.theme-light .bg-ink-950\/80 { background-color: rgba(255, 255, 255, 0.9) !important; }
-html.theme-light .text-steel-50 { color: #111111 !important; }
-html.theme-light .text-steel-300 { color: #333333 !important; }
-html.theme-light .text-steel-400 { color: #555555 !important; }
-html.theme-light .text-steel-500 { color: #666666 !important; }
-html.theme-light .text-steel-600 { color: #888888 !important; }
-html.theme-light .text-signal { color: #8b7200 !important; }
-html.theme-light .text-signal-bright { color: #735e00 !important; }
-html.theme-light .text-signal-dark { color: #6f5a00 !important; }
-html.theme-light .bg-signal { background-color: #d6b800 !important; }
-html.theme-light .border-signal { border-color: #9b8200 !important; }
-html.theme-light .border-ink-700 { border-color: #d8d8d4 !important; }
-html.theme-light .border-ink-600 { border-color: #c7c7c2 !important; }
-html.theme-light .border-steel-500\/10 { border-color: rgba(17, 17, 17, 0.12) !important; }
-html.theme-light .border-steel-500\/30 { border-color: rgba(17, 17, 17, 0.3) !important; }
-html.theme-light .industrial-grid {
-  background-image: linear-gradient(to right, rgba(17, 17, 17, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17, 17, 17, 0.07) 1px, transparent 1px);
+html.theme-light ::selection {
+  background: #F5C400;
+  color: #000000;
 }
+
+/* 2. Text Hierarchy & Readability */
+html.theme-light .text-steel-50,
+html.theme-light .text-steel-100 {
+  color: #0f172a !important;
+}
+html.theme-light .text-steel-200 {
+  color: #1e293b !important;
+}
+html.theme-light .text-steel-300 {
+  color: #334155 !important;
+}
+html.theme-light .text-steel-400 {
+  color: #475569 !important;
+}
+html.theme-light .text-steel-500 {
+  color: #64748b !important;
+}
+html.theme-light .text-steel-600 {
+  color: #94a3b8 !important;
+}
+html.theme-light .text-steel-700 {
+  color: #cbd5e1 !important;
+}
+
+/* 3. Signal & Gold Brand System (High-contrast Dark Yellow matching website logo) */
+html.theme-light .text-signal {
+  color: #A16207 !important;
+}
+html.theme-light .text-signal-bright {
+  color: #CA8A04 !important;
+}
+html.theme-light .text-signal-dark {
+  color: #854D0E !important;
+}
+html.theme-light .bg-signal {
+  background-color: #F5C400 !important;
+  color: #000000 !important;
+}
+html.theme-light .border-signal {
+  border-color: #CA8A04 !important;
+}
+html.theme-light [class*="border-signal"] {
+  border-color: rgba(202, 138, 4, 0.45) !important;
+}
+html.theme-light [class*="bg-signal/"] {
+  background-color: rgba(245, 196, 0, 0.14) !important;
+}
+
+/* Rich industrial golden yellow gradient headlines (matching exact KHS-LG logo yellow #F5C400) */
+html.theme-light .text-gradient-gold {
+  background: linear-gradient(135deg, #854D0E 0%, #F5C400 45%, #946800 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 2px 8px rgba(245, 196, 0, 0.25)) !important;
+}
+html.theme-light [class*="drop-shadow-[0_4px_35px_rgba(245,196,0"],
+html.theme-light [class*="drop-shadow-[0_2px_20px_rgba(245,196,0"],
+html.theme-light [class*="drop-shadow-[0_2px_18px_rgba(245,196,0"],
+html.theme-light [class*="drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)"] {
+  filter: none !important;
+}
+
+/* 4. Surfaces, Panels, Cards & Sections */
+/* Alternating section backgrounds */
+html.theme-light section,
+html.theme-light header,
+html.theme-light footer {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light section.bg-ink-950,
+html.theme-light section[class*="bg-ink-950"],
+html.theme-light header.bg-ink-950,
+html.theme-light footer.bg-ink-950 {
+  background-color: #f8fafc !important;
+}
+html.theme-light section.bg-ink-900,
+html.theme-light section[class*="bg-ink-900"] {
+  background-color: #f1f5f9 !important;
+}
+
+/* Universal Cards & Component Panels (Pure White, clean border, soft shadow) */
+html.theme-light article,
+html.theme-light .hud-panel,
+html.theme-light [class*="bg-ink-950"]:not(section):not(header):not(footer),
+html.theme-light [class*="bg-ink-900"]:not(section):not(header):not(footer),
+html.theme-light [class*="bg-ink-850"]:not(section):not(header):not(footer) {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+html.theme-light article {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+  transition: all 250ms ease !important;
+}
+html.theme-light article:hover {
+  background-color: #ffffff !important;
+  border-color: #F5C400 !important;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 0 14px -2px rgba(245, 196, 0, 0.25) !important;
+}
+html.theme-light article:hover h3 {
+  color: #854D0E !important;
+}
+html.theme-light .hud-panel {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.06) !important;
+}
+html.theme-light .hud-panel:hover {
+  border-color: #F5C400 !important;
+  box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.1), 0 0 16px -2px rgba(245, 196, 0, 0.28) !important;
+}
+
+/* Catalogue Cards in Light Theme - Pure white card, crystal clear text on hover */
+html.theme-light .catalogue-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04) !important;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+html.theme-light .catalogue-card:hover {
+  background-color: #ffffff !important;
+  border-color: #F5C400 !important;
+  box-shadow: 0 14px 32px -4px rgba(15, 23, 42, 0.1), 0 0 18px -2px rgba(245, 196, 0, 0.3) !important;
+  transform: translateY(-2px);
+}
+html.theme-light .catalogue-card .catalogue-card-title {
+  color: #0f172a !important;
+  transition: color 200ms ease !important;
+}
+html.theme-light .catalogue-card:hover .catalogue-card-title {
+  color: #854D0E !important;
+}
+html.theme-light .catalogue-card .text-steel-500 {
+  color: #64748b !important;
+}
+html.theme-light .catalogue-card .catalogue-card-img-frame {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  transition: all 250ms ease !important;
+}
+html.theme-light .catalogue-card:hover .catalogue-card-img-frame {
+  background-color: #FEFCE8 !important;
+  border-color: rgba(245, 196, 0, 0.45) !important;
+}
+html.theme-light .catalogue-card .catalogue-card-download-btn {
+  background-color: #FEF9C3 !important;
+  border: 1px solid #F5C400 !important;
+  color: #713F12 !important;
+  font-weight: 700 !important;
+  transition: all 200ms ease !important;
+}
+html.theme-light .catalogue-card .catalogue-card-download-btn:hover {
+  background-color: #F5C400 !important;
+  border-color: #F5C400 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(245, 196, 0, 0.35) !important;
+}
+html.theme-light .catalogue-card .catalogue-card-link-btn {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+  transition: all 200ms ease !important;
+}
+html.theme-light .catalogue-card .catalogue-card-link-btn:hover {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #F5C400 !important;
+}
+
+/* 5. Borders & Grid Dividers */
+html.theme-light [class*="border-ink-"] {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light [class*="divide-ink-"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light .bg-ink-700 {
+  background-color: #e2e8f0 !important;
+}
+html.theme-light .bg-ink-800 {
+  background-color: #f1f5f9 !important;
+}
+html.theme-light [class*="border-steel-700"],
+html.theme-light [class*="border-steel-600"],
+html.theme-light [class*="border-white/"] {
+  border-color: #cbd5e1 !important;
+}
+
+/* 6. Buttons & Interactive Controls */
+/* Secondary / Ghost / Explore Buttons */
+html.theme-light .btn-magnetic.border-steel-700,
+html.theme-light [class*="border-steel-700"][class*="bg-ink-900"],
+html.theme-light a[href="#products"].btn-magnetic,
+html.theme-light .group[class*="border-white/15"][class*="bg-ink-900"] {
+  background-color: #ffffff !important;
+  border: 1.5px solid #0f172a !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+}
+html.theme-light .btn-magnetic.border-steel-700:hover,
+html.theme-light [class*="border-steel-700"][class*="bg-ink-900"]:hover,
+html.theme-light a[href="#products"].btn-magnetic:hover,
+html.theme-light .group[class*="border-white/15"][class*="bg-ink-900"]:hover {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+}
+
+/* Primary / Quote / Action Buttons (Pure KHS-LG Website Logo Yellow #F5C400) */
+html.theme-light .btn-magnetic.bg-signal,
+html.theme-light .group[class*="border-signal"][class*="bg-signal"],
+html.theme-light button[class*="bg-signal"]:not([class*="bg-signal/"]) {
+  background-color: #F5C400 !important;
+  border-color: #F5C400 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(245, 196, 0, 0.35) !important;
+}
+html.theme-light .btn-magnetic.bg-signal:hover,
+html.theme-light .group[class*="border-signal"][class*="bg-signal"]:hover,
+html.theme-light button[class*="bg-signal"]:not([class*="bg-signal/"]):hover {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #F5C400 !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.22) !important;
+}
+
+/* 7. Specific Component Color Tuning */
+/* Hero ISO Subtitle Badge */
+html.theme-light section[aria-label="KHS-LG precision bearings"] .border-signal\/40.bg-ink-900\/90 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+}
+html.theme-light section[aria-label="KHS-LG precision bearings"] .border-signal\/40.bg-ink-900\/90 span {
+  color: #0f172a !important;
+}
+html.theme-light section[aria-label="KHS-LG precision bearings"] .border-signal\/40.bg-ink-900\/90 span.bg-signal {
+  background-color: #F5C400 !important;
+  box-shadow: 0 0 8px #F5C400 !important;
+}
+
+/* Hero Section Paragraph & Radial Glow */
+html.theme-light section[aria-label="KHS-LG precision bearings"] p {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+html.theme-light section[aria-label="KHS-LG precision bearings"] div[style*="radial-gradient"] {
+  background: radial-gradient(circle at 65% 50%, rgba(245, 196, 0, 0.08) 0%, rgba(248, 250, 252, 0.2) 50%, rgba(248, 250, 252, 0) 100%) !important;
+}
+
+/* Stats Dials in Light Mode */
+html.theme-light section[aria-label="KHS-LG in numbers"] {
+  background-color: #f8fafc !important;
+  border-top-color: #e2e8f0 !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .border-ink-700 {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .bg-ink-700 {
+  background-color: #e2e8f0 !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .bg-ink-950 {
+  background-color: #ffffff !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .group:hover {
+  background-color: #FEFCE8 !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .text-steel-50 {
+  color: #0f172a !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .text-signal {
+  color: #854D0E !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .text-steel-500 {
+  color: #64748b !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .ring-signal\/20 {
+  box-shadow: 0 0 0 1.5px #F5C400 !important;
+}
+html.theme-light section[aria-label="KHS-LG in numbers"] .bg-signal {
+  background-color: #F5C400 !important;
+}
+
+/* Final CTA Section Radial Glow & Assurance Pills */
+html.theme-light section[aria-label="Contact KHS-LG"] div[style*="radial-gradient"] {
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(245, 196, 0, 0.07) 0%, rgba(241, 245, 249, 0.5) 65%, rgba(241, 245, 249, 0.95) 100%) !important;
+}
+html.theme-light section[aria-label="Contact KHS-LG"] .rounded-full.border-ink-700.bg-ink-900\/90 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+html.theme-light section[aria-label="Contact KHS-LG"] .rounded-full.border-ink-700.bg-ink-900\/90 span {
+  color: #0f172a !important;
+}
+html.theme-light section[aria-label="Contact KHS-LG"] .rounded-full.border-ink-700.bg-ink-900\/90 span.bg-signal {
+  background-color: #F5C400 !important;
+}
+html.theme-light section[aria-label="Contact KHS-LG"] .text-steel-600 {
+  color: #94a3b8 !important;
+}
+html.theme-light section[aria-label="Contact KHS-LG"] a.text-steel-400 {
+  color: #334155 !important;
+}
+html.theme-light section[aria-label="Contact KHS-LG"] a.text-steel-400:hover {
+  color: #854D0E !important;
+}
+
+/* Applications Section / Industries Page Tabs & Detail Profile */
+html.theme-light #sector-tabs .lg\:sticky {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+}
+html.theme-light #sector-tabs button[role="tab"] {
+  color: #334155 !important;
+  transition: all 180ms ease !important;
+}
+html.theme-light #sector-tabs button[role="tab"]:hover {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+html.theme-light #sector-tabs button[role="tab"][aria-selected="true"] {
+  background-color: #FEF9C3 !important;
+  color: #854D0E !important;
+  border-left: 4px solid #F5C400 !important;
+  font-weight: 700 !important;
+}
+html.theme-light #sector-tabs button[role="tab"][aria-selected="true"] span {
+  color: #854D0E !important;
+}
+html.theme-light #sector-tabs button[role="tab"][aria-selected="false"] span.text-steel-400 {
+  color: #64748b !important;
+}
+
+/* Engineering Note Box */
+html.theme-light #sector-tabs .border-l-2.border-signal {
+  background-color: #FEFCE8 !important;
+  border-left-color: #F5C400 !important;
+  border-left-width: 4px !important;
+  color: #713F12 !important;
+}
+html.theme-light #sector-tabs .border-l-2.border-signal span {
+  color: #854D0E !important;
+}
+
+/* Machinery items */
+html.theme-light #sector-tabs .bg-ink-950\/70 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+/* Quality Page Hero Assurance Pills */
+html.theme-light header .border-ink-600.px-3.py-2 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Global Presence Country Chips */
+html.theme-light section[aria-label="Global presence"] .border-ink-800\/90.bg-ink-950\/70 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+html.theme-light section[aria-label="Global presence"] .border-ink-800\/90.bg-ink-950\/70:hover {
+  background-color: #FEFCE8 !important;
+  border-color: #F5C400 !important;
+  color: #854D0E !important;
+}
+html.theme-light section[aria-label="Global presence"] .border-signal\/50.bg-signal\/15 {
+  background-color: #FEF9C3 !important;
+  border-color: #F5C400 !important;
+  color: #854D0E !important;
+}
+
+/* Sidebar Navigation on /products and /catalogue in Light Mode */
+html.theme-light aside > div {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+}
+html.theme-light aside.fixed {
+  background-color: #ffffff !important;
+}
+html.theme-light aside .border-ink-800,
+html.theme-light aside [class*="border-ink-800"] {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light aside .bg-ink-900\/60 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+html.theme-light aside .bg-ink-900\/60 p.text-steel-100 {
+  color: #0f172a !important;
+}
+html.theme-light aside .bg-ink-900\/60 p.text-steel-400 {
+  color: #475569 !important;
+}
+html.theme-light aside input {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+html.theme-light aside input:focus {
+  background-color: #ffffff !important;
+  border-color: #F5C400 !important;
+  box-shadow: 0 0 0 1px #F5C400 !important;
+}
+/* View All button in sidebar - Looks like a clear, interactive button! */
+html.theme-light .sidebar-view-all-btn {
+  background-color: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #1e293b !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
+}
+html.theme-light .sidebar-view-all-btn:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #F5C400 !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 6px rgba(245, 196, 0, 0.15) !important;
+}
+html.theme-light .sidebar-view-all-btn[data-active="true"] {
+  background-color: #FEF9C3 !important;
+  border: 1.5px solid #F5C400 !important;
+  color: #713F12 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(245, 196, 0, 0.22) !important;
+}
+html.theme-light .sidebar-view-all-btn .count-badge {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+html.theme-light .sidebar-view-all-btn[data-active="true"] .count-badge {
+  background-color: #F5C400 !important;
+  color: #000000 !important;
+}
+
+/* Inactive category card in Light Mode */
+html.theme-light .product-tree-category-box {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  transition: all 180ms ease !important;
+}
+html.theme-light .product-tree-category-box:not(.active-tree-category):hover {
+  border-color: #F5C400 !important;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+}
+html.theme-light .product-tree-category-btn:not(.category-active-row) {
+  background-color: #ffffff !important;
+  border-left: 4.5px solid transparent !important;
+  color: #0f172a !important;
+}
+html.theme-light .product-tree-category-btn:not(.category-active-row):hover {
+  background-color: #FEFCE8 !important; /* Gentle warm hover tint */
+}
+html.theme-light .product-tree-category-btn:not(.category-active-row):hover .category-name {
+  color: #000000 !important;
+}
+html.theme-light .product-tree-category-btn:not(.category-active-row):hover .category-code {
+  color: #854D0E !important;
+}
+html.theme-light .product-tree-category-btn:not(.category-active-row):hover svg {
+  color: #F5C400 !important;
+  transform: translateX(2px);
+}
+html.theme-light .product-tree-category-btn .category-code {
+  color: #854D0E !important;
+}
+html.theme-light .product-tree-category-btn .category-name {
+  color: #0f172a !important;
+}
+html.theme-light .product-tree-category-btn .category-count {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+html.theme-light .product-tree-category-btn svg {
+  color: #64748b !important;
+}
+
+/* ACTIVE / SELECTED Category Tab in Light Mode - High Contrast, Crystal Clear, No Hidden Text! */
+html.theme-light .product-tree-category-box.active-tree-category {
+  background-color: #ffffff !important;
+  border: 1.5px solid #F5C400 !important;
+  box-shadow: 0 4px 14px rgba(245, 196, 0, 0.16) !important;
+}
+html.theme-light .product-tree-category-btn.category-active-row {
+  background-color: #FEF9C3 !important; /* Soft warm yellow tint */
+  border-left: 4.5px solid #F5C400 !important;
+  color: #0f172a !important;
+}
+html.theme-light .product-tree-category-btn.category-active-row .category-code {
+  color: #854D0E !important;
+  font-weight: 800 !important;
+}
+html.theme-light .product-tree-category-btn.category-active-row .category-name {
+  color: #0f172a !important; /* Jet-black / dark slate: 100% visible and sharp! */
+  font-weight: 800 !important;
+}
+html.theme-light .product-tree-category-btn.category-active-row .category-count {
+  background-color: #F5C400 !important; /* Vibrant brand yellow pill */
+  color: #000000 !important; /* Pure black text on yellow - MAX contrast, NEVER hidden! */
+  font-weight: 800 !important;
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+html.theme-light .product-tree-category-btn.category-active-row svg {
+  color: #854D0E !important;
+}
+
+/* Subcategories in Light Mode */
+html.theme-light .product-tree-subcat-btn {
+  color: #334155 !important;
+}
+html.theme-light .product-tree-subcat-btn:hover {
+  color: #0f172a !important;
+  background-color: #f8fafc !important;
+}
+html.theme-light .product-tree-subcat-btn[data-active="true"] {
+  color: #713F12 !important;
+  font-weight: 700 !important;
+}
+html.theme-light .product-tree-subcat-btn[data-active="true"] span.truncate {
+  color: #713F12 !important;
+  background-color: #FEF9C3 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(245, 196, 0, 0.4) !important;
+}
+html.theme-light aside nav .border-l {
+  border-color: #e2e8f0 !important;
+}
+
+/* 8. Navbar & Header in Light Mode */
+html.theme-light header.z-navigation.navbar-at-top {
+  background-color: transparent !important;
+  border-bottom: 1px solid transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+html.theme-light header.z-navigation.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+}
+html.theme-light nav .navbar-icon-btn,
+html.theme-light nav button[aria-label="Search articles"],
+html.theme-light nav button[aria-label="Toggle light and dark theme"] {
+  border: none !important;
+  border-width: 0 !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+html.theme-light nav .navbar-icon-btn:hover,
+html.theme-light nav button[aria-label="Search articles"]:hover,
+html.theme-light nav button[aria-label="Toggle light and dark theme"]:hover {
+  border: none !important;
+  border-color: transparent !important;
+  color: #854D0E !important;
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+html.theme-light nav a.text-steel-300 {
+  color: #334155 !important;
+}
+html.theme-light nav a.text-steel-300:hover {
+  color: #0f172a !important;
+}
+html.theme-light nav a.text-signal {
+  color: #854D0E !important;
+  font-weight: 700 !important;
+}
+html.theme-light nav a span.bg-signal {
+  background-color: #F5C400 !important;
+  height: 2px !important;
+}
+html.theme-light nav button.text-steel-300 {
+  color: #334155 !important;
+}
+html.theme-light nav button.text-steel-300:hover {
+  color: #854D0E !important;
+}
+html.theme-light .khs-logo {
+  filter: none !important;
+}
+
+/* 9. Form Inputs, Selects & Textareas */
 html.theme-light input,
 html.theme-light select,
 html.theme-light textarea {
-  color: #111111;
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+html.theme-light input::placeholder,
+html.theme-light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+html.theme-light input:focus,
+html.theme-light select:focus,
+html.theme-light textarea:focus {
+  border-color: #CA8A04 !important;
+  box-shadow: 0 0 0 1px #CA8A04 !important;
 }
 html.theme-light option {
-  background: #ffffff;
-  color: #111111;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
-html.theme-light .khs-logo {
-  filter: brightness(0.65) saturate(1.2);
+html.theme-light .field-input {
+  border-color: #cbd5e1 !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
 }
-.field-label {
-  display: block;
-  color: #8c8c8c;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+html.theme-light .field-input:focus {
+  border-color: #CA8A04 !important;
+  box-shadow: 0 0 0 1px #CA8A04 !important;
 }
-.field-input {
-  width: 100%;
-  margin-top: 8px;
-  border: 1px solid #2B3647;
-  background: #141A22;
-  padding: 12px 14px;
-  color: #f5f5f5;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 200ms ease, box-shadow 200ms ease;
+html.theme-light .field-label {
+  color: #475569 !important;
 }
-.field-input:focus { border-color: #F5C400; box-shadow: 0 0 0 1px rgba(245, 196, 0, 0.35), 0 0 14px rgba(245, 196, 0, 0.15); }
-html.theme-light .field-input { border-color: #d8d8d4; background: #ffffff; color: #111111; }
-html.theme-light .field-input:focus { border-color: #9b8200; box-shadow: 0 0 0 1px rgba(155, 130, 0, 0.2); }
+
+/* 10. Subtle Precision Grid in Light Mode */
+html.theme-light .industrial-grid {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(202, 138, 4, 0.12) 1px, transparent 0),
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+}

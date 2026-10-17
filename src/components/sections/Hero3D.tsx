@@ -196,12 +196,14 @@ export function Hero3D() {
                 <MagneticButton
                   as="a"
                   href="#products"
+                  variant="ghost"
                   className="btn-magnetic border border-steel-700 bg-ink-900/80 px-6 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-steel-50 backdrop-blur hover:border-signal">
                   Explore Products
                 </MagneticButton>
                 <MagneticButton
                   as="a"
                   href="/contact"
+                  variant="primary"
                   className="btn-magnetic border border-signal bg-signal px-6 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-ink-950 shadow-[0_0_20px_rgba(245,196,0,0.35)] transition-all duration-300 hover:bg-ink-950 hover:text-signal hover:shadow-[0_0_25px_rgba(245,196,0,0.6)]">
                   Request Quote
                 </MagneticButton>

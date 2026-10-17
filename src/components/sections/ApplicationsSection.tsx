@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRightIcon, CheckCircle2Icon, CogIcon, ShieldAlertIcon, WrenchIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { SectionHeading } from '../ui/SectionHeading';
 import { Reveal } from '../ui/RevealText';
 import { BearingGlyph } from '../ui/BearingGlyph';
@@ -9,13 +9,48 @@ import { applicationSectors } from '../../data/applications';
 
 /** Where motion matters — Comprehensive industrial applications extracted from khslg.com */
 export function ApplicationsSection({ hideHeading = false }: { hideHeading?: boolean } = {}) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const sectorParam = searchParams.get('sector') || searchParams.get('tab') || location.hash.replace('#', '');
+    if (sectorParam) {
+      const foundIndex = applicationSectors.findIndex(
+        (s) =>
+          s.id.toLowerCase() === sectorParam.toLowerCase() ||
+          s.code === sectorParam ||
+          parseInt(s.code, 10) === parseInt(sectorParam, 10)
+      );
+      if (foundIndex !== -1) {
+        setActive(foundIndex);
+        // Smooth scroll to the sector tabs so user lands right at the selected content
+        const timer = setTimeout(() => {
+          const el = document.getElementById('sector-tabs');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [searchParams, location.hash]);
+
+  const handleSelectTab = (index: number) => {
+    setActive(index);
+    const targetSector = applicationSectors[index];
+    if (targetSector) {
+      setSearchParams({ sector: targetSector.id }, { replace: true });
+    }
+  };
+
   const current = applicationSectors[active] ?? applicationSectors[0];
 
   return (
     <section
+      id="sector-tabs"
       aria-label="Applications"
-      className={`relative border-t border-ink-700 bg-ink-950 ${hideHeading ? 'py-10 lg:py-16' : 'py-14 lg:py-20'}`}>
+      className={`relative border-t border-ink-700 bg-ink-950 scroll-mt-24 ${hideHeading ? 'py-10 lg:py-16' : 'py-14 lg:py-20'}`}>
       <div className="industrial-grid pointer-events-none absolute inset-0 opacity-15" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-[1600px] px-5 sm:px-8">
@@ -50,8 +85,7 @@ export function ApplicationsSection({ hideHeading = false }: { hideHeading?: boo
                       type="button"
                       role="tab"
                       aria-selected={isActive}
-                      onClick={() => setActive(i)}
-                      onMouseEnter={() => setActive(i)}
+                      onClick={() => handleSelectTab(i)}
                       className={`group flex w-full items-center justify-between gap-4 px-3 py-3 text-left transition-all duration-200 ${
                         isActive
                           ? 'bg-ink-800/80 text-signal pl-4'

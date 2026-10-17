@@ -17,42 +17,42 @@ const PRIMARY_INDUSTRIES: IndustryItem[] = [
     name: 'Packaging & Processing',
     description: 'Bearings, linear motion, shafts and power transmission components for continuous and repeatable packaging machinery movement.',
     image: '/images/industries/packaging-machine.webp',
-    link: '/industries'
+    link: '/industries?sector=packaging-textile'
   },
   {
     code: '02',
     name: 'Machine Tools & CNC',
     description: 'Precision motion components for machining systems and equipment requiring controlled rotational and linear movement.',
     image: '/images/industries/cnc-automation.webp',
-    link: '/industries'
+    link: '/industries?sector=automation-machine-tools'
   },
   {
     code: '03',
     name: 'Automotive',
     description: 'Bearing and motion components for rotating assemblies, transmission systems and automotive production applications.',
     image: '/images/industries/automotive-drivetrain.webp',
-    link: '/industries'
+    link: '/industries?sector=automotive-assemblies'
   },
   {
     code: '04',
     name: 'Gearbox & Power Transmission',
     description: 'Bearing and drive components for radial loads, combined loads and continuous torque transmission.',
     image: '/images/industries/steel-rolling-mill.webp',
-    link: '/industries'
+    link: '/industries?sector=steel-rolling-mills'
   },
   {
     code: '05',
     name: 'Material Handling & Conveyors',
     description: 'Motion components for conveying, lifting, warehousing and continuous material movement systems.',
     image: '/images/industries/overhead-crane.webp',
-    link: '/industries'
+    link: '/industries?sector=material-handling-cranes'
   },
   {
     code: '06',
     name: 'Automation & Robotics',
     description: 'Precision linear and rotational components for automated machinery, positioning systems and special-purpose equipment.',
     image: '/images/industries/electric-motor.webp',
-    link: '/industries'
+    link: '/industries?sector=electric-motors'
   }
 ];
 
@@ -73,13 +73,13 @@ export function IndustriesSection({ hideHeading = false }: { hideHeading?: boole
           />
         )}
 
-        {/* 6 Primary Industry Cards with Real Industrial Equipment Photography */}
+        {/* 6 Primary Industry Cards with Links to Detailed Industry Profiles */}
         <div className={`${hideHeading ? 'mt-2' : 'mt-12'} grid gap-6 sm:grid-cols-2 lg:grid-cols-3`}>
           {PRIMARY_INDUSTRIES.map((industry, i) => (
             <Reveal key={industry.name} delay={i * 0.05} className="h-full">
               <article className="group relative flex h-full flex-col justify-between overflow-hidden border border-ink-800 bg-ink-900/90 p-7 transition-all duration-300 hover:border-signal/50 hover:bg-ink-900 lg:p-8">
                 <div>
-                  {/* Top Bar with Number code (Sector text removed) */}
+                  {/* Top Bar with Number code */}
                   <div className="flex items-center justify-between border-b border-ink-800 pb-3">
                     <span className="font-mono text-xs font-bold text-signal">
                       {industry.code}
@@ -88,25 +88,30 @@ export function IndustriesSection({ hideHeading = false }: { hideHeading?: boole
                   </div>
 
                   {/* Real Industrial Machinery Drawing Visual with White Background */}
-                  <div className="relative my-5 h-48 w-full overflow-hidden rounded border border-ink-700 bg-white p-3.5 flex items-center justify-center shadow-[inset_0_2px_8px_rgba(0,0,0,0.06)]">
+                  <Link
+                    to={industry.link}
+                    className="relative my-5 block h-48 w-full overflow-hidden rounded border border-ink-700 bg-white p-3.5 flex items-center justify-center shadow-[inset_0_2px_8px_rgba(0,0,0,0.06)]"
+                  >
                     <img
                       src={industry.image}
                       alt={`${industry.name} Industrial Machinery`}
                       className="relative max-h-full max-w-full object-contain transition-transform duration-500 ease-precision group-hover:scale-105"
                       loading="lazy"
                     />
-                  </div>
+                  </Link>
 
                   {/* Title & Description */}
-                  <h3 className="font-display text-2xl font-bold uppercase leading-tight text-steel-50 group-hover:text-signal transition-colors">
-                    {industry.name}
+                  <h3 className="font-display text-2xl font-bold uppercase leading-tight text-steel-50 transition-colors group-hover:text-signal">
+                    <Link to={industry.link} className="hover:underline">
+                      {industry.name}
+                    </Link>
                   </h3>
                   <p className="mt-3 text-xs sm:text-sm leading-relaxed text-steel-400">
                     {industry.description}
                   </p>
                 </div>
 
-                {/* Bottom Action Link */}
+                {/* Bottom Action Link to Specific Industry Sector Tab */}
                 <div className="mt-6 border-t border-ink-800 pt-4">
                   <Link
                     to={industry.link}

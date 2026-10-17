@@ -56,14 +56,14 @@ export const COMPANY_PHONE_RAW = '919175275964';
 export const COMPANY_WHATSAPP_URL = `https://wa.me/${COMPANY_PHONE_RAW}`;
 
 export const stats: Stat[] = [
-  { value: 12000, suffix: '+', label: 'Customers Served', note: 'Across industrial markets' },
   { value: 50, suffix: '+', label: 'Years of Industry Experience', note: 'Built across generations' },
-  { value: 25, suffix: '+', label: 'Export Countries', note: 'International market reach' },
-  { value: 13500, suffix: '+', label: 'KHS-LG SKUs', note: 'Across industrial motion categories' }
+  { value: 13500, suffix: '+', label: 'KHS-LG SKUs', note: 'Across industrial motion categories' },
+  { value: 12000, suffix: '+', label: 'Customers Served', note: 'Across industrial markets' },
+  { value: 25, suffix: '+', label: 'Export Countries', note: 'International market reach' }
 ];
 
 export const markets: { country: string; lat: number; lon: number }[] = [
-  { country: 'India', lat: 20.5937, lon: 78.9629 },
+  { country: 'India', lat: 19.0760, lon: 72.8777 },
   { country: 'Bahrain', lat: 26.0667, lon: 50.5577 },
   { country: 'Oman', lat: 21.4735, lon: 55.9754 },
   { country: 'Bangladesh', lat: 23.685, lon: 90.3563 },

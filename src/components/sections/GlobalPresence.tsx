@@ -58,7 +58,7 @@ export function GlobalPresence({ code = '06 / Global' }: { code?: string }) {
                     <span className="absolute h-full w-full rounded-full bg-signal animate-ping opacity-75" />
                     <span className="relative h-2 w-2 rounded-full bg-signal" />
                   </span>
-                  <span>★ Origin: India (Global Supply Hub)</span>
+                  <span>★ Origin: Mumbai, India (Global Supply Hub)</span>
                 </button>
 
                 <span className="font-mono text-[10px] uppercase text-steel-500">

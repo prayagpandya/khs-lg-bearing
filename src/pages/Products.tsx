@@ -116,6 +116,10 @@ export function Products() {
           return next;
         });
       }
+      // If this category was the active filter, clear it to show All Products and reset styling
+      if (activeCategoryId === categoryId) {
+        selectAll();
+      }
     } else {
       setExpandedCategories((prev) => ({ ...prev, [categoryId]: true }));
       selectCategory(categoryId);
@@ -126,11 +130,41 @@ export function Products() {
     const isExpanded = expandedSubcategories[subcategoryId] ?? false;
     if (isExpanded) {
       setExpandedSubcategories((prev) => ({ ...prev, [subcategoryId]: false }));
+      if (activeSubcategoryId === subcategoryId) {
+        selectCategory(categoryId);
+      }
     } else {
       setExpandedSubcategories((prev) => ({ ...prev, [subcategoryId]: true }));
       selectSubcategory(categoryId, subcategoryId);
     }
   };
+
+  const scrollToProductsTop = () => {
+    const target = document.getElementById('products-content-top');
+    if (target) {
+      const topOffset = target.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({
+        top: Math.max(0, topOffset),
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Auto-scroll up to starting point if user was scrolled down when changing filter
+  const isFirstFilterMount = useRef(true);
+  useEffect(() => {
+    if (isFirstFilterMount.current) {
+      isFirstFilterMount.current = false;
+      return;
+    }
+    const target = document.getElementById('products-content-top');
+    if (target) {
+      const topOffset = target.getBoundingClientRect().top + window.scrollY - 90;
+      if (window.scrollY > topOffset + 50) {
+        window.scrollTo({ top: Math.max(0, topOffset), behavior: 'smooth' });
+      }
+    }
+  }, [activeCategoryId, activeSubcategoryId]);
 
   // Filter actions
   const selectAll = () => {
@@ -140,6 +174,7 @@ export function Products() {
     setExpandedCategories({});
     setExpandedSubcategories({});
     setMobileTreeOpen(false);
+    scrollToProductsTop();
   };
 
   const selectCategory = (categoryId: string) => {
@@ -149,6 +184,7 @@ export function Products() {
     setSelectedProductId(null);
     setExpandedCategories((prev) => ({ ...prev, [categoryId]: true }));
     setMobileTreeOpen(false);
+    scrollToProductsTop();
   };
 
   const selectSubcategory = (categoryId: string, subcategoryId: string) => {
@@ -160,6 +196,7 @@ export function Products() {
     setExpandedCategories((prev) => ({ ...prev, [categoryId]: true }));
     setExpandedSubcategories((prev) => ({ ...prev, [subcategoryId]: true }));
     setMobileTreeOpen(false);
+    scrollToProductsTop();
   };
 
   const selectProduct = (product: TreeProduct) => {
@@ -309,7 +346,7 @@ export function Products() {
                 </div>
 
                 {/* Sidebar Header & All Products Reset */}
-                <div className="mb-4 flex items-center justify-between border-b border-ink-800 pb-3">
+                <div className="mb-4 flex items-center justify-between gap-2 border-b border-ink-800 pb-3">
                   <div className="flex items-center gap-2">
                     <LayersIcon className="h-4 w-4 text-signal" aria-hidden />
                     <span className="font-mono text-xs font-bold uppercase tracking-tech text-steel-200">
@@ -319,13 +356,17 @@ export function Products() {
                   <button
                     type="button"
                     onClick={selectAll}
-                    className={`font-mono text-xs uppercase tracking-wider transition-colors ${
+                    data-active={!activeCategoryId && !activeSubcategoryId && !activeProductSlug}
+                    className={`sidebar-view-all-btn inline-flex items-center gap-1.5 rounded border px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200 ${
                       !activeCategoryId && !activeSubcategoryId && !activeProductSlug
-                        ? 'text-signal font-semibold underline'
-                        : 'text-steel-400 hover:text-signal'
+                        ? 'border-signal bg-signal/15 text-signal shadow-[0_0_10px_rgba(245,196,0,0.25)]'
+                        : 'border-ink-700 bg-ink-950/80 text-steel-300 hover:border-signal/50 hover:text-signal hover:bg-ink-900'
                     }`}
                   >
-                    View All ({ALL_TREE_PRODUCTS.length})
+                    <span>View All</span>
+                    <span className="count-badge rounded bg-signal/20 px-1.5 py-0.5 text-[10px] font-bold text-signal">
+                      {ALL_TREE_PRODUCTS.length}
+                    </span>
                   </button>
                 </div>
 
@@ -333,34 +374,48 @@ export function Products() {
                 <nav aria-label="Product Hierarchy Navigation" className="space-y-2.5">
                   {PRODUCT_CATEGORIES_TREE.map((category) => {
                     const isCategoryExpanded = expandedCategories[category.id] ?? false;
-                    const isCategoryActive = activeCategoryId === category.id;
+                    const isCategoryActive = activeCategoryId === category.id && isCategoryExpanded;
                     const catProductCount = category.subcategories.reduce(
                       (acc, sub) => acc + sub.products.length,
                       0
                     );
 
                     return (
-                      <div key={category.id} className="border border-ink-800/80 bg-ink-950/60">
+                      <div
+                        key={category.id}
+                        className={`product-tree-category-box border transition-all duration-200 ${
+                          isCategoryActive
+                            ? 'active-tree-category border-signal/60 bg-ink-800/90'
+                            : 'border-ink-800/80 bg-ink-950/60 hover:border-ink-700'
+                        }`}
+                      >
                         {/* 1. Category Header Row - Whole row is interactive button to toggle show/hide */}
                         <button
                           type="button"
                           onClick={() => handleCategoryClick(category.id)}
                           aria-expanded={isCategoryExpanded}
-                          className={`group flex w-full items-center justify-between px-3.5 py-3 text-left transition-colors ${
-                            isCategoryActive ? 'bg-ink-800/90 text-signal' : 'hover:bg-ink-800/50 text-steel-200'
+                          data-active={isCategoryActive}
+                          className={`product-tree-category-btn group flex w-full items-center justify-between px-3.5 py-3 text-left transition-colors ${
+                            isCategoryActive ? 'category-active-row bg-ink-800/90 text-signal' : 'text-steel-200'
                           }`}
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
-                            <span className="font-mono text-xs font-bold text-signal">
+                            <span className="category-code font-mono text-xs font-bold text-signal">
                               {category.code}
                             </span>
-                            <span className="font-display text-sm font-bold uppercase tracking-wider truncate">
+                            <span className="category-name font-display text-sm font-bold uppercase tracking-wider truncate">
                               {category.name}
                             </span>
                           </div>
 
                           <div className="flex items-center gap-2 shrink-0">
-                            <span className="font-mono text-xs font-semibold text-steel-400">
+                            <span
+                              className={`category-count font-mono text-xs font-semibold px-2 py-0.5 rounded ${
+                                isCategoryActive
+                                  ? 'bg-signal/20 text-signal border border-signal/30'
+                                  : 'text-steel-400 bg-ink-900/60'
+                              }`}
+                            >
                               {catProductCount}
                             </span>
                             <span className="p-0.5 text-steel-400 group-hover:text-signal transition-colors">
@@ -378,7 +433,7 @@ export function Products() {
                           <div className="border-t border-ink-800/60 py-2">
                             {category.subcategories.map((subcategory) => {
                               const isSubExpanded = expandedSubcategories[subcategory.id] ?? false;
-                              const isSubActive = activeSubcategoryId === subcategory.id;
+                              const isSubActive = activeSubcategoryId === subcategory.id && isSubExpanded;
 
                               return (
                                 <div key={subcategory.id} className="ml-3.5 border-l border-ink-800 pl-2.5">
@@ -387,7 +442,8 @@ export function Products() {
                                     type="button"
                                     onClick={() => handleSubcategoryClick(category.id, subcategory.id)}
                                     aria-expanded={isSubExpanded}
-                                    className={`group flex w-full items-center justify-between py-2 pr-2 text-left transition-colors ${
+                                    data-active={isSubActive}
+                                    className={`product-tree-subcat-btn group flex w-full items-center justify-between py-2 pr-2 text-left transition-colors ${
                                       isSubActive ? 'text-signal font-semibold' : 'text-steel-300 hover:text-steel-100'
                                     }`}
                                   >
@@ -456,7 +512,7 @@ export function Products() {
             </aside>
 
             {/* Right Column: Active Breadcrumbs, Filters, and Product Cards Grid */}
-            <div className="min-w-0">
+            <div id="products-content-top" className="min-w-0 scroll-mt-24">
               
               {/* Header Bar with Breadcrumb Filter trail */}
               <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-ink-800 pb-4">

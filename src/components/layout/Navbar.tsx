@@ -20,13 +20,15 @@ export function Logo({ className }: {className?: string;}) {
         'group inline-flex items-center transition-transform duration-300 ease-precision hover:scale-[1.02]',
         className
       )}>
-      <img
-        src="/khslogo-clean.png"
-        alt="KHS-LG"
-        className="khs-logo block h-12 w-auto object-contain object-left transition-all duration-300 drop-shadow-[0_2px_10px_rgba(245,196,0,0.22)] group-hover:drop-shadow-[0_4px_22px_rgba(245,196,0,0.45)] sm:h-14 lg:h-16"
+      <div className="flex items-center justify-center rounded-md bg-black px-3 py-1.5 sm:px-3.5 sm:py-2 border border-neutral-800 shadow-sm transition-all duration-300 group-hover:border-signal/40">
+        <img
+          src="/khslogo-clean.png"
+          alt="KHS-LG"
+          className="khs-logo block h-8 w-auto object-contain object-left transition-all duration-300 drop-shadow-[0_2px_10px_rgba(245,196,0,0.22)] group-hover:drop-shadow-[0_4px_22px_rgba(245,196,0,0.45)] sm:h-10 lg:h-11"
         />
-    </Link>);
-
+      </div>
+    </Link>
+  );
 }
 
 export function Navbar() {
@@ -52,7 +54,7 @@ export function Navbar() {
   }, [location.pathname, location.search]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -106,11 +108,12 @@ export function Navbar() {
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
+        data-scrolled={scrolled}
         className={cn(
-          'fixed inset-x-0 top-0 z-navigation flex items-center justify-center border-b transition-[background-color,border-color,height,backdrop-filter] duration-300 ease-precision',
+          'fixed inset-x-0 top-0 z-navigation flex items-center justify-center transition-all duration-300 ease-precision',
           scrolled ?
-          'h-16 border-signal/25 bg-ink-950/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.7),0_1px_0_rgba(245,196,0,0.12)] lg:h-[72px]' :
-          'h-16 border-white/5 bg-transparent lg:h-[84px]'
+          'navbar-scrolled h-16 border-b border-signal/25 bg-ink-950/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.7),0_1px_0_rgba(245,196,0,0.12)] lg:h-[72px]' :
+          'navbar-at-top h-16 border-b border-transparent bg-transparent lg:h-[84px]'
         )}>
         
         <nav
@@ -211,14 +214,14 @@ export function Navbar() {
                 onClick={openSearch}
                 aria-label="Search articles"
                 aria-expanded={searchOpen}
-                className="flex h-10 w-10 items-center justify-center border border-transparent text-steel-300 transition-colors hover:border-signal/30 hover:text-signal">
+                className="navbar-icon-btn flex h-10 w-10 items-center justify-center rounded-full text-steel-300 transition-colors hover:text-signal hover:bg-white/5">
                 <SearchIcon className="h-4 w-4" aria-hidden />
               </button>
               <button
                 type="button"
                 onClick={toggleTheme}
                 aria-label="Toggle light and dark theme"
-                className="flex h-10 w-10 items-center justify-center border border-transparent text-steel-300 transition-colors hover:border-signal/30 hover:text-signal">
+                className="navbar-icon-btn flex h-10 w-10 items-center justify-center rounded-full text-steel-300 transition-colors hover:text-signal hover:bg-white/5">
                 {theme === 'dark' ? <SunIcon className="h-4 w-4" aria-hidden /> : <MoonIcon className="h-4 w-4" aria-hidden />}
               </button>
               {searchOpen && <div className="absolute right-0 top-[calc(100%+12px)] z-menu-panel w-[min(92vw,440px)] border border-ink-600 bg-ink-950 p-3 shadow-2xl">

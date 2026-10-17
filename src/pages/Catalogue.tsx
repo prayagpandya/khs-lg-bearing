@@ -137,14 +137,44 @@ export function Catalogue() {
     path: '/catalogue'
   });
 
-  const toggleCategoryExpand = (catId: string) => {
-    setExpandedCategories((prev) => ({ ...prev, [catId]: !prev[catId] }));
+  const scrollToCatalogueTop = () => {
+    const target = document.getElementById('catalogue-content-top');
+    if (target) {
+      const topOffset = target.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({
+        top: Math.max(0, topOffset),
+        behavior: 'smooth'
+      });
+    }
   };
+
+  // Auto-scroll up to starting point if user was scrolled down when changing filter
+  const isFirstFilterMount = useRef(true);
+  useEffect(() => {
+    if (isFirstFilterMount.current) {
+      isFirstFilterMount.current = false;
+      return;
+    }
+    const target = document.getElementById('catalogue-content-top');
+    if (target) {
+      const topOffset = target.getBoundingClientRect().top + window.scrollY - 90;
+      if (window.scrollY > topOffset + 50) {
+        window.scrollTo({ top: Math.max(0, topOffset), behavior: 'smooth' });
+      }
+    }
+  }, [activeCategory, activeSub]);
 
   const handleCategoryHeaderClick = (catId: string) => {
     const isCurrentlyExpanded = Boolean(expandedCategories[catId]);
-    setExpandedCategories((prev) => ({ ...prev, [catId]: !isCurrentlyExpanded }));
-    handleSelectCategory(catId);
+    if (isCurrentlyExpanded) {
+      setExpandedCategories((prev) => ({ ...prev, [catId]: false }));
+      if (activeCategory === catId) {
+        handleSelectCategory('all');
+      }
+    } else {
+      setExpandedCategories((prev) => ({ ...prev, [catId]: true }));
+      handleSelectCategory(catId);
+    }
   };
 
   const handleSelectCategory = (categoryId: string, subId = '') => {
@@ -157,6 +187,18 @@ export function Catalogue() {
     }
     setParams(nextParams);
     setMobileSidebarOpen(false);
+  };
+
+  const getCategoryCount = (catId: string) => {
+    if (catId === 'bearings') return catalogues.filter((c) => c.group === 'Bearings').length;
+    if (catId === 'linear-shafts') return catalogues.filter((c) => c.group === 'Linear Shafts').length;
+    if (catId === 'linear-motion') return catalogues.filter((c) => c.group === 'Linear Motion').length;
+    if (catId === 'power-transmission') return catalogues.filter((c) => c.group === 'Power Transmission').length;
+    if (catId === 'brands') {
+      const brandCat = CATEGORY_TREE.find((c) => c.id === 'brands');
+      return brandCat?.subcategories?.length ?? 4;
+    }
+    return 0;
   };
 
   // Filter catalogue items based on activeCategory, activeSub, and search query
@@ -315,8 +357,8 @@ export function Catalogue() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1600px] px-5 py-8 sm:px-8 lg:py-12">
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[290px_1fr] lg:gap-10 xl:grid-cols-[320px_1fr]">
+      <div id="catalogue-content-top" className="mx-auto max-w-[1600px] px-5 py-8 sm:px-8 lg:py-12">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[330px_1fr] lg:gap-10 xl:grid-cols-[360px_1fr]">
           {/* ================= LEFT SIDEBAR (CATEGORY TREE - STICKY) ================= */}
           <aside
             data-lenis-prevent
@@ -332,9 +374,10 @@ export function Catalogue() {
                   : 'lg:overflow-hidden'
               }`}
             >
+              {/* Mobile Close Bar */}
               <div className="flex items-center justify-between border-b border-ink-800 pb-4 lg:hidden">
                 <span className="font-display text-sm font-bold uppercase tracking-wider text-steel-100">
-                  Categories & Products
+                  Brochure Hierarchy
                 </span>
                 <button
                   type="button"
@@ -346,95 +389,130 @@ export function Catalogue() {
                 </button>
               </div>
 
-              <div className="mt-4 flex flex-col gap-1.5 lg:mt-0">
-              {/* All Catalogues Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  handleSelectCategory('all');
-                  setExpandedCategories({});
-                }}
-                className={`group flex w-full items-center justify-between rounded-md px-3.5 py-3 text-left transition-all ${
-                  activeCategory === 'all' || !activeCategory
-                    ? 'border-l-2 border-signal bg-ink-800/90 text-signal shadow-sm'
-                    : 'text-steel-300 hover:bg-ink-900 hover:text-steel-100'
-                }`}
-              >
-                <span className="flex items-center gap-2.5 font-display text-sm font-semibold uppercase tracking-wide">
-                  <LayersIcon className="h-4 w-4 text-signal/80" />
-                  All Catalogues
-                </span>
-                <span className="rounded bg-ink-900 px-2 py-0.5 font-mono text-[11px] text-steel-500 group-hover:text-steel-300">
-                  {catalogues.length}
-                </span>
-              </button>
+              {/* Sidebar Header & All Catalogues Reset */}
+              <div className="mb-4 flex items-center justify-between gap-2 border-b border-ink-800 pb-3">
+                <div className="flex items-center gap-2">
+                  <LayersIcon className="h-4 w-4 text-signal" aria-hidden />
+                  <span className="font-mono text-xs font-bold uppercase tracking-tech text-steel-200">
+                    Brochure Hierarchy
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleSelectCategory('all');
+                    setExpandedCategories({});
+                    scrollToCatalogueTop();
+                  }}
+                  data-active={activeCategory === 'all' || !activeCategory}
+                  className={`sidebar-view-all-btn inline-flex items-center gap-1.5 rounded border px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200 ${
+                    activeCategory === 'all' || !activeCategory
+                      ? 'border-signal bg-signal/15 text-signal shadow-[0_0_10px_rgba(245,196,0,0.25)]'
+                      : 'border-ink-700 bg-ink-950/80 text-steel-300 hover:border-signal/50 hover:text-signal hover:bg-ink-900'
+                  }`}
+                >
+                  <span>All Catalogues</span>
+                  <span className="count-badge rounded bg-signal/20 px-1.5 py-0.5 text-[10px] font-bold text-signal">
+                    {catalogues.length}
+                  </span>
+                </button>
+              </div>
 
-              <div className="my-2 border-t border-ink-800/80" />
+              {/* Tree View: Categories -> Subcategories */}
+              <nav aria-label="Catalogue Hierarchy Navigation" className="space-y-2.5">
+                {CATEGORY_TREE.map((cat) => {
+                  const isCategoryExpanded = Boolean(expandedCategories[cat.id]);
+                  const isCategoryActive = activeCategory === cat.id && isCategoryExpanded;
+                  const catCatalogueCount = getCategoryCount(cat.id);
 
-              {/* Tree Categories */}
-              {CATEGORY_TREE.map((cat) => {
-                const isSelected = activeCategory === cat.id;
-                const isExpanded = Boolean(expandedCategories[cat.id]);
-
-                return (
-                  <div key={cat.id} className="space-y-1">
-                    {/* Parent Category Header - Whole row toggles dropdown */}
-                    <button
-                      type="button"
-                      onClick={() => handleCategoryHeaderClick(cat.id)}
-                      aria-expanded={isExpanded}
-                      className={`group flex w-full items-center justify-between rounded-md px-3.5 py-3 text-left transition-colors ${
-                        isSelected && !activeSub
-                          ? 'border-l-2 border-signal bg-ink-800/80 text-signal'
-                          : 'text-steel-200 hover:bg-ink-900/80 hover:text-steel-50'
+                  return (
+                    <div
+                      key={cat.id}
+                      className={`product-tree-category-box border transition-all duration-200 ${
+                        isCategoryActive
+                          ? 'active-tree-category border-signal/60 bg-ink-800/90'
+                          : 'border-ink-800/80 bg-ink-950/60 hover:border-ink-700'
                       }`}
                     >
-                      <div className="flex flex-1 items-center gap-2.5 min-w-0 font-display text-sm font-bold uppercase tracking-wider">
-                        <span className="font-mono text-xs text-signal/70">{cat.code}</span>
-                        <span className={`truncate ${isSelected ? 'text-signal' : 'text-steel-100 group-hover:text-signal'}`}>{cat.label}</span>
-                      </div>
+                      {/* 1. Category Header Row - Whole row toggles dropdown */}
+                      <button
+                        type="button"
+                        onClick={() => handleCategoryHeaderClick(cat.id)}
+                        aria-expanded={isCategoryExpanded}
+                        data-active={isCategoryActive}
+                        className={`product-tree-category-btn group flex w-full items-center justify-between px-3.5 py-3 text-left transition-colors ${
+                          isCategoryActive ? 'category-active-row bg-ink-800/90 text-signal' : 'text-steel-200'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="category-code font-mono text-xs font-bold text-signal">
+                            {cat.code}
+                          </span>
+                          <span className="category-name font-display text-sm font-bold uppercase tracking-wider truncate">
+                            {cat.label}
+                          </span>
+                        </div>
 
-                      <div className="p-1 text-steel-500 transition-colors group-hover:text-signal shrink-0">
-                        {isExpanded ? (
-                          <ChevronDownIcon className="h-4 w-4 text-signal" />
-                        ) : (
-                          <ChevronRightIcon className="h-4 w-4 text-steel-400 group-hover:text-signal" />
-                        )}
-                      </div>
-                    </button>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <span
+                            className={`category-count font-mono text-xs font-semibold px-2 py-0.5 rounded ${
+                              isCategoryActive
+                                ? 'bg-signal/20 text-signal border border-signal/30'
+                                : 'text-steel-400 bg-ink-900/60'
+                            }`}
+                          >
+                            {catCatalogueCount}
+                          </span>
+                          <span className="p-0.5 text-steel-400 group-hover:text-signal transition-colors">
+                            {isCategoryExpanded ? (
+                              <ChevronDownIcon className="h-4 w-4 text-signal" />
+                            ) : (
+                              <ChevronRightIcon className="h-4 w-4" />
+                            )}
+                          </span>
+                        </div>
+                      </button>
 
-                    {/* Subcategories */}
-                    {isExpanded && cat.subcategories && (
-                      <div className="ml-3.5 space-y-0.5 border-l border-ink-800 py-1 pl-3">
-                        {cat.subcategories.map((sub) => {
-                          const isSubSelected = isSelected && (activeSub === sub.id || (!activeSub && sub.id.startsWith('all-')));
+                      {/* 2. Subcategories List (Shown if Category is expanded) */}
+                      {isCategoryExpanded && cat.subcategories && (
+                        <div className="border-t border-ink-800/60 py-2">
+                          <div className="ml-3.5 space-y-0.5 border-l border-ink-800 pl-2.5">
+                            {cat.subcategories.map((sub) => {
+                              const isSubSelected =
+                                activeCategory === cat.id &&
+                                (activeSub === sub.id || (!activeSub && sub.id.startsWith('all-')));
 
-                          return (
-                            <button
-                              key={sub.id}
-                              type="button"
-                              onClick={() => handleSelectCategory(cat.id, sub.id)}
-                              className={`group flex w-full items-center justify-between rounded px-3 py-2 text-left text-xs sm:text-[13px] transition-colors ${
-                                isSubSelected
-                                  ? 'bg-signal/15 font-semibold text-signal'
-                                  : 'text-steel-400 hover:bg-ink-900 hover:text-steel-200'
-                              }`}
-                            >
-                              <span className="truncate">{sub.label}</span>
-                              <ChevronRightIcon
-                                className={`h-3.5 w-3.5 transition-transform ${
-                                  isSubSelected ? 'translate-x-0.5 text-signal' : 'text-ink-600 group-hover:text-steel-500'
-                                }`}
-                              />
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                              return (
+                                <button
+                                  key={sub.id}
+                                  type="button"
+                                  onClick={() => handleSelectCategory(cat.id, sub.id)}
+                                  data-active={isSubSelected}
+                                  className={`product-tree-subcat-btn group flex w-full items-center justify-between py-2 pr-2 text-left text-xs sm:text-[13px] transition-colors ${
+                                    isSubSelected
+                                      ? 'bg-signal/15 font-semibold text-signal'
+                                      : 'text-steel-400 hover:bg-ink-900 hover:text-steel-200'
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-2 truncate min-w-0 font-display text-[13px] font-semibold uppercase tracking-wide">
+                                    <span className="text-signal/70">&bull;</span>
+                                    <span className="truncate">{sub.label}</span>
+                                  </div>
+                                  <ChevronRightIcon
+                                    className={`h-3.5 w-3.5 transition-transform ${
+                                      isSubSelected ? 'translate-x-0.5 text-signal' : 'text-ink-600 group-hover:text-steel-500'
+                                    }`}
+                                  />
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </nav>
 
               {/* Quick Contact Box in Sidebar */}
               <div className="mt-5 border border-ink-800 bg-ink-900/60 p-3.5">
@@ -532,11 +610,11 @@ export function ReferenceCatalogueCard({
   onDownload: (catalogue: CatalogueRecord, button?: HTMLButtonElement) => void;
 }) {
   return (
-    <article className="group flex h-full flex-col justify-between border border-ink-800 bg-ink-900/70 p-5 transition-all duration-300 hover:border-signal/50 hover:bg-ink-800/80 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+    <article className="catalogue-card group flex h-full flex-col justify-between border border-ink-800 bg-ink-900/70 p-5 transition-all duration-300 hover:border-signal/50 hover:bg-ink-800/80 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
       {/* 1. TOP: Product Title & Category */}
       <div>
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-display text-lg font-bold uppercase tracking-tight text-steel-50 transition-colors group-hover:text-signal sm:text-xl">
+          <h3 className="catalogue-card-title font-display text-lg font-bold uppercase tracking-tight text-steel-50 transition-colors group-hover:text-signal sm:text-xl">
             {catalogue.title}
           </h3>
           <span className="shrink-0 font-mono text-[9px] uppercase tracking-tech text-steel-500">
@@ -552,7 +630,7 @@ export function ReferenceCatalogueCard({
       </div>
 
       {/* 2. CENTER: Clean Product Image Frame */}
-      <div className="relative my-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-md border border-ink-800/80 bg-ink-950/70 p-4 transition-colors group-hover:border-ink-700 sm:h-52">
+      <div className="catalogue-card-img-frame relative my-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-md border border-ink-800/80 bg-ink-950/70 p-4 transition-colors group-hover:border-ink-700 sm:h-52">
         <div className="industrial-grid absolute inset-0 opacity-15" aria-hidden />
 
         {catalogue.image ? (
@@ -578,7 +656,7 @@ export function ReferenceCatalogueCard({
           <button
             type="button"
             onClick={(e) => onDownload(catalogue, e.currentTarget)}
-            className="flex flex-1 items-center justify-center gap-2 rounded border border-signal/80 bg-signal/10 px-4 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.15em] text-signal transition-all hover:bg-signal hover:text-ink-950 active:scale-[0.98]"
+            className="catalogue-card-download-btn flex flex-1 items-center justify-center gap-2 rounded border border-signal/80 bg-signal/10 px-4 py-2.5 font-display text-[11px] font-bold uppercase tracking-[0.15em] text-signal transition-all hover:bg-signal hover:text-ink-950 active:scale-[0.98]"
             aria-label={`Download brochure for ${catalogue.title}`}
           >
             <DownloadIcon className="h-3.5 w-3.5" aria-hidden />
@@ -587,7 +665,7 @@ export function ReferenceCatalogueCard({
 
           <Link
             to={`/catalogue/${catalogue.id}`}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded border border-ink-700 bg-ink-950 text-steel-400 transition-colors hover:border-signal hover:text-signal"
+            className="catalogue-card-link-btn inline-flex h-9 w-9 shrink-0 items-center justify-center rounded border border-ink-700 bg-ink-950 text-steel-400 transition-colors hover:border-signal hover:text-signal"
             title="View Details"
             aria-label={`View details for ${catalogue.title}`}
           >

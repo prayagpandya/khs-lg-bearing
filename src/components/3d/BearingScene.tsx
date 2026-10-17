@@ -78,7 +78,8 @@ export function BearingScene({
       const techRings = createTechRings(ctx.tier);
       ctx.scene.add(techRings.group);
 
-      if (grid) ctx.scene.add(createEngineeringGrid({ receiveShadow: ctx.shadows }));
+      const engGrid = grid ? createEngineeringGrid({ receiveShadow: ctx.shadows }) : null;
+      if (engGrid) ctx.scene.add(engGrid.group);
 
       const particleCount = ctx.tier === 'low' ? 0 : ctx.tier === 'medium' ? 90 : 220;
       const field =
@@ -91,6 +92,7 @@ export function BearingScene({
 
       return {
         update(delta, elapsed) {
+          engGrid?.updateTheme();
           const p = props.current;
           bearing.group.position.x = readNum(p.modelX, 0);
           bearing.group.position.y = readNum(p.modelY, 0);
@@ -121,6 +123,7 @@ export function BearingScene({
           );
         },
         dispose() {
+          engGrid?.dispose();
           env.dispose();
           bearing.dispose();
           techRings.dispose();

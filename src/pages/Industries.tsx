@@ -1,5 +1,4 @@
 import { PageHero } from '../components/layout/PageHero';
-import { IndustriesSection } from '../components/sections/IndustriesSection';
 import { ApplicationsSection } from '../components/sections/ApplicationsSection';
 import { CTASection } from '../components/sections/CTASection';
 import { useSeo } from '../hooks/useSeo';
@@ -20,8 +19,7 @@ export function Industries() {
         lines={['Motion that', 'Industries trust']}
         body="Bearings supplied to 12,000+ OEMs across manufacturing, industrial and automobile applications, backed by 50+ years of experience." />
       
-      <IndustriesSection hideHeading />
-      <ApplicationsSection />
+      <ApplicationsSection hideHeading />
       <CTASection />
     </main>);
 

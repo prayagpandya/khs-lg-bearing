@@ -6,13 +6,15 @@ export function CountUp({
   value,
   suffix = '',
   duration = 1600,
-  className
-
-
-
-
-
-}: {value: number;suffix?: string;duration?: number;className?: string;}) {
+  className,
+  suffixClassName
+}: {
+  value: number;
+  suffix?: string;
+  duration?: number;
+  className?: string;
+  suffixClassName?: string;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-15% 0px' });
   const reduced = useReducedMotion();
@@ -39,7 +41,7 @@ export function CountUp({
   return (
     <span ref={ref} className={className}>
       {display.toLocaleString('en-US')}
-      <span className="text-signal">{suffix}</span>
-    </span>);
-
+      <span className={suffixClassName ?? 'ml-0.5'}>{suffix}</span>
+    </span>
+  );
 }
