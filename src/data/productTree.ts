@@ -82,9 +82,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Compact envelope with bore down to 1mm', 'High rotational precision (ABEC 5/7)', 'Stainless steel and chrome steel options'],
             series: ['MR Series', '680 Series', '690 Series', 'R Series', 'Flanged Series'],
             image: bearingImages['miniature-ball-bearings'],
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: 'https://drive.google.com/file/d/19wkE7Inu8U93486AShFwXdRTiTvUc-XJ/view?usp=sharing',
+            pdfFileName: 'Deep Groove & Miniature Ball Bearings.pdf',
+            pdfTitle: 'Miniature Ball Bearings Catalogue'
           },
           {
             id: 'precision-angular-contact-bearings',
@@ -139,9 +139,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Separable shaft and housing washers', 'Heavy axial load rating', 'Single and double direction executions'],
             series: ['51100 Series', '51200 Series', '51300 Series'],
             image: bearingImages['thrust-ball-bearings'],
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: 'https://drive.google.com/file/d/19wkE7Inu8U93486AShFwXdRTiTvUc-XJ/view?usp=sharing',
+            pdfFileName: 'Thrust Ball Bearings.pdf',
+            pdfTitle: 'Thrust Ball Bearings Catalogue'
           }
         ]
       },
@@ -203,9 +203,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Line contact for extreme radial capacity', 'Accommodates axial shaft expansion in NU/N types', 'High rigidity under dynamic load'],
             series: ['NU Series', 'NJ Series', 'NUP Series', 'N Series', 'NN Series'],
             image: bearingImages['cylindrical-roller-bearings'],
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: 'https://drive.google.com/file/d/15s1fBLGxJ1lk43Yv--9ldww6RJLUOiCc/view?usp=sharing',
+            pdfFileName: 'Cylindrical Roller Bearings.pdf',
+            pdfTitle: 'Cylindrical Roller Bearings Catalogue'
           },
           {
             id: 'cylindrical-roller-thrust-bearings',
@@ -623,9 +623,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Economical high-volume production design', 'Press-fit installation without snap rings', 'Available with open or closed end'],
             series: ['HK Series', 'BK Series', 'HMK Series', 'SCE Series'],
             image: bearingImages['drawn-cup-needle-roller-bearings'],
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: '/assets/iko-needle-roller-cages-catalogue.pdf',
+            pdfFileName: 'iko-needle-roller-cages-catalogue.pdf',
+            pdfTitle: 'IKO Needle Roller Bearings Catalogue'
           },
           {
             id: 'flat-roller-cages',
@@ -865,9 +865,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High torque capacity in standard ball bearing dimensions', 'Keyway mounting on shaft or housing (CSK...2RS, CSK...PP)', 'Reliable sprag lockup mechanism'],
             series: ['CSK Series', 'CSK..PP Series', 'AS Series', 'NSS Series'],
             image: bearingImages['one-way-clutch'],
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: 'https://drive.google.com/file/d/1kuPQzZtzUMa_NZRcFOLrTcLH1WO-Nmc8/view?usp=sharing',
+            pdfFileName: 'One-Way Clutch Bearings.pdf',
+            pdfTitle: 'One-Way Clutch Bearings Catalogue'
           },
           {
             id: 'permaglide-dry-bush',
@@ -884,9 +884,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['100% maintenance-free dry operation', 'Extremely low stick-slip and friction', 'Wide temperature range from -200°C to +280°C'],
             series: ['P Series (PTFE)', 'E Series (POM)', 'Flanged Bushes', 'Thrust Washers'],
             image: bearingImages['permaglide-dry-bush'],
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: 'https://drive.google.com/file/d/1kuPQzZtzUMa_NZRcFOLrTcLH1WO-Nmc8/view?usp=sharing',
+            pdfFileName: 'Permaglide Dry Bush.pdf',
+            pdfTitle: 'Permaglide Dry Bush Catalogue'
           }
         ]
       }
@@ -918,9 +918,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High tensile cords resist stretching', 'Anti-static, oil and heat resistant jacket', 'Matched set precision'],
             series: ['A Section', 'B Section', 'C Section', 'D Section'],
             image: '/assets/products/v-belt.png',
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
+            pdfFileName: 'KHS-LG Classical Wrapped V-Belts Specifications.pdf',
+            pdfTitle: 'Classical Wrapped V-Belts Brochure'
           },
           {
             id: 'wedge-cogged-v-belt',
@@ -937,9 +937,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Molded cogs allow small pulley diameters', 'Raw edge sidewalls provide superior grip', 'Lower operating temperature'],
             series: ['SPZ Section', 'SPA Section', 'SPB Section', 'SPC Section'],
             image: '/assets/products/v-belt.png',
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
+            pdfFileName: 'KHS-LG Wedge Cogged V-Belts Specifications.pdf',
+            pdfTitle: 'Wedge Cogged V-Belts Brochure'
           },
           {
             id: 'poly-ribbed-v-belt',
@@ -956,9 +956,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Exceptional flexibility over backside idlers', 'High power transmission per unit width', 'Quiet and smooth operation'],
             series: ['PH', 'PJ', 'PK', 'PL', 'PM'],
             image: '/assets/products/v-belt.png',
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
+            pdfFileName: 'KHS-LG Poly-Ribbed V-Belts Specifications.pdf',
+            pdfTitle: 'Poly-Ribbed V-Belts Brochure'
           }
         ]
       },
@@ -982,9 +982,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Zero slip positive engagement', 'No lubrication required', 'Curvilinear tooth profiles (HTD / STD)'],
             series: ['HTD (3M, 5M, 8M, 14M)', 'STD', 'Trapezoidal (XL, L, H, XH)'],
             image: '/assets/products/timing-belt.png',
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
+            pdfFileName: 'KHS-LG Rubber Timing Belts Specifications.pdf',
+            pdfTitle: 'Rubber Timing Belts Brochure'
           },
           {
             id: 'industrial-pu-timing-belt',
@@ -1001,9 +1001,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Steel cord tension members for high tensile modulus', 'Clean, dust-free polyurethane compound', 'Available open-ended or truly endless'],
             series: ['T5', 'T10', 'AT5', 'AT10', 'AT20'],
             image: '/assets/products/timing-belt.png',
-            pdfUrl: null,
-            pdfFileName: null,
-            pdfTitle: null
+            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
+            pdfFileName: 'KHS-LG Polyurethane Timing Belts Specifications.pdf',
+            pdfTitle: 'PU Timing Belts Brochure'
           }
         ]
       }

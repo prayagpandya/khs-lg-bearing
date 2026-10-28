@@ -36,7 +36,7 @@ function ProductList({ selected, onBack, onNavigate }: { selected: SelectedCateg
     <button type="button" onClick={onBack} className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#555555] hover:text-[#B99B00]"><ArrowLeftIcon className="h-3 w-3" aria-hidden /> Back to product categories</button>
     <div className="mt-6 flex flex-wrap items-end justify-between gap-3 border-b border-[#C9C9C6] pb-3"><div><h2 className="font-display text-[12px] font-bold uppercase tracking-[0.12em] text-[#222222]">{family.title}</h2><span className="mt-2 block h-px w-8 bg-[#D4B72C]" aria-hidden /></div><span className="font-mono text-[9px] uppercase tracking-[0.12em] text-[#555555]">{family.products.length} products</span></div>
     <div className="mt-4 grid gap-x-8 sm:grid-cols-2">
-      {family.products.map((product) => <Link key={product.id} to={`/catalogue/${product.routeId}`} onClick={onNavigate} className={menuLinkClass}><span className="min-w-0">{product.title}</span><ArrowRightIcon className="ml-auto h-3 w-3 shrink-0 -translate-x-1 text-[#B99B00] opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" aria-hidden /></Link>)}
+      {family.products.map((product) => <Link key={product.id} to={`/products?product=${product.id}`} onClick={onNavigate} className={menuLinkClass}><span className="min-w-0">{product.title}</span><ArrowRightIcon className="ml-auto h-3 w-3 shrink-0 -translate-x-1 text-[#B99B00] opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" aria-hidden /></Link>)}
     </div>
   </div>;
 }

@@ -811,10 +811,257 @@ export const STIEBER_CATEGORIES_TREE: TreeCategory[] = [
   }
 ];
 
+
+export const TPI_CATEGORIES_TREE: TreeCategory[] = [
+  {
+    id: 'tpi-deep-groove-ball-bearings',
+    name: 'Deep Groove Ball Bearings',
+    code: '01',
+    description: 'High-speed, low-vibration precision deep groove ball bearings engineered in Taiwan.',
+    subcategories: [
+      {
+        id: 'tpi-single-row-deep-groove',
+        name: 'Single Row Deep Groove Series',
+        description: 'Standard and EMQ electric motor quality deep groove ball bearings.',
+        products: [
+          {
+            id: 'tpi-open-deep-groove-ball-bearings',
+            name: 'Open Deep Groove Ball Bearings',
+            code: '6000 / 6200 / 6300',
+            categoryId: 'tpi-deep-groove-ball-bearings',
+            categoryName: 'Deep Groove Ball Bearings',
+            subcategoryId: 'tpi-single-row-deep-groove',
+            subcategoryName: 'Single Row Deep Groove Series',
+            short: 'Precision high-speed ball bearings for low-torque, clean lubrication systems.',
+            description: 'TPI open deep groove ball bearings feature super-finished raceways, premium steel purity, and optimized internal clearance for demanding electric motor and machine spindle duties.',
+            motion: 'High-Speed Rotary',
+            applications: ['Electric Motors', 'Machine Spindles', 'Automotive Alternators', 'Pumps'],
+            features: ['Super-finished raceways for whisper-quiet running', 'Vacuum-degassed high-carbon chromium steel', 'Tight dimensional and radial runout tolerances'],
+            series: ['6000 Series', '6200 Series', '6300 Series', '6800 Series', '6900 Series'],
+            image: '/assets/products/deep-groove-ball-bearing.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          },
+          {
+            id: 'tpi-sealed-shielded-bearings',
+            name: 'Sealed & Shielded Ball Bearings',
+            code: '2RS / ZZ',
+            categoryId: 'tpi-deep-groove-ball-bearings',
+            categoryName: 'Deep Groove Ball Bearings',
+            subcategoryId: 'tpi-single-row-deep-groove',
+            subcategoryName: 'Single Row Deep Groove Series',
+            short: 'Pre-lubricated maintenance-free bearings with synthetic contact or non-contact seals.',
+            description: 'TPI 2RS (contact rubber seal) and ZZ (steel shield) bearings are pre-filled with high-grade synthetic grease, preventing contamination and delivering maintenance-free performance.',
+            motion: 'Rotary Enclosed',
+            applications: ['Two-Wheelers & Motorcycles', 'Home Appliances', 'Agricultural Drives', 'Conveyor Rollers'],
+            features: ['Factory-lubricated with high-stability grease', 'Synthetic rubber seals resist moisture and dust', 'Extended fatigue life under adverse conditions'],
+            series: ['6000-2RS', '6200-2RS', '6300-2RS', '6000-ZZ', '6200-ZZ', '6300-ZZ'],
+            image: '/assets/products/deep-groove-ball-bearing.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'tpi-miniature-specialty-bearings',
+    name: 'Miniature & Electric Motor Bearings',
+    code: '02',
+    description: 'Miniature precision bearings and EMQ low-vibration assemblies for electric motors and precision tools.',
+    subcategories: [
+      {
+        id: 'tpi-miniature-series',
+        name: 'Miniature Precision Bearings',
+        description: 'Compact small-bore ball bearings for precision instruments and robotics.',
+        products: [
+          {
+            id: 'tpi-miniature-ball-bearings',
+            name: 'Miniature Instrument Bearings',
+            code: '608 / 624 / 625 / 626',
+            categoryId: 'tpi-miniature-specialty-bearings',
+            categoryName: 'Miniature & Electric Motor Bearings',
+            subcategoryId: 'tpi-miniature-series',
+            subcategoryName: 'Miniature Precision Bearings',
+            short: 'Precision miniature bearings for small motors, power tools, and robotic actuators.',
+            description: 'TPI miniature bearings deliver smooth, low-torque rotation in space-constrained assemblies. Designed with ABEC-3 / ABEC-5 precision grades for high reliability.',
+            motion: 'Micro Rotary',
+            applications: ['Power Tools', 'Medical Handpieces', 'Drone Gimbal Drives', 'Micro Motors'],
+            features: ['Bore sizes from 3mm to 9mm', 'Extreme rotational smoothness', 'Low starting and running torque'],
+            series: ['608 Series', '624 Series', '625 Series', '626 Series', '688 Series'],
+            image: '/assets/products/deep-groove-ball-bearing.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          },
+          {
+            id: 'tpi-emq-motor-bearings',
+            name: 'EMQ Electric Motor Bearings',
+            code: 'EMQ / V2 / V3',
+            categoryId: 'tpi-miniature-specialty-bearings',
+            categoryName: 'Miniature & Electric Motor Bearings',
+            subcategoryId: 'tpi-miniature-series',
+            subcategoryName: 'Miniature Precision Bearings',
+            short: 'Individually 100% vibration and noise tested electric motor quality bearings.',
+            description: 'TPI EMQ grade bearings are manufactured to rigorous noise and vibration thresholds (Anderon / V2 / V3 standards), ensuring silent and smooth motor performance.',
+            motion: 'Low-Vibration Rotary',
+            applications: ['HVAC Blower Motors', 'Industrial Fan Drives', 'Submersible Pumps', 'Servo Motors'],
+            features: ['100% automated vibration and noise spectrum tested', 'Premium polyurea grease for long thermal life', 'Optimized curvature and sphericity'],
+            series: ['6200-EMQ', '6201-EMQ', '6202-EMQ', '6204-EMQ', '6205-EMQ', '6305-EMQ'],
+            image: '/assets/products/deep-groove-ball-bearing.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          }
+        ]
+      }
+    ]
+  }
+];
+
+export const HIWIN_CATEGORIES_TREE: TreeCategory[] = [
+  {
+    id: 'hiwin-linear-guideways',
+    name: 'Linear Guideways & Blocks',
+    code: '01',
+    description: 'Precision linear motion guideways featuring four-row circular-arc groove geometry for heavy industrial loads.',
+    subcategories: [
+      {
+        id: 'hiwin-hg-series-sub',
+        name: 'HG Heavy Load Guideway Series',
+        description: 'High rigidity and high load capacity linear guideways for CNC machinery and automation.',
+        products: [
+          {
+            id: 'hiwin-hgh-square-blocks',
+            name: 'HGH High-Load Square Blocks & Rails',
+            code: 'HGH / HGR',
+            categoryId: 'hiwin-linear-guideways',
+            categoryName: 'Linear Guideways & Blocks',
+            subcategoryId: 'hiwin-hg-series-sub',
+            subcategoryName: 'HG Heavy Load Guideway Series',
+            short: 'High-rigidity square-type linear guide blocks for high-load top mounting.',
+            description: 'HIWIN HGH series linear guideways have four-row recirculating balls in circular arc contact, providing equal load capacity in radial, reverse-radial and lateral directions.',
+            motion: 'Precision Linear',
+            applications: ['CNC Machining Centers', 'Lathes & Grinders', 'Heavy Duty Automation', 'Laser Cutting'],
+            features: ['Equal four-directional load ratings', 'Self-aligning capability absorbs mounting errors', 'Interchangeable block and rail system'],
+            series: ['HGH 15', 'HGH 20', 'HGH 25', 'HGH 30', 'HGH 35', 'HGH 45'],
+            image: '/assets/products/dual-shaft-guide.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          },
+          {
+            id: 'hiwin-hgw-flange-blocks',
+            name: 'HGW Flange Type Linear Blocks',
+            code: 'HGW / HGR',
+            categoryId: 'hiwin-linear-guideways',
+            categoryName: 'Linear Guideways & Blocks',
+            subcategoryId: 'hiwin-hg-series-sub',
+            subcategoryName: 'HG Heavy Load Guideway Series',
+            short: 'Wide flanged linear carriage blocks for top or bottom bolt mounting.',
+            description: 'HIWIN HGW series blocks feature a wide mounting flange with drilled through-holes and tapped threads, allowing secure installation from either top or bottom machine surfaces.',
+            motion: 'Precision Linear',
+            applications: ['Gantry Systems', 'Printing Machinery', 'Packaging Equipment', 'Injection Molding Robots'],
+            features: ['Flange mounting flexibility', 'High rigidity under moment loads', 'Complete dust-proof end seal and scraper protection'],
+            series: ['HGW 15', 'HGW 20', 'HGW 25', 'HGW 30', 'HGW 35', 'HGW 45'],
+            image: '/assets/products/dual-shaft-guide.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          }
+        ]
+      },
+      {
+        id: 'hiwin-eg-mg-series-sub',
+        name: 'EG Low Profile & MG Miniature Guides',
+        description: 'Compact height and miniature linear guideways for electronics, semiconductor and medical automation.',
+        products: [
+          {
+            id: 'hiwin-eg-compact-guides',
+            name: 'EG Low Profile Linear Guideways',
+            code: 'EGH / EGW',
+            categoryId: 'hiwin-linear-guideways',
+            categoryName: 'Linear Guideways & Blocks',
+            subcategoryId: 'hiwin-eg-mg-series-sub',
+            subcategoryName: 'EG Low Profile & MG Miniature Guides',
+            short: 'Compact assembly height for space-constrained automated machinery.',
+            description: 'HIWIN EG series features a low assembly height and short block length, making it ideal for high-speed automated equipment where space is at a premium.',
+            motion: 'Compact High-Speed Linear',
+            applications: ['Semiconductor Equipment', 'SMT Placement', 'PCB Drilling', 'Medical Devices'],
+            features: ['Lower center of gravity for dynamic stability', 'Low assembly height', 'High moment load capacity'],
+            series: ['EGH 15', 'EGH 20', 'EGH 25', 'EGW 15', 'EGW 20', 'EGW 25'],
+            image: '/assets/products/dual-shaft-guide.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          },
+          {
+            id: 'hiwin-mgn-miniature-guides',
+            name: 'MGN / MGW Miniature Linear Guides',
+            code: 'MGN / MGW',
+            categoryId: 'hiwin-linear-guideways',
+            categoryName: 'Linear Guideways & Blocks',
+            subcategoryId: 'hiwin-eg-mg-series-sub',
+            subcategoryName: 'EG Low Profile & MG Miniature Guides',
+            short: 'Ultra-compact linear motion rails with Gothic-arch ball contact.',
+            description: 'HIWIN MG miniature series uses stainless steel or alloy steel with Gothic-arch contact design, providing high rigidity and accuracy in miniature medical, 3D printing and lab automation.',
+            motion: 'Miniature Linear',
+            applications: ['3D Printers', 'Lab Automation', 'Optical Inspection', 'Semiconductor Handling'],
+            features: ['Compact and lightweight design', 'Stainless steel anti-corrosion executions', 'Ball retainer design prevents ball drop'],
+            series: ['MGN 7', 'MGN 9', 'MGN 12', 'MGN 15', 'MGW 9', 'MGW 12', 'MGW 15'],
+            image: '/assets/products/dual-shaft-guide.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'hiwin-ballscrews',
+    name: 'Precision Ballscrews',
+    code: '02',
+    description: 'Precision ground and high-efficiency rolled ballscrew assemblies for accurate positioning and power transfer.',
+    subcategories: [
+      {
+        id: 'hiwin-ballscrew-sub',
+        name: 'Ground & Rolled Ballscrew Assemblies',
+        description: 'Precision linear drive ballscrews for CNC machine tools and automation.',
+        products: [
+          {
+            id: 'hiwin-precision-ballscrews',
+            name: 'Ground & Rolled Precision Ballscrews',
+            code: 'FSI / FSC / R Series',
+            categoryId: 'hiwin-ballscrews',
+            categoryName: 'Precision Ballscrews',
+            subcategoryId: 'hiwin-ballscrew-sub',
+            subcategoryName: 'Ground & Rolled Ballscrew Assemblies',
+            short: 'High-lead, low-friction ballscrew assemblies delivering positioning accuracy.',
+            description: 'HIWIN precision ballscrews convert rotary to linear motion with over 90% mechanical efficiency. Available with ground threads for C1-C5 precision or precision-rolled for economic automation.',
+            motion: 'Helical Linear Conversion',
+            applications: ['CNC Mill Feed Drives', 'Injection Molding Clamping', 'Linear Actuators', 'Pick & Place Robots'],
+            features: ['High mechanical efficiency over 90%', 'Zero backlash with controlled preloading', 'High axial rigidity and smooth travel'],
+            series: ['FSI Series', 'FSC Series', 'R16-05', 'R20-05', 'R25-05', 'R32-10'],
+            image: '/assets/products/linear-motion-shaft.png',
+            pdfUrl: null,
+            pdfFileName: null,
+            pdfTitle: null
+          }
+        ]
+      }
+    ]
+  }
+];
+
 export const BRAND_PRODUCT_TREES: Record<string, TreeCategory[]> = {
   iko: IKO_CATEGORIES_TREE,
   won: WON_CATEGORIES_TREE,
-  stieber: STIEBER_CATEGORIES_TREE
+  stieber: STIEBER_CATEGORIES_TREE,
+  tpi: TPI_CATEGORIES_TREE,
+  hiwin: HIWIN_CATEGORIES_TREE
 };
 
 export function getBrandProductTree(brandSlug: string): TreeCategory[] {

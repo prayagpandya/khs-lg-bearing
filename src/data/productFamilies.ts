@@ -82,8 +82,8 @@ export const productFamilies = productFamilyDefinitions.map((definition) => ({
 }));
 
 export const powerTransmissionLinks = [
-  { id: 'v-belts', title: 'V-Belts', href: '/catalogue?category=v-belts' },
-  { id: 'timing-belts', title: 'Timing Belts', href: '/catalogue?category=v-belts' }
+  { id: 'v-belts', title: 'V-Belts', href: '/products?category=power-transmission&sub=v-belts-sub' },
+  { id: 'timing-belts', title: 'Timing Belts', href: '/products?category=power-transmission&sub=timing-belts-sub' }
 ];
 
 export type ProductFamily = (typeof productFamilies)[number];

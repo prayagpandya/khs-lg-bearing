@@ -50,27 +50,62 @@ export function BrandMegaMenu({
         className={cn('fixed inset-x-0 z-menu-panel border-y border-ink-700 bg-ink-950 shadow-2xl animate-[fadeIn_180ms_ease-out]', scrolled ? 'top-[64px] lg:top-[70px]' : 'top-16 lg:top-[84px]')}
         role="region"
         aria-label="KHS-LG brand navigation">
-        <div className="mx-auto max-h-[min(520px,calc(100vh-96px))] w-full max-w-[1400px] overflow-y-auto px-5 py-7 sm:px-8 lg:py-8">
-          <div className="mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-ink-700 pb-5">
+        <div className="mx-auto max-h-[min(560px,calc(100vh-96px))] w-full max-w-[1500px] overflow-y-auto px-5 py-6 sm:px-8 lg:py-7">
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-4 border-b border-ink-800 pb-4">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal">Our brands</p>
-              <p className="mt-2 text-sm text-steel-400">Premium global brands supplied by KHS-LG.</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal font-semibold">Our brands</p>
+              <p className="mt-1 text-xs text-steel-400">Authorized & premium global industrial partner brands supplied by KHS-LG.</p>
             </div>
-            <Link to="/our-brands" onClick={onClose} className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-tech text-steel-400 transition-colors hover:text-signal">
+            <Link to="/our-brands" onClick={onClose} className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-tech text-steel-400 transition-colors hover:text-signal">
               View all brands <ArrowUpRightIcon className="h-3.5 w-3.5" aria-hidden />
             </Link>
           </div>
-          <div className="grid gap-px border border-ink-700 bg-ink-700 md:grid-cols-3">
+
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {brands.map((brand) => (
-              <Link key={brand.slug} to={`/our-brands/${brand.slug}`} onClick={onClose} className="group relative overflow-hidden bg-ink-950 p-6 transition-colors hover:bg-ink-900" style={{ '--brand-accent': brand.accent, '--brand-accent-soft': brand.accentSoft } as CSSProperties}>
-                <span className="absolute left-0 top-0 h-px w-10 bg-[var(--brand-accent)] transition-all duration-300 group-hover:w-full" aria-hidden />
-                <div className="flex items-start justify-between gap-4">
-                  <span className="font-display text-3xl font-bold uppercase tracking-[0.03em] text-steel-50">{brand.name}</span>
-                  <ArrowUpRightIcon className="h-4 w-4 text-steel-600 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden />
+              <Link
+                key={brand.slug}
+                to={`/our-brands/${brand.slug}`}
+                onClick={onClose}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-ink-800 bg-ink-950/90 p-4 transition-all duration-200 hover:border-signal/50 hover:bg-ink-900 hover:shadow-lg"
+                style={{ '--brand-accent': brand.accent, '--brand-accent-soft': brand.accentSoft } as CSSProperties}
+              >
+                <span
+                  className="absolute left-0 top-0 h-0.5 w-8 bg-[var(--brand-accent)] transition-all duration-300 group-hover:w-full"
+                  aria-hidden
+                />
+
+                <div>
+                  {/* Clean High-Contrast Logo Container */}
+                  <div className="mb-3 flex h-14 w-full items-center justify-center rounded-md bg-white p-2.5 shadow-xs border border-slate-100 transition-transform duration-200 group-hover:scale-[1.02]">
+                    <img
+                      src={brand.logo}
+                      alt={`${brand.name} logo`}
+                      className="max-h-10 max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-display text-lg font-bold uppercase tracking-[0.03em] text-steel-50 group-hover:text-signal transition-colors">
+                      {brand.name}
+                    </span>
+                    <ArrowUpRightIcon
+                      className="h-3.5 w-3.5 text-steel-600 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-signal"
+                      aria-hidden
+                    />
+                  </div>
+                  <p className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.12em]" style={{ color: brand.accent }}>
+                    {brand.tag}
+                  </p>
+                  <p className="mt-2 text-[11px] leading-relaxed text-steel-400 line-clamp-2">
+                    {brand.summary}
+                  </p>
                 </div>
-                <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--brand-accent)]">{brand.tag}</p>
-                <p className="mt-8 max-w-xs text-sm leading-relaxed text-steel-400">{brand.summary}</p>
-                <span className="mt-6 inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-[0.14em] text-steel-300 group-hover:text-[var(--brand-accent)]">Explore {brand.name}</span>
+
+                <span className="mt-4 inline-flex items-center gap-1 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-steel-400 group-hover:text-signal">
+                  Explore {brand.name}
+                </span>
               </Link>
             ))}
           </div>
@@ -84,15 +119,31 @@ export function BrandMobileMenu({ onNavigate }: { onNavigate: () => void }) {
   return (
     <div className="grid gap-2 border-l border-ink-700 pl-4">
       {brands.map((brand) => (
-        <Link key={brand.slug} to={`/our-brands/${brand.slug}`} onClick={onNavigate} className="group flex items-center justify-between border-b border-ink-700 py-3 text-steel-300">
-          <span>
-            <strong className="block font-display text-xl uppercase text-steel-50 group-hover:text-signal">{brand.name}</strong>
-            <small className="font-mono text-[9px] uppercase tracking-tech" style={{ color: brand.accent }}>{brand.country}</small>
-          </span>
+        <Link
+          key={brand.slug}
+          to={`/our-brands/${brand.slug}`}
+          onClick={onNavigate}
+          className="group flex items-center justify-between border-b border-ink-800 py-2.5 text-steel-300"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-20 items-center justify-center rounded bg-white p-1.5 shadow-xs border border-slate-200">
+              <img src={brand.logo} alt={brand.name} className="max-h-7 max-w-full object-contain" />
+            </div>
+            <span>
+              <strong className="block font-display text-sm uppercase text-steel-50 group-hover:text-signal">
+                {brand.name}
+              </strong>
+              <small className="font-mono text-[9px] uppercase tracking-tech" style={{ color: brand.accent }}>
+                {brand.country}
+              </small>
+            </span>
+          </div>
           <ArrowUpRightIcon className="h-4 w-4 text-steel-600 group-hover:text-signal" aria-hidden />
         </Link>
       ))}
-      <Link to="/our-brands" onClick={onNavigate} className="pt-2 font-mono text-[10px] uppercase tracking-tech text-signal">View all brands</Link>
+      <Link to="/our-brands" onClick={onNavigate} className="pt-2 font-mono text-[10px] uppercase tracking-tech text-signal">
+        View all brands &rarr;
+      </Link>
     </div>
   );
 }

@@ -25,6 +25,7 @@ import {
 } from '../data/brandTree';
 import type { TreeProduct } from '../data/productTree';
 import { useSeo } from '../hooks/useSeo';
+import { NoProductFoundNotice } from '../components/ui/NoProductFoundNotice';
 
 export function BrandPage() {
   const { slug } = useParams();
@@ -65,13 +66,8 @@ function BrandPageContent({ brand }: { brand: typeof brands[number] }) {
   const brandProducts = useMemo(() => getAllBrandProducts(brand.slug), [brand.slug]);
 
   useSeo({
-    title: `${brand.name === 'IKO' ? 'IKO Bearings & Linear Motion Products' : brand.name === 'WON ST' ? 'WON Linear Motion Products' : 'STIEBER Freewheels & Backstops'}`,
-    description:
-      brand.name === 'IKO'
-        ? 'KHS-LG supplies IKO precision bearings and linear motion products for industrial, automation and precision machinery applications with downloadable catalogues.'
-        : brand.name === 'WON ST'
-        ? 'KHS-LG supplies WON ST linear motion products including bearings, shafts, guideways and motion components for industrial automation with technical catalogues.'
-        : 'KHS-LG supplies STIEBER freewheels, overrunning clutches and backstop solutions for industrial drive applications.',
+    title: `${brand.name} | ${brand.category} - KHS-LG`,
+    description: `KHS-LG supplies authentic ${brand.name} (${brand.company}) ${brand.category}. Sourcing, quotes, technical specifications, and factory supply for industrial machinery and automation.`,
     path: `/our-brands/${brand.slug}`
   });
 
@@ -215,6 +211,15 @@ function BrandPageContent({ brand }: { brand: typeof brands[number] }) {
         <div className="relative mx-auto grid w-full max-w-[1600px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:gap-20">
           <div>
             <div className="mt-2 sm:mt-4">
+              {brand.logo && (
+                <div className="mb-6 inline-flex items-center rounded-xl bg-white px-5 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.4)] border border-slate-100 transition-transform duration-300 hover:scale-[1.02]">
+                  <img
+                    src={brand.logo}
+                    alt={`${brand.name} official logo`}
+                    className="h-10 sm:h-12 w-auto object-contain"
+                  />
+                </div>
+              )}
               <TechnicalLabel code={brand.tag}>{brand.company}</TechnicalLabel>
               <div className="mt-5 flex items-center gap-4">
                 <span
@@ -320,6 +325,15 @@ function BrandPageContent({ brand }: { brand: typeof brands[number] }) {
             {/* Desktop Side Product Navbar (Sticky Tree View) */}
             <aside className="hidden lg:block lg:sticky lg:top-24 self-start">
               <div className="border border-ink-800 bg-ink-900/90 p-5 backdrop-blur-md">
+                {brand.logo && (
+                  <div className="mb-4 flex items-center justify-center rounded-lg bg-white p-3 shadow-xs border border-slate-100">
+                    <img
+                      src={brand.logo}
+                      alt={`${brand.name} logo`}
+                      className="max-h-9 max-w-full object-contain"
+                    />
+                  </div>
+                )}
                 {/* Search Bar in Sidebar */}
                 <div className="mb-5">
                   <div className="relative">
@@ -555,20 +569,13 @@ function BrandPageContent({ brand }: { brand: typeof brands[number] }) {
                 </div>
               </div>
 
-              {/* No Results Fallback */}
+              {/* No Results Fallback with Custom Sourcing Notice */}
               {filteredProducts.length === 0 ? (
-                <div className="flex flex-col items-center justify-center border border-dashed border-ink-700 bg-ink-900/50 py-20 text-center">
-                  <p className="font-mono text-xs uppercase tracking-tech text-steel-400">
-                    No {brand.name} products matched your filter criteria
-                  </p>
-                  <button
-                    type="button"
-                    onClick={selectAll}
-                    className="mt-4 bg-signal px-5 py-2 font-display text-xs font-bold uppercase tracking-wider text-ink-950 hover:bg-signal-bright"
-                  >
-                    Reset All Filters
-                  </button>
-                </div>
+                <NoProductFoundNotice
+                  query={query}
+                  onReset={selectAll}
+                  className="my-6"
+                />
               ) : (
                 /* Products Cards Grid */
                 <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">

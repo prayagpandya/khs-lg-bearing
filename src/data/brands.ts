@@ -34,6 +34,7 @@ export type BrandDefinition = {
   ctaDescription: string;
   productLabel: string;
   productImage: string;
+  logo: string;
 };
 
 export const brands: BrandDefinition[] = [
@@ -45,6 +46,7 @@ export const brands: BrandDefinition[] = [
     tag: 'NIPPON THOMPSON · JAPAN',
     accent: '#d84d4d',
     accentSoft: 'rgba(216, 77, 77, 0.16)',
+    logo: '/assets/brands/iko-logo.webp',
     category: 'Precision bearings / linear motion',
     summary: 'High-precision needle roller bearings and linear motion solutions.',
     heroHeading: ['Precision', 'in motion.'],
@@ -88,6 +90,7 @@ export const brands: BrandDefinition[] = [
     tag: 'WON LINEAR MOTION · KOREA',
     accent: '#4c9fd7',
     accentSoft: 'rgba(76, 159, 215, 0.16)',
+    logo: '/assets/brands/won-logo.webp',
     category: 'Linear motion systems',
     summary: 'Precision linear motion systems and components for industrial automation.',
     heroHeading: ['Precision', 'linear motion.'],
@@ -133,6 +136,7 @@ export const brands: BrandDefinition[] = [
     tag: 'STIEBER · GERMANY',
     accent: '#4fae8b',
     accentSoft: 'rgba(79, 174, 139, 0.16)',
+    logo: '/assets/brands/stieber-logo.webp',
     category: 'Freewheels / overrunning clutches',
     summary: 'Freewheels, overrunning clutches and backstops for demanding drive systems.',
     heroHeading: ['German engineering.', 'Controlled motion.'],
@@ -167,6 +171,94 @@ export const brands: BrandDefinition[] = [
     ctaDescription: 'Send us the Stieber part number, torque requirement or application details and our team can help identify the appropriate product or series.',
     productLabel: 'Freewheel / clutch',
     productImage: '/assets/products/one-way-clutch-bearing.png'
+  },
+  {
+    slug: 'tpi',
+    name: 'TPI',
+    company: 'Tung Pei Industrial Co., Ltd.',
+    country: 'Taiwan',
+    tag: 'TUNG PEI INDUSTRIAL · TAIWAN',
+    accent: '#2B8FD4',
+    accentSoft: 'rgba(43, 143, 212, 0.16)',
+    logo: '/assets/brands/tpi-logo.webp',
+    category: 'Precision ball bearings / miniature bearings',
+    summary: 'World-class precision deep groove ball bearings and miniature bearings engineered in Taiwan.',
+    heroHeading: ['Precision ball', 'bearings.'],
+    heroDescription: 'High-speed, ultra-quiet precision deep groove ball bearings engineered for automotive, electric motor, and precision machinery applications.',
+    aboutHeading: 'Quiet running. Extreme precision.',
+    about: [
+      'TPI (Tung Pei Industrial Co., Ltd.) is Taiwan premier manufacturer of high-precision ball bearings, established in technical collaboration with global bearing leaders.',
+      'Renowned for ultra-low noise, high rotational speeds, and extended fatigue life, TPI bearings are trusted globally across electric motors, two-wheelers, home appliances, automotive alternators, and precision automation.'
+    ],
+    categoriesHeading: 'TPI product categories',
+    categories: [
+      { name: 'Deep groove ball bearings', description: 'Versatile rolling bearings supporting radial and light axial loads at high speeds.', image: '/assets/products/deep-groove-ball-bearing.png' },
+      { name: 'Miniature ball bearings', description: 'Compact precision bearings for small motors, instruments, and precision drives.', image: '/assets/products/deep-groove-ball-bearing.png' },
+      { name: 'Shielded & sealed bearings', description: 'Pre-lubricated bearings with rubber seals or steel shields for maintenance-free life.', image: '/assets/products/deep-groove-ball-bearing.png' },
+      { name: 'Angular contact bearings', description: 'Combined radial and axial load capacity for high-speed machine spindles.', image: '/assets/products/angular-contact-ball-bearing.png' },
+      { name: 'Self-aligning ball bearings', description: 'Accommodates shaft deflection and mounting misalignments smoothly.', image: '/assets/products/self-aligning-ball-bearing.png' },
+      { name: 'EMQ electric motor bearings', description: 'Specially tested for whisper-quiet vibration levels and motor reliability.', image: '/assets/products/deep-groove-ball-bearing.png' }
+    ],
+    whyHeading: 'Why TPI?',
+    features: [
+      { title: 'Ultra-low vibration & noise', description: 'Electric Motor Quality (EMQ) tested for quiet, smooth running.' },
+      { title: 'High-speed rotational capability', description: 'Precision-ground raceways support demanding high-RPM duties.' },
+      { title: 'Premium vacuum-degassed steel', description: 'High purity steel composition ensures extended fatigue life.' },
+      { title: 'Advanced sealing options', description: 'Non-contact, contact, and labyrinth seal configurations.' },
+      { title: 'Pre-lubricated maintenance-free', description: 'Factory greased with high-performance synthetic lubricants.' },
+      { title: 'Global automotive quality', description: 'Manufactured under stringent IATF 16949 and ISO 9001 standards.' }
+    ],
+    applicationsHeading: 'TPI applications',
+    applications: ['Electric Motors', 'Automotive Alternators & Starters', 'Motorcycles & Two-Wheelers', 'Industrial Fans & Blowers', 'Power Tools', 'Pumps & Compressors', 'Home Appliances', 'Agricultural Equipment'],
+    applicationImage: '/assets/products/deep-groove-ball-bearing.png',
+    ctaHeading: 'Looking for a TPI bearing specification?',
+    ctaDescription: 'Send us the TPI part number or dimensional requirement (bore, OD, width) and our technical team will quote competitive prices with prompt delivery.',
+    productLabel: 'Deep groove ball bearing',
+    productImage: '/assets/products/deep-groove-ball-bearing.png'
+  },
+  {
+    slug: 'hiwin',
+    name: 'HIWIN',
+    company: 'HIWIN Technologies Corp.',
+    country: 'Taiwan',
+    tag: 'HIWIN TECHNOLOGIES · TAIWAN',
+    accent: '#009E44',
+    accentSoft: 'rgba(0, 158, 68, 0.16)',
+    logo: '/assets/brands/hiwin-logo.webp',
+    category: 'Linear guideways / ballscrews / motion systems',
+    summary: 'Global technology leader in precision linear guideways, ballscrews, and industrial motion control.',
+    heroHeading: ['High-tech', 'motion control.'],
+    heroDescription: 'World-class linear guideways, precision ballscrews, and multi-axis motion modules for high-speed CNC machinery, semiconductor, and industrial automation.',
+    aboutHeading: 'HI-tech WINner in precision motion.',
+    about: [
+      'HIWIN is recognized worldwide as a pioneer in motion control technology, offering an extensive range of precision linear guideways, ground and rolled ballscrews, and linear modules.',
+      'From semiconductor manufacturing and CNC machine tools to automated packaging and robotics, HIWIN components deliver high positioning accuracy, high load capacity, and exceptional rigidity.'
+    ],
+    categoriesHeading: 'HIWIN product categories',
+    categories: [
+      { name: 'Heavy load linear guides (HG)', description: 'Four-row circular-arc groove design with high rigidity and high load ratings.', image: '/assets/products/dual-shaft-guide.png' },
+      { name: 'Low profile linear guides (EG)', description: 'Compact low assembly height for space-constrained automated machinery.', image: '/assets/products/dual-shaft-guide.png' },
+      { name: 'Miniature linear guides (MG)', description: 'Compact Gothic-arch contact linear rails for medical and semiconductor equipment.', image: '/assets/products/dual-shaft-guide.png' },
+      { name: 'Precision ground ballscrews', description: 'High-lead ground ballscrews for high-speed, high-precision positioning.', image: '/assets/products/linear-motion-shaft.png' },
+      { name: 'Rolled ballscrews', description: 'Cost-effective high-efficiency ballscrew assemblies for general automation.', image: '/assets/products/linear-motion-shaft.png' },
+      { name: 'Linear motion blocks & carriages', description: 'Interchangeable block designs with flange and square block formats.', image: '/assets/products/linear-motion-bearing.png' }
+    ],
+    whyHeading: 'Why HIWIN?',
+    features: [
+      { title: 'Equal four-directional load ratings', description: 'Engineered to withstand loads from radial, reverse-radial and lateral directions.' },
+      { title: 'Self-aligning capability', description: 'Absorbs installation error smoothly even with slight surface irregularities.' },
+      { title: 'High positioning accuracy', description: 'Rolling motion friction coefficient is only 1/50th of conventional sliding guides.' },
+      { title: 'Interchangeable rails and blocks', description: 'Enables quick replacement and convenient modular field assembly.' },
+      { title: 'SynchMotion quiet technology', description: 'Ball separator design dampens noise and retains grease lubrication.' },
+      { title: 'Extensive global stock', description: 'Widely specified across leading machine tool builders worldwide.' }
+    ],
+    applicationsHeading: 'HIWIN applications',
+    applications: ['CNC Machine Tools', 'Industrial Automation', 'Semiconductor Assembly', 'Robotics & Pick-and-Place', 'Packaging Machinery', 'Medical Equipment', 'Laser Cutting Machines', '3D Printing'],
+    applicationImage: '/assets/products/dual-shaft-guide.png',
+    ctaHeading: 'Need HIWIN rails, blocks, or ballscrews?',
+    ctaDescription: 'Share your HIWIN block/rail model (e.g., HGH, HGW, EGH, MGN) or travel stroke length and our team will provide prompt pricing and availability.',
+    productLabel: 'Linear guideway & block',
+    productImage: '/assets/products/dual-shaft-guide.png'
   }
 ];
 

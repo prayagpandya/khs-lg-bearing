@@ -2,6 +2,7 @@ import { Hero3D } from '../components/sections/Hero3D';
 import { BearingSearch } from '../components/sections/BearingSearch';
 import { MotionSection } from '../components/sections/MotionSection';
 import { StatsSection } from '../components/sections/StatsSection';
+import { BrandPartnersSection } from '../components/sections/BrandPartnersSection';
 import { Products3D } from '../components/sections/Products3D';
 import { IndustriesSection } from '../components/sections/IndustriesSection';
 import { GlobalPresence } from '../components/sections/GlobalPresence';
@@ -42,6 +43,7 @@ export function Home() {
       <Hero3D />
       <MotionSection />
       <StatsSection />
+      <BrandPartnersSection />
       <Products3D limit={6} />
       <BearingSearch />
       <IndustriesSection />

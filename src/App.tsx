@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
+import { FloatingWhatsApp } from './components/ui/FloatingWhatsApp';
 import { CustomCursor } from './components/layout/CustomCursor';
 import { PageLoader } from './components/layout/PageLoader';
 import { Home } from './pages/Home';
@@ -20,6 +21,7 @@ import { CatalogueDetail } from './pages/CatalogueDetail';
 import { NotFound } from './pages/NotFound';
 import { OurBrands } from './pages/OurBrands';
 import { BrandPage } from './pages/BrandPage';
+import { BearingSearchPage } from './pages/BearingSearchPage';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 import { LoaderProvider, useLoader } from './context/LoaderContext';
@@ -89,6 +91,8 @@ function Site({ onReady }: { onReady: () => void }) {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/bearing-search" element={<BearingSearchPage />} />
+          <Route path="/search" element={<BearingSearchPage />} />
           <Route path="/products/:slug" element={<ProductFamily />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/applications" element={<Applications />} />
@@ -113,6 +117,7 @@ function Site({ onReady }: { onReady: () => void }) {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+      <FloatingWhatsApp />
       <Footer />
     </>);
 

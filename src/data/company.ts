@@ -47,13 +47,60 @@ export const company = {
     'Maharashtra 400013.'
   ].join('\n'),
   zonalOffices: ['Ahmedabad', 'Bangalore', 'Delhi', 'Pune'],
-  website: 'https://khslg.com/'
+  website: 'https://khslg.com/',
+  social: {
+    instagram: 'https://www.instagram.com/khs_innovation?srtk=bGhxY2JuNzkxODRq',
+    youtube: 'https://www.youtube.com/@KHSLG',
+    linkedin: 'https://www.linkedin.com/company/khs-lg/home/',
+    facebook: 'https://www.facebook.com/KHSLG/',
+    whatsapp: 'https://wa.me/919175275964'
+  }
 };
 
 export const COMPANY_PHONE = company.phone;
 // Preserve the existing WhatsApp destination; it is not the approved call number.
 export const COMPANY_PHONE_RAW = '919175275964';
 export const COMPANY_WHATSAPP_URL = `https://wa.me/${COMPANY_PHONE_RAW}`;
+
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: 'whatsapp' | 'linkedin' | 'instagram' | 'facebook' | 'youtube';
+  label: string;
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    name: 'WhatsApp',
+    url: `https://wa.me/${COMPANY_PHONE_RAW}`,
+    icon: 'whatsapp',
+    label: 'Chat on WhatsApp'
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/company/khs-lg/home/',
+    icon: 'linkedin',
+    label: 'Connect on LinkedIn'
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/khs_innovation?srtk=bGhxY2JuNzkxODRq',
+    icon: 'instagram',
+    label: 'Follow on Instagram'
+  },
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/KHSLG/',
+    icon: 'facebook',
+    label: 'Like on Facebook'
+  },
+  {
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@KHSLG',
+    icon: 'youtube',
+    label: 'Watch on YouTube'
+  }
+];
 
 export const stats: Stat[] = [
   { value: 50, suffix: '+', label: 'Years of Industry Experience', note: 'Built across generations' },

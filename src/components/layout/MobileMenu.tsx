@@ -3,7 +3,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { XIcon } from 'lucide-react';
 import { NAV_ITEMS } from '../../data/navigation';
-import { company } from '../../data/company';
+import { company, COMPANY_WHATSAPP_URL, SOCIAL_LINKS } from '../../data/company';
+import { WhatsAppIcon, LinkedInIcon, InstagramIcon, FacebookIcon, YouTubeIcon } from '../ui/SocialIcons';
 import { cn } from '../../utils/cn';
 import { ProductMobileMenu } from './ProductMegaMenu';
 import { BrandMobileMenu } from './BrandMegaMenu';
@@ -114,12 +115,50 @@ export function MobileMenu({ open, onClose }: {open: boolean;onClose: () => void
             )}
             </ul>
 
-            <div className="mt-10 space-y-4">
+            <div className="mt-8 space-y-5 border-t border-ink-800 pt-6">
+              {/* WhatsApp Call to Action */}
+              <a
+                href={COMPANY_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="flex items-center justify-center gap-2.5 rounded-lg border border-[#25D366]/40 bg-[#25D366]/10 px-4 py-3 font-mono text-xs font-semibold text-[#25D366] transition-all hover:bg-[#25D366] hover:text-ink-950"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                <span>Chat with us on WhatsApp</span>
+              </a>
+
+              {/* Social Media Links */}
+              <div className="flex items-center gap-3">
+                {SOCIAL_LINKS.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-ink-700 bg-ink-900/80 text-steel-400 hover:text-signal hover:border-signal/50 transition-colors"
+                  >
+                    {item.icon === 'whatsapp' ? (
+                      <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
+                    ) : item.icon === 'linkedin' ? (
+                      <LinkedInIcon className="h-4 w-4" />
+                    ) : item.icon === 'instagram' ? (
+                      <InstagramIcon className="h-4 w-4" />
+                    ) : item.icon === 'facebook' ? (
+                      <FacebookIcon className="h-4 w-4" />
+                    ) : (
+                      <YouTubeIcon className="h-4 w-4" />
+                    )}
+                  </a>
+                ))}
+              </div>
+
               <div className="space-y-1 font-mono text-[11px] uppercase tracking-[0.12em] text-steel-500">
-                <a className="block" href={company.emailHref}>
+                <a className="block hover:text-signal transition-colors" href={company.emailHref}>
                   {company.email}
                 </a>
-                <a className="block" href={company.phoneHref}>
+                <a className="block hover:text-signal transition-colors" href={company.phoneHref}>
                   {company.phone}
                 </a>
               </div>

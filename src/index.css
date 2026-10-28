@@ -1048,3 +1048,242 @@ html.theme-light .industrial-grid {
     linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
 }
+
+
+/* 11. No Product Found Notice / Custom Sourcing Banner in Light Mode */
+html.theme-light .no-product-notice-card {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(245, 196, 0, 0.45) !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(245, 196, 0, 0.2) !important;
+}
+
+html.theme-light .no-product-notice-glow {
+  background: radial-gradient(circle, rgba(245, 196, 0, 0.12) 0%, transparent 70%) !important;
+  opacity: 0.8 !important;
+}
+
+html.theme-light .no-product-notice-badge {
+  background-color: #FEF9C3 !important;
+  border: 1px solid #F5C400 !important;
+  color: #854D0E !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 4px rgba(245, 196, 0, 0.12) !important;
+}
+
+html.theme-light .no-product-notice-badge svg {
+  color: #CA8A04 !important;
+}
+
+html.theme-light .no-product-notice-title {
+  color: #0F172A !important;
+  font-weight: 800 !important;
+}
+
+html.theme-light .no-product-notice-subtitle {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: initial !important;
+  color: #A16207 !important;
+  font-weight: 700 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+html.theme-light .no-product-notice-desc {
+  color: #334155 !important;
+}
+
+html.theme-light .no-product-notice-desc strong {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+html.theme-light .no-product-notice-features .no-product-notice-feature-item {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+  transition: all 180ms ease !important;
+}
+
+html.theme-light .no-product-notice-features .no-product-notice-feature-item:hover {
+  background-color: #FEFCE8 !important;
+  border-color: #F5C400 !important;
+  box-shadow: 0 4px 12px rgba(245, 196, 0, 0.12) !important;
+}
+
+html.theme-light .no-product-feature-icon {
+  color: #CA8A04 !important;
+}
+
+html.theme-light .no-product-feature-text {
+  color: #1E293B !important;
+  font-weight: 600 !important;
+}
+
+html.theme-light .no-product-whatsapp-btn {
+  background-color: #25D366 !important;
+  color: #06080C !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35) !important;
+}
+
+html.theme-light .no-product-whatsapp-btn:hover {
+  background-color: #20BA5A !important;
+  color: #000000 !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45) !important;
+}
+
+html.theme-light .no-product-whatsapp-btn svg {
+  color: #06080C !important;
+  fill: #06080C !important;
+}
+
+html.theme-light .no-product-quote-btn {
+  background-color: #FEF9C3 !important;
+  border: 1.5px solid #F5C400 !important;
+  color: #713F12 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 6px rgba(245, 196, 0, 0.16) !important;
+}
+
+html.theme-light .no-product-quote-btn:hover {
+  background-color: #F5C400 !important;
+  border-color: #F5C400 !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 16px rgba(245, 196, 0, 0.35) !important;
+}
+
+html.theme-light .no-product-quote-btn svg {
+  color: inherit !important;
+}
+
+html.theme-light .no-product-reset-btn {
+  background-color: #F1F5F9 !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #1E293B !important;
+  font-weight: 600 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05) !important;
+}
+
+html.theme-light .no-product-reset-btn:hover {
+  background-color: #E2E8F0 !important;
+  border-color: #94A3B8 !important;
+  color: #0F172A !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.theme-light .no-product-hotline {
+  color: #475569 !important;
+}
+
+html.theme-light .no-product-hotline-link {
+  color: #A16207 !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+}
+
+html.theme-light .no-product-hotline-link:hover {
+  color: #78350F !important;
+}
+
+/* Compact Notice (e.g. Navbar search dropdown) */
+html.theme-light .no-product-notice-compact {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+}
+
+html.theme-light .no-product-notice-compact-title {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+html.theme-light .no-product-notice-compact-subtitle {
+  color: #475569 !important;
+}
+
+html.theme-light .no-product-notice-compact-subtitle strong {
+  color: #854D0E !important;
+  font-weight: 800 !important;
+}
+
+html.theme-light .no-product-inquire-btn {
+  background-color: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+  color: #1E293B !important;
+  font-weight: 600 !important;
+}
+
+html.theme-light .no-product-inquire-btn:hover {
+  background-color: #FEF9C3 !important;
+  border-color: #F5C400 !important;
+  color: #713F12 !important;
+}
+
+/* Dimensional search table & preset bore chips in Light Mode */
+html.theme-light .bearing-table thead,
+html.theme-light table thead {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+html.theme-light table thead th {
+  color: #334155 !important;
+}
+html.theme-light table tbody tr {
+  border-color: #e2e8f0 !important;
+}
+html.theme-light table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+
+/* 12. House Brand Highlight Card in Light Mode */
+html.theme-light .khs-brand-highlight-card {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(245, 196, 0, 0.45) !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(245, 196, 0, 0.25) !important;
+}
+
+html.theme-light .khs-highlight-badge {
+  background-color: #FEF9C3 !important;
+  border: 1px solid #F5C400 !important;
+  color: #854D0E !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 4px rgba(245, 196, 0, 0.12) !important;
+}
+
+html.theme-light .khs-highlight-badge svg {
+  color: #CA8A04 !important;
+}
+
+html.theme-light .khs-highlight-title {
+  color: #0F172A !important;
+  font-weight: 800 !important;
+}
+
+html.theme-light .khs-highlight-desc {
+  color: #334155 !important;
+}
+
+html.theme-light .khs-highlight-logo-box {
+  background-color: #0A0D14 !important;
+  border: 1.5px solid #F5C400 !important;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.22), 0 0 18px -2px rgba(245, 196, 0, 0.3) !important;
+}
+
+html.theme-light .khs-brand-highlight-card [class*="border-white/15"] {
+  background-color: #f8fafc !important;
+  border: 1.5px solid #0f172a !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+}
+
+html.theme-light .khs-brand-highlight-card [class*="border-white/15"]:hover {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+  color: #F5C400 !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+}

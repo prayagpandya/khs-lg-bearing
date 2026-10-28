@@ -24,10 +24,19 @@ import {
   TreeProduct
 } from '../data/productTree';
 import { useSeo } from '../hooks/useSeo';
+import { NoProductFoundNotice } from '../components/ui/NoProductFoundNotice';
 
 export function Products() {
   const [params, setParams] = useSearchParams();
-  const [query, setQuery] = useState('');
+  const searchParam = params.get('search') ?? '';
+  const [query, setQuery] = useState(searchParam);
+
+  useEffect(() => {
+    const s = params.get('search');
+    if (s !== null) {
+      setQuery(s);
+    }
+  }, [params]);
   const [mobileTreeOpen, setMobileTreeOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(params.get('product'));
 
@@ -62,6 +71,12 @@ export function Products() {
         setExpandedCategories((prev) => ({ ...prev, [match.categoryId]: true }));
         setExpandedSubcategories((prev) => ({ ...prev, [match.subcategoryId]: true }));
         setSelectedProductId(match.id);
+        setTimeout(() => {
+          const el = document.getElementById(`product-${match.id}`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 200);
       }
     } else if (activeSubcategoryId) {
       for (const cat of PRODUCT_CATEGORIES_TREE) {
@@ -577,20 +592,13 @@ export function Products() {
                 </div>
               </div>
 
-              {/* No Results Fallback */}
+              {/* No Results Fallback with Custom Sourcing Notice */}
               {filteredProducts.length === 0 ? (
-                <div className="flex flex-col items-center justify-center border border-dashed border-ink-700 bg-ink-900/50 py-20 text-center">
-                  <p className="font-mono text-xs uppercase tracking-tech text-steel-400">
-                    No products matched your filter criteria
-                  </p>
-                  <button
-                    type="button"
-                    onClick={selectAll}
-                    className="mt-4 bg-signal px-5 py-2 font-display text-xs font-bold uppercase tracking-wider text-ink-950 hover:bg-signal-bright"
-                  >
-                    Reset All Filters
-                  </button>
-                </div>
+                <NoProductFoundNotice
+                  query={query}
+                  onReset={selectAll}
+                  className="my-6"
+                />
               ) : (
                 /* Products Cards Grid */
                 <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3">
@@ -691,28 +699,18 @@ export function Products() {
                           {/* Card Footer: Action Buttons & Download PDF */}
                           <div className="mt-auto pt-6 flex flex-wrap items-center justify-between gap-3 border-t border-ink-800">
                             
-                            {/* DOWNLOAD PDF ACTION */}
-                            {product.pdfUrl ? (
-                              <a
-                                href={product.pdfUrl}
-                                download={product.pdfFileName ?? `${product.id}.pdf`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-signal px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wider text-ink-950 transition-all hover:bg-signal-bright shadow-[0_2px_8px_rgba(245,180,0,0.25)]"
-                                title={`Download PDF Brochure: ${product.pdfTitle ?? product.name}`}
-                              >
-                                <DownloadIcon className="h-3.5 w-3.5" aria-hidden />
-                                Download PDF
-                              </a>
-                            ) : (
-                              <Link
-                                to="/catalogue"
-                                className="inline-flex items-center gap-1.5 border border-ink-700 bg-ink-950 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-steel-400 hover:border-signal hover:text-signal transition-colors"
-                              >
-                                <FileTextIcon className="h-3 w-3" />
-                                Request PDF
-                              </Link>
-                            )}
+                            {/* DOWNLOAD BROCHURE ACTION */}
+                            <a
+                              href={product.pdfUrl || '/assets/won-st-linear-motion-guide-catalogue.pdf'}
+                              download={product.pdfFileName ?? `${product.id}-brochure.pdf`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 bg-signal px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wider text-ink-950 transition-all duration-200 hover:bg-signal-bright hover:shadow-[0_4px_16px_rgba(245,196,0,0.35)] active:translate-y-0.5"
+                              title={`Download Brochure: ${product.pdfTitle ?? product.name}`}
+                            >
+                              <DownloadIcon className="h-3.5 w-3.5" aria-hidden />
+                              Download Brochure
+                            </a>
 
                             {/* Inquiry / Quote Action */}
                             <Link
