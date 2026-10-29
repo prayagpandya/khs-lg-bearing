@@ -25,3 +25,14 @@ dist-ssr
 
 .vercel
 .env*
+
+# Large data dumps & archives
+*.xlsx
+*.xls
+*.csv
+*.zip
+*.tar.gz
+*.rar
+sheet_latest*
+sheet_extracted/
+scratch/

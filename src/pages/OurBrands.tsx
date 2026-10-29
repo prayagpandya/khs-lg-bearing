@@ -5,8 +5,10 @@ import { brands } from '../data/brands';
 import { TechnicalLabel } from '../components/ui/SectionHeading';
 import { MagneticButton } from '../components/ui/MagneticButton';
 import { useSeo } from '../hooks/useSeo';
+import { useTheme } from '../hooks/useTheme';
 
 export function OurBrands() {
+  const { theme } = useTheme();
   useSeo({
     title: 'Our Brands | IKO, WON ST, STIEBER, TPI & HIWIN',
     description: 'Explore world-class precision industrial brands supplied by KHS-LG including IKO, WON ST, STIEBER, TPI, and HIWIN.',
@@ -116,31 +118,57 @@ export function OurBrands() {
           </div>
 
           {/* House Brand Highlight: KHS-LG */}
-          <div className="khs-brand-highlight-card mt-12 rounded-2xl border border-signal/40 bg-gradient-to-r from-ink-950 via-ink-900 to-ink-950 p-8 sm:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+          <div
+            className={`khs-brand-highlight-card mt-12 rounded-2xl p-8 sm:p-10 transition-all duration-300 ${
+              theme === 'light'
+                ? 'border-2 border-amber-300/80 bg-gradient-to-br from-amber-50/80 via-white to-amber-50/50 shadow-[0_10px_30px_rgba(245,196,0,0.12)]'
+                : 'border border-signal/40 bg-gradient-to-r from-ink-950 via-ink-900 to-ink-950 shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
+            }`}
+          >
             <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
               <div>
-                <div className="khs-highlight-badge inline-flex items-center gap-2 rounded-full border border-signal/40 bg-signal/10 px-3.5 py-1 font-mono text-xs text-signal mb-4">
+                <div
+                  className={`khs-highlight-badge inline-flex items-center gap-2 rounded-full px-3.5 py-1 font-mono text-xs mb-4 ${
+                    theme === 'light'
+                      ? 'border border-amber-400 bg-amber-100/90 text-amber-900 font-bold'
+                      : 'border border-signal/40 bg-signal/10 text-signal'
+                  }`}
+                >
                   <SparklesIcon className="h-3.5 w-3.5" />
                   <span>KHS-LG Proprietary Manufacturing</span>
                 </div>
-                <h3 className="khs-highlight-title font-display text-2xl sm:text-3xl font-bold uppercase tracking-wide text-steel-50">
+                <h3
+                  className={`khs-highlight-title font-display text-2xl sm:text-3xl font-bold uppercase tracking-wide ${
+                    theme === 'light' ? 'text-slate-900' : 'text-steel-50'
+                  }`}
+                >
                   Engineered in-house with 50+ years of industrial legacy
                 </h3>
-                <p className="khs-highlight-desc mt-3 text-sm leading-relaxed text-steel-300 max-w-2xl">
+                <p
+                  className={`khs-highlight-desc mt-3 text-sm leading-relaxed max-w-2xl ${
+                    theme === 'light' ? 'text-slate-700' : 'text-steel-300'
+                  }`}
+                >
                   Alongside leading international brands, KHS-LG manufactures over 13,500+ SKUs of specialized bearings, linear motion guides, and power transmission components, exporting to over 25+ countries worldwide with stringent ISO 9001 certified quality.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <MagneticButton to="/products" variant="yellow">
                     Explore KHS-LG Catalog
                   </MagneticButton>
-                  <MagneticButton to="/contact" variant="ghost">
+                  <MagneticButton to="/contact" variant={theme === 'light' ? 'outline' : 'ghost'}>
                     Custom Sourcing Desk
                   </MagneticButton>
                 </div>
               </div>
 
               <div className="flex items-center justify-center">
-                <div className="khs-highlight-logo-box flex h-28 w-full max-w-sm items-center justify-center rounded-2xl bg-black p-6 border border-neutral-800 shadow-2xl transition-transform hover:scale-[1.02]">
+                <div
+                  className={`khs-highlight-logo-box flex h-28 w-full max-w-sm items-center justify-center rounded-2xl p-6 transition-transform hover:scale-[1.02] ${
+                    theme === 'light'
+                      ? 'bg-slate-950 border-2 border-amber-400 shadow-[0_12px_28px_rgba(0,0,0,0.18)]'
+                      : 'bg-black border border-neutral-800 shadow-2xl'
+                  }`}
+                >
                   <img
                     src="/assets/brands/khs-lg-logo.webp"
                     alt="KHS-LG official logo"
