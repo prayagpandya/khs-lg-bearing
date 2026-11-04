@@ -7,6 +7,7 @@ import { ProductMotionSlider } from './ProductMotionSlider';
 export function MotionSection() {
   return (
     <section
+      id="company-motion"
       aria-labelledby="motion-heading"
       className="relative overflow-hidden border-t border-ink-700 bg-ink-900 py-6 sm:py-8 lg:py-10">
       
