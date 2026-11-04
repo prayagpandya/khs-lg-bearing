@@ -881,13 +881,25 @@ html.theme-light aside nav .border-l {
   border-color: #e2e8f0 !important;
 }
 
-/* 8. Navbar & Header - High Contrast Styling */
+/* 8. Navbar & Header - Transparent at Top, Frosted Glass Background on Scroll */
 header.z-navigation.navbar-at-top,
 html.theme-light header.z-navigation.navbar-at-top {
-  background: linear-gradient(180deg, rgba(5, 7, 11, 0.95) 0%, rgba(5, 7, 11, 0.8) 60%, rgba(5, 7, 11, 0) 100%) !important;
-  backdrop-filter: blur(8px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+header.z-navigation.navbar-scrolled {
+  background-color: rgba(5, 7, 11, 0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(245, 196, 0, 0.25) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(245, 196, 0, 0.12) !important;
 }
 
 header.z-navigation.navbar-at-top nav a,

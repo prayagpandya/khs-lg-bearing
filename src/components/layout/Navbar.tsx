@@ -165,7 +165,7 @@ export function Navbar() {
           'fixed inset-x-0 top-0 z-navigation flex items-center justify-center transition-all duration-300 ease-precision',
           scrolled
             ? 'navbar-scrolled h-16 border-b border-signal/25 bg-ink-950/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.7),0_1px_0_rgba(245,196,0,0.12)] lg:h-[72px]'
-            : 'navbar-at-top h-16 border-b border-white/10 bg-gradient-to-b from-[#05070B]/95 via-[#05070B]/80 to-transparent backdrop-blur-md lg:h-[84px]'
+            : 'navbar-at-top h-16 border-b border-transparent bg-transparent lg:h-[84px]'
         )}
       >
         <nav

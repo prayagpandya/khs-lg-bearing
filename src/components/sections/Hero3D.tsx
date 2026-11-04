@@ -79,16 +79,6 @@ export function Hero3D() {
           aria-hidden
         />
 
-        {/* Top solid mask + smooth vignette under navbar (completely masks video watermark and gives navbar a pristine dark ground) */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-20 sm:h-24 bg-[#05070B] z-[1]"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 top-20 sm:top-24 h-24 sm:h-28 bg-gradient-to-b from-[#05070B] via-[#05070B]/70 to-transparent z-[1]"
-          aria-hidden
-        />
-
         {/* Bottom smooth fade into next section */}
         <div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-32 bg-gradient-to-t from-[#05070B] via-[#05070B]/60 to-transparent z-[1]"
