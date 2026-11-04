@@ -9,19 +9,42 @@ export function getInitialTheme(): Theme {
   return 'dark';
 }
 
-function applyTheme(theme: Theme) {
+export function applyTheme(theme: Theme) {
+  if (typeof document === 'undefined') return;
   document.documentElement.classList.toggle('theme-light', theme === 'light');
   document.documentElement.dataset.theme = theme;
-  window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    window.dispatchEvent(new CustomEvent('khs-theme-change', { detail: theme }));
+  }
 }
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    const handleThemeChange = (e: Event) => {
+      const customEvent = e as CustomEvent<Theme>;
+      if (customEvent.detail && (customEvent.detail === 'light' || customEvent.detail === 'dark')) {
+        setTheme(customEvent.detail);
+      } else {
+        setTheme(getInitialTheme());
+      }
+    };
 
-  const toggleTheme = () => setTheme((current) => current === 'dark' ? 'light' : 'dark');
+    window.addEventListener('khs-theme-change', handleThemeChange);
+    window.addEventListener('storage', handleThemeChange);
+    return () => {
+      window.removeEventListener('khs-theme-change', handleThemeChange);
+      window.removeEventListener('storage', handleThemeChange);
+    };
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    applyTheme(nextTheme);
+  };
+
   return { theme, toggleTheme };
 }

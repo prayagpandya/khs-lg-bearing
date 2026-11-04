@@ -1296,15 +1296,74 @@ html.theme-light table tbody tr:hover {
 }
 
 
-/* 12. House Brand Highlight Card in Light Mode */
+/* 12. House Brand Highlight Card in Light & Dark Mode */
+/* Default / Dark Mode Card Styling */
+.khs-brand-highlight-card,
+html:not(.theme-light) .khs-brand-highlight-card {
+  background: #05070B !important;
+  background-image: linear-gradient(135deg, #05070B 0%, #0E121B 50%, #05070B 100%) !important;
+  border: 1px solid rgba(245, 196, 0, 0.35) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+.khs-brand-highlight-card .khs-highlight-badge,
+html:not(.theme-light) .khs-brand-highlight-card .khs-highlight-badge {
+  background-color: rgba(245, 196, 0, 0.12) !important;
+  border: 1px solid rgba(245, 196, 0, 0.45) !important;
+  color: #F5C400 !important;
+  font-weight: 600 !important;
+}
+
+.khs-brand-highlight-card .khs-highlight-badge svg,
+html:not(.theme-light) .khs-brand-highlight-card .khs-highlight-badge svg {
+  color: #F5C400 !important;
+}
+
+.khs-brand-highlight-card .khs-highlight-title,
+html:not(.theme-light) .khs-brand-highlight-card .khs-highlight-title {
+  color: #F8FAFC !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+.khs-brand-highlight-card .khs-highlight-desc,
+html:not(.theme-light) .khs-brand-highlight-card .khs-highlight-desc {
+  color: #CBD5E1 !important;
+  font-weight: 400 !important;
+}
+
+.khs-brand-highlight-card .khs-highlight-logo-box,
+html:not(.theme-light) .khs-brand-highlight-card .khs-highlight-logo-box {
+  background-color: #000000 !important;
+  border: 1px solid #262626 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+}
+
+.khs-brand-highlight-card a[href="/contact"],
+html:not(.theme-light) .khs-brand-highlight-card a[href="/contact"] {
+  background-color: rgba(14, 18, 27, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #F8FAFC !important;
+  font-weight: 600 !important;
+}
+
+.khs-brand-highlight-card a[href="/contact"]:hover,
+html:not(.theme-light) .khs-brand-highlight-card a[href="/contact"]:hover {
+  background-color: #05070B !important;
+  border-color: #F5C400 !important;
+  color: #F5C400 !important;
+  box-shadow: 0 0 18px rgba(245, 196, 0, 0.3) !important;
+}
+
+/* Light Mode Overrides */
 html.theme-light .khs-brand-highlight-card {
-  background-color: #ffffff !important;
-  background-image: none !important;
-  border: 1.5px solid rgba(245, 196, 0, 0.45) !important;
+  background: #ffffff !important;
+  background-image: linear-gradient(135deg, rgba(254, 249, 195, 0.5) 0%, #ffffff 50%, rgba(254, 243, 199, 0.35) 100%) !important;
+  border: 1.5px solid rgba(245, 196, 0, 0.55) !important;
   box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(245, 196, 0, 0.25) !important;
 }
 
-html.theme-light .khs-highlight-badge {
+html.theme-light .khs-brand-highlight-card .khs-highlight-badge {
   background-color: #FEF9C3 !important;
   border: 1px solid #F5C400 !important;
   color: #854D0E !important;
@@ -1312,34 +1371,36 @@ html.theme-light .khs-highlight-badge {
   box-shadow: 0 1px 4px rgba(245, 196, 0, 0.12) !important;
 }
 
-html.theme-light .khs-highlight-badge svg {
+html.theme-light .khs-brand-highlight-card .khs-highlight-badge svg {
   color: #CA8A04 !important;
 }
 
-html.theme-light .khs-highlight-title {
+html.theme-light .khs-brand-highlight-card .khs-highlight-title {
   color: #0F172A !important;
   font-weight: 800 !important;
+  text-shadow: none !important;
 }
 
-html.theme-light .khs-highlight-desc {
+html.theme-light .khs-brand-highlight-card .khs-highlight-desc {
   color: #334155 !important;
+  font-weight: 500 !important;
 }
 
-html.theme-light .khs-highlight-logo-box {
+html.theme-light .khs-brand-highlight-card .khs-highlight-logo-box {
   background-color: #0A0D14 !important;
-  border: 1.5px solid #F5C400 !important;
-  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.22), 0 0 18px -2px rgba(245, 196, 0, 0.3) !important;
+  border: 2px solid #F5C400 !important;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.22), 0 0 20px -2px rgba(245, 196, 0, 0.35) !important;
 }
 
-html.theme-light .khs-brand-highlight-card [class*="border-white/15"] {
-  background-color: #f8fafc !important;
+html.theme-light .khs-brand-highlight-card a[href="/contact"] {
+  background-color: #ffffff !important;
   border: 1.5px solid #0f172a !important;
   color: #0f172a !important;
   font-weight: 700 !important;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06) !important;
 }
 
-html.theme-light .khs-brand-highlight-card [class*="border-white/15"]:hover {
+html.theme-light .khs-brand-highlight-card a[href="/contact"]:hover {
   background-color: #0f172a !important;
   border-color: #0f172a !important;
   color: #F5C400 !important;

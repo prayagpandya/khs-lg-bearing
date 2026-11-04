@@ -79,9 +79,13 @@ export function Hero3D() {
           aria-hidden
         />
 
-        {/* Top subtle vignette under navbar (masks video top watermark & blends navbar) */}
+        {/* Top solid mask + smooth vignette under navbar (completely masks video watermark and gives navbar a pristine dark ground) */}
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-28 sm:h-32 bg-gradient-to-b from-[#05070B]/90 via-[#05070B]/50 to-transparent z-[1]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-20 sm:h-24 bg-[#05070B] z-[1]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-20 sm:top-24 h-24 sm:h-28 bg-gradient-to-b from-[#05070B] via-[#05070B]/70 to-transparent z-[1]"
           aria-hidden
         />
 
@@ -217,17 +221,37 @@ export function Hero3D() {
         <div className="hidden lg:flex flex-1 items-center justify-center pointer-events-none" aria-hidden />
       </div>
 
-      {/* Floating Bottom Bar: Showcase Tag, Scroll Cue & Sound Toggle */}
+      {/* Floating Bottom Bar: Left controls (Tag + Sound Toggle), Center Scroll Cue & Right Spacer (clear for WhatsApp) */}
       <div className="pointer-events-none absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-8 z-[3] flex items-center justify-between">
-        {/* Left: Product in Action Tag */}
-        <div className="pointer-events-auto hidden md:flex items-center gap-2 rounded-full border border-signal/30 bg-ink-950/80 px-3.5 py-1.5 backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200 font-semibold">
-            KHS-LG Precision Series
-          </span>
+        {/* Left Controls Cluster */}
+        <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
+          {/* Product in Action Tag */}
+          <div className="hidden md:flex items-center gap-2 rounded-full border border-signal/30 bg-ink-950/85 px-3.5 py-1.5 backdrop-blur-md shadow-md">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200 font-semibold">
+              KHS-LG Precision Series
+            </span>
+          </div>
+
+          {/* Sound Toggle - On the left so it NEVER overlaps Floating WhatsApp! */}
+          <button
+            type="button"
+            onClick={toggleSound}
+            className="flex items-center gap-2 rounded-full border border-white/20 bg-ink-950/85 px-3 py-1.5 backdrop-blur-md transition-all duration-300 hover:border-signal hover:bg-ink-900 shadow-md group active:scale-95"
+            aria-label={isMuted ? 'Turn video sound on' : 'Mute video sound'}
+          >
+            {isMuted ? (
+              <VolumeXIcon className="h-3.5 w-3.5 text-slate-400 group-hover:text-signal transition-colors" />
+            ) : (
+              <Volume2Icon className="h-3.5 w-3.5 text-signal animate-pulse" />
+            )}
+            <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200">
+              {isMuted ? 'Sound Off' : 'Sound On'}
+            </span>
+          </button>
         </div>
 
         {/* Center: Scroll cue */}
@@ -239,22 +263,8 @@ export function Hero3D() {
           <ArrowDownIcon className="h-3.5 w-3.5 animate-bounce text-signal" aria-hidden />
         </a>
 
-        {/* Right: Sound Toggle */}
-        <button
-          type="button"
-          onClick={toggleSound}
-          className="pointer-events-auto ml-auto flex items-center gap-2 rounded-full border border-white/20 bg-ink-950/85 px-3 py-1.5 backdrop-blur-md transition-all hover:border-signal hover:bg-ink-900 shadow-md"
-          aria-label={isMuted ? 'Turn video sound on' : 'Mute video sound'}
-        >
-          {isMuted ? (
-            <VolumeXIcon className="h-3.5 w-3.5 text-slate-300" />
-          ) : (
-            <Volume2Icon className="h-3.5 w-3.5 text-signal animate-pulse" />
-          )}
-          <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200">
-            {isMuted ? 'Sound Off' : 'Sound On'}
-          </span>
-        </button>
+        {/* Right Empty Buffer: Keeps bottom-right quadrant completely clear for Floating WhatsApp */}
+        <div className="w-14 sm:w-28 pointer-events-none" aria-hidden />
       </div>
     </section>
   );
