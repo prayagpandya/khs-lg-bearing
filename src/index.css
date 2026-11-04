@@ -881,6 +881,11 @@ html.theme-light aside nav .border-l {
   border-color: #e2e8f0 !important;
 }
 
+/* Dropdown Mega-Menus: Clean display with zero backdrop covering the page */
+.z-menu-backdrop {
+  display: none !important;
+}
+
 /* 8. Navbar & Header - Transparent at Top, Frosted Glass Background on Scroll */
 header.z-navigation.navbar-at-top,
 html.theme-light header.z-navigation.navbar-at-top {

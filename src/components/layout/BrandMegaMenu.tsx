@@ -41,15 +41,13 @@ export function BrandMegaMenu({
   if (!open) return null;
 
   return (
-    <>
-      <div className="fixed inset-x-0 bottom-0 z-menu-backdrop bg-ink-950/35" style={{ top: scrolled ? '70px' : '84px' }} aria-hidden />
-      <div
-        ref={menuRef}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        className={cn('fixed inset-x-0 z-menu-panel border-y border-ink-700 bg-ink-950 shadow-2xl animate-[fadeIn_180ms_ease-out]', scrolled ? 'top-[64px] lg:top-[70px]' : 'top-16 lg:top-[84px]')}
-        role="region"
-        aria-label="KHS-LG brand navigation">
+    <div
+      ref={menuRef}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={cn('fixed inset-x-0 z-menu-panel border-y border-ink-700 bg-ink-950 shadow-2xl animate-[fadeIn_180ms_ease-out]', scrolled ? 'top-[64px] lg:top-[70px]' : 'top-16 lg:top-[84px]')}
+      role="region"
+      aria-label="KHS-LG brand navigation">
         <div className="mx-auto max-h-[min(560px,calc(100vh-96px))] w-full max-w-[1500px] overflow-y-auto px-5 py-6 sm:px-8 lg:py-7">
           <div className="mb-5 flex flex-wrap items-end justify-between gap-4 border-b border-ink-800 pb-4">
             <div>
@@ -111,7 +109,6 @@ export function BrandMegaMenu({
           </div>
         </div>
       </div>
-    </>
   );
 }
 

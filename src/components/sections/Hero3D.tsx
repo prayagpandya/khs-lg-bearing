@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownIcon, Volume2Icon, VolumeXIcon } from 'lucide-react';
+import { ArrowDownIcon } from 'lucide-react';
 import { useReducedMotion } from '../../hooks/useEnvironment';
 import { useLoader } from '../../context/LoaderContext';
 
@@ -21,33 +21,23 @@ export function Hero3D() {
   const reduced = useReducedMotion();
   const { phase } = useLoader();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
-  // Reliable autoplay handling across all mobile and desktop browsers
+  // Reliable silent background autoplay across all browsers
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
       video.defaultMuted = true;
-      video.muted = isMuted;
+      video.muted = true;
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
           video.muted = true;
-          setIsMuted(true);
           video.play().catch(() => {});
         });
       }
     }
-  }, [isMuted]);
-
-  const toggleSound = () => {
-    if (videoRef.current) {
-      const nextMuted = !isMuted;
-      videoRef.current.muted = nextMuted;
-      setIsMuted(nextMuted);
-    }
-  };
+  }, []);
 
   const isReady = phase === 'done' || phase === 'completing';
 
@@ -62,7 +52,7 @@ export function Hero3D() {
           ref={videoRef}
           autoPlay
           loop
-          muted={isMuted}
+          muted
           playsInline
           preload="auto"
           onLoadedData={() => setVideoLoaded(true)}
@@ -211,37 +201,17 @@ export function Hero3D() {
         <div className="hidden lg:flex flex-1 items-center justify-center pointer-events-none" aria-hidden />
       </div>
 
-      {/* Floating Bottom Bar: Left controls (Tag + Sound Toggle), Center Scroll Cue & Right Spacer (clear for WhatsApp) */}
+      {/* Floating Bottom Bar: Left Showcase Tag & Center Scroll Cue */}
       <div className="pointer-events-none absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-8 z-[3] flex items-center justify-between">
-        {/* Left Controls Cluster */}
-        <div className="pointer-events-auto flex items-center gap-2 sm:gap-3">
-          {/* Product in Action Tag */}
-          <div className="hidden md:flex items-center gap-2 rounded-full border border-signal/30 bg-ink-950/85 px-3.5 py-1.5 backdrop-blur-md shadow-md">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
-            </span>
-            <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200 font-semibold">
-              KHS-LG Precision Series
-            </span>
-          </div>
-
-          {/* Sound Toggle - On the left so it NEVER overlaps Floating WhatsApp! */}
-          <button
-            type="button"
-            onClick={toggleSound}
-            className="flex items-center gap-2 rounded-full border border-white/20 bg-ink-950/85 px-3 py-1.5 backdrop-blur-md transition-all duration-300 hover:border-signal hover:bg-ink-900 shadow-md group active:scale-95"
-            aria-label={isMuted ? 'Turn video sound on' : 'Mute video sound'}
-          >
-            {isMuted ? (
-              <VolumeXIcon className="h-3.5 w-3.5 text-slate-400 group-hover:text-signal transition-colors" />
-            ) : (
-              <Volume2Icon className="h-3.5 w-3.5 text-signal animate-pulse" />
-            )}
-            <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200">
-              {isMuted ? 'Sound Off' : 'Sound On'}
-            </span>
-          </button>
+        {/* Left: Product in Action Tag */}
+        <div className="pointer-events-auto hidden md:flex items-center gap-2 rounded-full border border-signal/30 bg-ink-950/85 px-3.5 py-1.5 backdrop-blur-md shadow-md">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200 font-semibold">
+            KHS-LG Precision Series
+          </span>
         </div>
 
         {/* Center: Scroll cue */}
@@ -253,7 +223,7 @@ export function Hero3D() {
           <ArrowDownIcon className="h-3.5 w-3.5 animate-bounce text-signal" aria-hidden />
         </a>
 
-        {/* Right Empty Buffer: Keeps bottom-right quadrant completely clear for Floating WhatsApp */}
+        {/* Right Empty Buffer: Keeps bottom-right clear for Floating WhatsApp */}
         <div className="w-14 sm:w-28 pointer-events-none" aria-hidden />
       </div>
     </section>

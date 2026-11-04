@@ -86,8 +86,7 @@ export function ProductMegaMenu({
   }, [open, onClose]);
 
   if (!open) return null;
-  return <>
-      <div className="fixed inset-x-0 bottom-0 z-menu-backdrop bg-ink-950/35" style={{ top: scrolled ? '70px' : '84px' }} aria-hidden />
+  return (
     <div
       ref={menuRef}
       onMouseEnter={onMouseEnter}
@@ -100,7 +99,7 @@ export function ProductMegaMenu({
         <ProductMenuContent onNavigate={onClose} />
       </div>
     </div>
-  </>;
+  );
 }
 
 export function ProductMobileMenu({ onNavigate }: { onNavigate: () => void }) {
