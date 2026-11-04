@@ -165,7 +165,7 @@ export function Navbar() {
           'fixed inset-x-0 top-0 z-navigation flex items-center justify-center transition-all duration-300 ease-precision',
           scrolled
             ? 'navbar-scrolled h-16 border-b border-signal/25 bg-ink-950/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.7),0_1px_0_rgba(245,196,0,0.12)] lg:h-[72px]'
-            : 'navbar-at-top h-16 border-b border-transparent bg-transparent lg:h-[84px]'
+            : 'navbar-at-top h-16 border-b border-white/10 bg-gradient-to-b from-[#05070B]/95 via-[#05070B]/80 to-transparent backdrop-blur-md lg:h-[84px]'
         )}
       >
         <nav
@@ -206,7 +206,7 @@ export function Navbar() {
                         aria-haspopup="true"
                         className={cn(
                           'group relative whitespace-nowrap font-display text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ease-precision',
-                          isCurrent ? 'text-signal' : 'text-steel-300 hover:text-steel-50'
+                          isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white/95 hover:text-signal font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
                         )}
                       >
                         <span className="2xl:hidden">{item.short}</span>
@@ -238,7 +238,7 @@ export function Navbar() {
                         aria-haspopup="true"
                         className={cn(
                           'group relative whitespace-nowrap font-display text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ease-precision',
-                          isCurrent ? 'text-signal' : 'text-steel-300 hover:text-steel-50'
+                          isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white/95 hover:text-signal font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
                         )}
                       >
                         <span className="2xl:hidden">{item.short}</span>
@@ -263,7 +263,7 @@ export function Navbar() {
                       to={item.to}
                       className={cn(
                         'group relative whitespace-nowrap font-display text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ease-precision',
-                        isCurrent ? 'text-signal' : 'text-steel-300 hover:text-steel-50'
+                        isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white/95 hover:text-signal font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
                       )}
                     >
                       <span className="2xl:hidden">{item.short}</span>
@@ -305,7 +305,7 @@ export function Navbar() {
                   onFocus={() => setSearchOpen(true)}
                   placeholder="Find my product..."
                   aria-label="Find my product"
-                  className="h-9 w-40 rounded-full border border-ink-700/80 bg-ink-900/90 pl-9 pr-8 font-mono text-xs text-steel-50 placeholder:text-steel-400 backdrop-blur-md transition-all duration-300 focus:w-60 focus:border-signal focus:bg-ink-950 focus:outline-none focus:ring-1 focus:ring-signal/40 md:w-48 md:focus:w-72 lg:w-56 lg:focus:w-80 shadow-inner"
+                  className="h-9 w-40 rounded-full border border-white/20 bg-ink-900/90 pl-9 pr-8 font-mono text-xs text-white placeholder:text-steel-300 backdrop-blur-md transition-all duration-300 focus:w-60 focus:border-signal focus:bg-ink-950 focus:outline-none focus:ring-1 focus:ring-signal/40 md:w-48 md:focus:w-72 lg:w-56 lg:focus:w-80 shadow-inner"
                 />
                 {searchQuery ? (
                   <button
@@ -510,7 +510,7 @@ export function Navbar() {
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               aria-expanded={menuOpen}
-              className="flex items-center gap-2 border border-steel-500/30 px-3 py-2 font-mono text-[10px] uppercase tracking-tech text-steel-300 transition-colors duration-200 ease-precision hover:border-signal hover:text-signal xl:hidden"
+              className="flex items-center gap-2 border border-white/30 bg-black/40 px-3 py-2 font-mono text-[10px] uppercase tracking-tech text-white transition-colors duration-200 ease-precision hover:border-signal hover:text-signal xl:hidden backdrop-blur-md"
             >
               <MenuIcon className="h-4 w-4" aria-hidden />
               Menu
