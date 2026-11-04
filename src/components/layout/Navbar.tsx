@@ -206,7 +206,7 @@ export function Navbar() {
                         aria-haspopup="true"
                         className={cn(
                           'group relative whitespace-nowrap font-display text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ease-precision',
-                          isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white/95 hover:text-signal font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
+                          isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white hover:text-signal font-semibold'
                         )}
                       >
                         <span className="2xl:hidden">{item.short}</span>
@@ -238,7 +238,7 @@ export function Navbar() {
                         aria-haspopup="true"
                         className={cn(
                           'group relative whitespace-nowrap font-display text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ease-precision',
-                          isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white/95 hover:text-signal font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
+                          isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white hover:text-signal font-semibold'
                         )}
                       >
                         <span className="2xl:hidden">{item.short}</span>
@@ -263,7 +263,7 @@ export function Navbar() {
                       to={item.to}
                       className={cn(
                         'group relative whitespace-nowrap font-display text-[13px] font-semibold uppercase tracking-[0.14em] transition-colors duration-200 ease-precision',
-                        isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white/95 hover:text-signal font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
+                        isCurrent ? 'text-signal font-bold' : 'nav-tab-link text-white hover:text-signal font-semibold'
                       )}
                     >
                       <span className="2xl:hidden">{item.short}</span>

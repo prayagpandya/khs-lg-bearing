@@ -907,22 +907,42 @@ header.z-navigation.navbar-scrolled {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(245, 196, 0, 0.12) !important;
 }
 
-header.z-navigation.navbar-at-top nav a,
+/* Crisp, sharp navbar tabs (Zero text-shadow blur, pure vector sharpness) */
+header.z-navigation nav .nav-tab-link,
 header.z-navigation.navbar-at-top nav .nav-tab-link,
-html.theme-light header.z-navigation.navbar-at-top nav a,
 html.theme-light header.z-navigation.navbar-at-top nav .nav-tab-link {
   color: #FFFFFF !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
-  opacity: 0.95 !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
 }
 
-header.z-navigation.navbar-at-top nav a:hover,
+header.z-navigation nav .nav-tab-link:hover,
+header.z-navigation.navbar-at-top nav .nav-tab-link:hover,
 header.z-navigation.navbar-at-top nav a.text-signal,
-html.theme-light header.z-navigation.navbar-at-top nav a:hover,
+html.theme-light header.z-navigation.navbar-at-top nav .nav-tab-link:hover,
 html.theme-light header.z-navigation.navbar-at-top nav a.text-signal {
   color: #F5C400 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   opacity: 1 !important;
+}
+
+/* Crisp Dropdown Mega-Menu Text (Zero blur, zero shadow in Partner Brands & Products dropdowns) */
+.z-menu-panel,
+.z-menu-panel *,
+.z-menu-panel a,
+.z-menu-panel a:hover,
+.z-menu-panel span,
+.z-menu-panel p,
+.z-menu-panel h2,
+.z-menu-panel h3 {
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 header.z-navigation.navbar-at-top input[aria-label="Find my product"],
