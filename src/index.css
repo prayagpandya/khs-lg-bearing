@@ -1468,54 +1468,29 @@ html.theme-light .khs-brand-highlight-card a[href="/contact"]:hover {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 13. High-Precision Custom Cursor (Dual-Theme High Contrast & Glow)         */
+/* Standard Native Cursor Enforcement                                         */
 /* -------------------------------------------------------------------------- */
-
-/* Center Precision Dot - High Visibility across all backgrounds */
-.custom-cursor-dot {
-  background-color: #F5C400 !important;
-  border: 1.5px solid #000000 !important;
-  box-shadow: 0 0 10px #F5C400, 0 0 4px #FFFFFF, 0 0 0 1px rgba(0, 0, 0, 0.85) !important;
+html,
+body {
+  cursor: default !important;
 }
 
-.custom-cursor-ring {
-  border: 1.5px solid #F5C400 !important;
-  color: #F5C400 !important;
-  background-color: rgba(245, 196, 0, 0.08) !important;
-  box-shadow: 0 0 12px rgba(245, 196, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.6) !important;
-  backdrop-filter: blur(1px) !important;
+a,
+a *,
+button,
+button *,
+[role="button"],
+[role="button"] *,
+.btn-magnetic,
+.btn-magnetic *,
+select,
+select *,
+summary,
+[data-cursor] {
+  cursor: pointer !important;
 }
 
-.custom-cursor-ring.cursor-ring-expanded {
-  border-width: 2px !important;
-  border-color: #FFE043 !important;
-  color: #FFE043 !important;
-  background-color: rgba(245, 196, 0, 0.2) !important;
-  box-shadow: 0 0 16px rgba(245, 196, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* Light Theme Overrides - Crisp Dark Rim & Industrial Gold against White backgrounds */
-html.theme-light .custom-cursor-dot {
-  background-color: #F5C400 !important;
-  border: 2px solid #0A0D14 !important;
-  box-shadow: 0 0 0 1.5px #FFFFFF, 0 2px 8px rgba(10, 13, 20, 0.45) !important;
-}
-
-html.theme-light .custom-cursor-dot span {
-  background-color: #0A0D14 !important;
-}
-
-html.theme-light .custom-cursor-ring {
-  border: 1.5px solid #0F172A !important;
-  color: #0F172A !important;
-  background-color: rgba(15, 23, 42, 0.06) !important;
-  box-shadow: 0 0 0 1.5px rgba(245, 196, 0, 0.8), 0 3px 12px rgba(15, 23, 42, 0.18) !important;
-}
-
-html.theme-light .custom-cursor-ring.cursor-ring-expanded {
-  border-width: 2px !important;
-  border-color: #0A0D14 !important;
-  color: #0A0D14 !important;
-  background-color: rgba(245, 196, 0, 0.25) !important;
-  box-shadow: 0 0 0 2px #F5C400, 0 4px 16px rgba(15, 23, 42, 0.25) !important;
+input:not([type='button']):not([type='submit']):not([type='reset']):not([type='checkbox']):not([type='radio']):not([type='file']),
+textarea {
+  cursor: text !important;
 }
