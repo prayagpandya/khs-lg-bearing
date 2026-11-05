@@ -589,6 +589,29 @@ html.theme-light section[aria-label="KHS-LG precision bearings"] .hero-stats-bor
   border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* Hero Precision Series Tag ("KHS-LG Precision Series") */
+.hero-precision-tag,
+html.theme-light .hero-precision-tag,
+html.theme-light section[aria-label="KHS-LG precision bearings"] .hero-precision-tag {
+  background-color: rgba(10, 13, 20, 0.88) !important;
+  border: 1px solid rgba(245, 196, 0, 0.45) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 14px rgba(245, 196, 0, 0.15) !important;
+}
+
+.hero-precision-tag-text,
+html.theme-light .hero-precision-tag-text,
+html.theme-light section[aria-label="KHS-LG precision bearings"] .hero-precision-tag .hero-precision-tag-text,
+html.theme-light section[aria-label="KHS-LG precision bearings"] .hero-precision-tag span {
+  color: #F8FAFC !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+}
+
+html.theme-light section[aria-label="KHS-LG precision bearings"] a[href="#company-motion"],
+html.theme-light section[aria-label="KHS-LG precision bearings"] a[href="#company-motion"] span {
+  color: #CBD5E1 !important;
+}
+
 /* Stats Dials in Light Mode */
 html.theme-light section[aria-label="KHS-LG in numbers"] {
   background-color: #f8fafc !important;

@@ -204,12 +204,12 @@ export function Hero3D() {
       {/* Floating Bottom Bar: Left Showcase Tag & Center Scroll Cue */}
       <div className="pointer-events-none absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-8 z-[3] flex items-center justify-between">
         {/* Left: Product in Action Tag */}
-        <div className="pointer-events-auto hidden md:flex items-center gap-2 rounded-full border border-signal/30 bg-ink-950/85 px-3.5 py-1.5 backdrop-blur-md shadow-md">
+        <div className="hero-precision-tag pointer-events-auto hidden sm:flex items-center gap-2 rounded-full border border-signal/40 bg-ink-950/85 px-3.5 py-1.5 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-signal shadow-[0_0_8px_#F5C400]" />
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-tech text-slate-200 font-semibold">
+          <span className="hero-precision-tag-text font-mono text-[10px] uppercase tracking-tech text-slate-100 font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
             KHS-LG Precision Series
           </span>
         </div>
