@@ -56,11 +56,11 @@ export function Hero3D() {
           playsInline
           preload="auto"
           onLoadedData={() => setVideoLoaded(true)}
-          poster="/assets/videos/hero-poster.jpg"
+          poster="/assets/videos/hero-poster.jpg?v=2"
           className="h-full w-full object-cover object-center transition-opacity duration-1000"
           style={{ opacity: videoLoaded ? 1 : 0.92 }}
         >
-          <source src="/assets/videos/homepage-hero.mp4" type="video/mp4" />
+          <source src="/assets/videos/homepage-hero.mp4?v=2" type="video/mp4" />
         </video>
 
         {/* Desktop-only Left Scrim: Only covers the left text area, keeping center product 100% bright */}
