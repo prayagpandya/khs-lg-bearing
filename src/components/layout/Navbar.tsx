@@ -58,6 +58,9 @@ export function Navbar() {
   const brandsCloseTimer = useRef<number | null>(null);
   const { theme, toggleTheme } = useTheme();
 
+  const isHome = location.pathname === '/';
+  const isTransparentTop = isHome && !scrolled;
+
   // Search product matching logic
   const matchingProducts = useMemo(() => {
     if (!searchQuery.trim()) {
@@ -161,11 +164,12 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
         data-scrolled={scrolled}
+        data-home-top={isTransparentTop}
         className={cn(
           'fixed inset-x-0 top-0 z-navigation flex items-center justify-center transition-all duration-300 ease-precision',
-          scrolled
-            ? 'navbar-scrolled h-16 border-b border-signal/25 bg-ink-950/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.7),0_1px_0_rgba(245,196,0,0.12)] lg:h-[72px]'
-            : 'navbar-at-top h-16 border-b border-transparent bg-transparent lg:h-[84px]'
+          isTransparentTop
+            ? 'navbar-at-top navbar-home-top h-16 border-b border-transparent bg-transparent lg:h-[84px]'
+            : 'navbar-scrolled navbar-solid h-16 border-b border-signal/25 bg-ink-950/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.7),0_1px_0_rgba(245,196,0,0.12)] lg:h-[72px]'
         )}
       >
         <nav
@@ -177,7 +181,9 @@ export function Navbar() {
           {/* Desktop Navigation Links */}
           <ul className="hidden items-center gap-5 xl:flex 2xl:gap-8">
             {NAV_ITEMS.map((item) => {
-              const isCurrent = item.to === location.pathname;
+              const isCurrent =
+                item.to === location.pathname ||
+                (item.to !== '/' && location.pathname.startsWith(item.to));
               const isProducts = item.to === '/products';
               const isBrands = item.to === '/our-brands';
 
@@ -221,7 +227,7 @@ export function Navbar() {
                       <ProductMegaMenu
                         open={productsOpen}
                         onClose={() => setProductsOpen(false)}
-                        scrolled={scrolled}
+                        scrolled={!isTransparentTop}
                         onMouseEnter={openProducts}
                         onMouseLeave={scheduleProductsClose}
                       />
@@ -253,7 +259,7 @@ export function Navbar() {
                       <BrandMegaMenu
                         open={brandsOpen}
                         onClose={() => setBrandsOpen(false)}
-                        scrolled={scrolled}
+                        scrolled={!isTransparentTop}
                         onMouseEnter={openBrands}
                         onMouseLeave={scheduleBrandsClose}
                       />

@@ -909,9 +909,11 @@ html.theme-light aside nav .border-l {
   display: none !important;
 }
 
-/* 8. Navbar & Header - Transparent at Top, Frosted Glass Background on Scroll */
-header.z-navigation.navbar-at-top,
-html.theme-light header.z-navigation.navbar-at-top {
+/* 8. Navbar & Header - Transparent at Top on Home, Frosted Glass Background on Scroll & Other Pages */
+
+/* Homepage: Initially Transparent at Top */
+header.z-navigation.navbar-home-top,
+html.theme-light header.z-navigation.navbar-home-top {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
@@ -922,7 +924,9 @@ html.theme-light header.z-navigation.navbar-at-top {
   box-shadow: none !important;
 }
 
-header.z-navigation.navbar-scrolled {
+/* Dark Theme: Scrolled or Non-Home Pages (Solid / Frosted Glass) */
+header.z-navigation.navbar-scrolled,
+header.z-navigation.navbar-solid {
   background-color: rgba(5, 7, 11, 0.92) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
@@ -930,10 +934,10 @@ header.z-navigation.navbar-scrolled {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(245, 196, 0, 0.12) !important;
 }
 
-/* Crisp, sharp navbar tabs (Zero text-shadow blur, pure vector sharpness) */
-header.z-navigation nav .nav-tab-link,
-header.z-navigation.navbar-at-top nav .nav-tab-link,
-html.theme-light header.z-navigation.navbar-at-top nav .nav-tab-link {
+/* Dark Header & Homepage Transparent Header: Crisp White Nav Links */
+header.z-navigation.navbar-home-top nav .nav-tab-link,
+html.theme-light header.z-navigation.navbar-home-top nav .nav-tab-link,
+html:not(.theme-light) header.z-navigation nav .nav-tab-link {
   color: #FFFFFF !important;
   font-weight: 600 !important;
   text-shadow: none !important;
@@ -942,16 +946,153 @@ html.theme-light header.z-navigation.navbar-at-top nav .nav-tab-link {
   opacity: 1 !important;
 }
 
-header.z-navigation nav .nav-tab-link:hover,
-header.z-navigation.navbar-at-top nav .nav-tab-link:hover,
-header.z-navigation.navbar-at-top nav a.text-signal,
-html.theme-light header.z-navigation.navbar-at-top nav .nav-tab-link:hover,
-html.theme-light header.z-navigation.navbar-at-top nav a.text-signal {
+header.z-navigation.navbar-home-top nav .nav-tab-link:hover,
+header.z-navigation.navbar-home-top nav a.text-signal,
+header.z-navigation.navbar-home-top nav a.active,
+html.theme-light header.z-navigation.navbar-home-top nav .nav-tab-link:hover,
+html.theme-light header.z-navigation.navbar-home-top nav a.text-signal,
+html.theme-light header.z-navigation.navbar-home-top nav a.active,
+html:not(.theme-light) header.z-navigation nav .nav-tab-link:hover,
+html:not(.theme-light) header.z-navigation nav a.text-signal,
+html:not(.theme-light) header.z-navigation nav a.active {
   color: #F5C400 !important;
   text-shadow: none !important;
   filter: none !important;
   -webkit-filter: none !important;
   opacity: 1 !important;
+}
+
+/* Homepage Transparent Header: Dark Search Box over Hero Video */
+header.z-navigation.navbar-home-top input[aria-label="Find my product"],
+html.theme-light header.z-navigation.navbar-home-top input[aria-label="Find my product"] {
+  background-color: rgba(22, 28, 36, 0.85) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+header.z-navigation.navbar-home-top input[aria-label="Find my product"]::placeholder,
+html.theme-light header.z-navigation.navbar-home-top input[aria-label="Find my product"]::placeholder {
+  color: #CBD5E1 !important;
+}
+
+/* Homepage Transparent Header: Icon buttons in Light Theme */
+html.theme-light header.z-navigation.navbar-home-top nav .navbar-icon-btn,
+html.theme-light header.z-navigation.navbar-home-top nav button[aria-label="Toggle light and dark theme"] {
+  color: #F8FAFC !important;
+}
+
+/* Light Theme: Solid Navbar (Visible on All Non-Home Pages from initial load, and on Home when scrolled) */
+html.theme-light header.z-navigation:not(.navbar-home-top),
+html.theme-light header.z-navigation.navbar-scrolled,
+html.theme-light header.z-navigation.navbar-solid {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08) !important;
+}
+
+html.theme-light header.z-navigation:not(.navbar-home-top) nav a,
+html.theme-light header.z-navigation:not(.navbar-home-top) nav .nav-tab-link,
+html.theme-light header.z-navigation.navbar-scrolled nav a,
+html.theme-light header.z-navigation.navbar-scrolled nav .nav-tab-link,
+html.theme-light header.z-navigation.navbar-solid nav a,
+html.theme-light header.z-navigation.navbar-solid nav .nav-tab-link {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+}
+
+html.theme-light header.z-navigation:not(.navbar-home-top) nav a:hover,
+html.theme-light header.z-navigation:not(.navbar-home-top) nav .nav-tab-link:hover,
+html.theme-light header.z-navigation:not(.navbar-home-top) nav a.text-signal,
+html.theme-light header.z-navigation:not(.navbar-home-top) nav a.active,
+html.theme-light header.z-navigation.navbar-scrolled nav a:hover,
+html.theme-light header.z-navigation.navbar-scrolled nav .nav-tab-link:hover,
+html.theme-light header.z-navigation.navbar-scrolled nav a.text-signal,
+html.theme-light header.z-navigation.navbar-scrolled nav a.active,
+html.theme-light header.z-navigation.navbar-solid nav a:hover,
+html.theme-light header.z-navigation.navbar-solid nav .nav-tab-link:hover,
+html.theme-light header.z-navigation.navbar-solid nav a.text-signal,
+html.theme-light header.z-navigation.navbar-solid nav a.active {
+  color: #CA8A04 !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+html.theme-light header.z-navigation:not(.navbar-home-top) nav .navbar-icon-btn,
+html.theme-light header.z-navigation:not(.navbar-home-top) nav button[aria-label="Toggle light and dark theme"],
+html.theme-light header.z-navigation.navbar-scrolled nav .navbar-icon-btn,
+html.theme-light header.z-navigation.navbar-scrolled nav button[aria-label="Toggle light and dark theme"],
+html.theme-light header.z-navigation.navbar-solid nav .navbar-icon-btn,
+html.theme-light header.z-navigation.navbar-solid nav button[aria-label="Toggle light and dark theme"] {
+  color: #0F172A !important;
+}
+
+/* Light Theme: Solid Navbar Search Input */
+html.theme-light header.z-navigation:not(.navbar-home-top) input[aria-label="Find my product"],
+html.theme-light header.z-navigation.navbar-scrolled input[aria-label="Find my product"],
+html.theme-light header.z-navigation.navbar-solid input[aria-label="Find my product"] {
+  background-color: #F1F5F9 !important;
+  border: 1.5px solid #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+}
+
+html.theme-light header.z-navigation:not(.navbar-home-top) input[aria-label="Find my product"]::placeholder,
+html.theme-light header.z-navigation.navbar-scrolled input[aria-label="Find my product"]::placeholder,
+html.theme-light header.z-navigation.navbar-solid input[aria-label="Find my product"]::placeholder {
+  color: #64748B !important;
+}
+
+html.theme-light header.z-navigation:not(.navbar-home-top) input[aria-label="Find my product"]:focus,
+html.theme-light header.z-navigation.navbar-scrolled input[aria-label="Find my product"]:focus,
+html.theme-light header.z-navigation.navbar-solid input[aria-label="Find my product"]:focus {
+  background-color: #FFFFFF !important;
+  border-color: #CA8A04 !important;
+  box-shadow: 0 0 0 2px rgba(202, 138, 4, 0.25) !important;
+}
+
+/* Light Theme: Mobile Menu Trigger Button */
+html.theme-light header.z-navigation:not(.navbar-home-top) button[aria-label="Open menu"],
+html.theme-light header.z-navigation.navbar-scrolled button[aria-label="Open menu"],
+html.theme-light header.z-navigation.navbar-solid button[aria-label="Open menu"] {
+  border-color: #CBD5E1 !important;
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+html.theme-light header.z-navigation:not(.navbar-home-top) button[aria-label="Open menu"]:hover,
+html.theme-light header.z-navigation.navbar-scrolled button[aria-label="Open menu"]:hover,
+html.theme-light header.z-navigation.navbar-solid button[aria-label="Open menu"]:hover {
+  border-color: #CA8A04 !important;
+  color: #CA8A04 !important;
+}
+
+/* Light Theme: Search Dropdown Results Panel */
+html.theme-light .z-menu-panel.rounded-xl {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(202, 138, 4, 0.2) !important;
+}
+html.theme-light .z-menu-panel.rounded-xl .text-steel-50 {
+  color: #0F172A !important;
+}
+html.theme-light .z-menu-panel.rounded-xl .bg-ink-800 {
+  background-color: #F1F5F9 !important;
+}
+html.theme-light .z-menu-panel.rounded-xl .bg-ink-900\/80 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+html.theme-light .z-menu-panel.rounded-xl .bg-ink-900\/80:hover {
+  background-color: #F1F5F9 !important;
+  border-color: #CA8A04 !important;
 }
 
 /* Crisp Dropdown Mega-Menu Text (Zero blur, zero shadow in Partner Brands & Products dropdowns) */
@@ -968,56 +1109,6 @@ html.theme-light header.z-navigation.navbar-at-top nav a.text-signal {
   -webkit-filter: none !important;
 }
 
-header.z-navigation.navbar-at-top input[aria-label="Find my product"],
-html.theme-light header.z-navigation.navbar-at-top input[aria-label="Find my product"] {
-  background-color: rgba(22, 28, 36, 0.85) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
-  color: #FFFFFF !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-}
-
-header.z-navigation.navbar-at-top input[aria-label="Find my product"]::placeholder,
-html.theme-light header.z-navigation.navbar-at-top input[aria-label="Find my product"]::placeholder {
-  color: #CBD5E1 !important;
-}
-
-html.theme-light header.z-navigation.navbar-scrolled {
-  background-color: rgba(255, 255, 255, 0.96) !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  backdrop-filter: blur(14px) !important;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08) !important;
-}
-
-html.theme-light header.z-navigation.navbar-scrolled nav a,
-html.theme-light header.z-navigation.navbar-scrolled nav .nav-tab-link {
-  color: #0F172A !important;
-  text-shadow: none !important;
-}
-
-html.theme-light header.z-navigation.navbar-scrolled nav a:hover,
-html.theme-light header.z-navigation.navbar-scrolled nav a.text-signal {
-  color: #CA8A04 !important;
-}
-
-html.theme-light nav .navbar-icon-btn,
-html.theme-light nav button[aria-label="Toggle light and dark theme"] {
-  color: #F8FAFC !important;
-}
-
-html.theme-light header.z-navigation.navbar-scrolled nav .navbar-icon-btn,
-html.theme-light header.z-navigation.navbar-scrolled nav button[aria-label="Toggle light and dark theme"] {
-  color: #0F172A !important;
-}
-html.theme-light nav a span.bg-signal {
-  background-color: #F5C400 !important;
-  height: 2px !important;
-}
-html.theme-light nav button.text-steel-300 {
-  color: #334155 !important;
-}
-html.theme-light nav button.text-steel-300:hover {
-  color: #854D0E !important;
-}
 /* Light Theme - Increased Logo Size & Decreased Padding in Black Box */
 html.theme-light .khs-logo-box {
   padding: 2px 7px !important;
