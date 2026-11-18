@@ -63,9 +63,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Radial and moderate axial load capacity', 'Low friction torque and quiet running', 'Available with ZZ/2RS rubber seals'],
             series: ['6000 Series', '6200 Series', '6300 Series', '6800 Series', '6900 Series'],
             image: bearingImages['deep-groove-ball-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/19wkE7Inu8U93486AShFwXdRTiTvUc-XJ/view?usp=sharing',
-            pdfFileName: 'Deep Groove Ball Bearing_V7_1.pdf',
-            pdfTitle: 'Deep Groove Ball Bearings Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1hoytD11IgAScSTfV8NqDpn2gr14SJDXG/view?usp=sharing',
+            pdfFileName: '10. Deep Groove Ball Bearing_V7_1.pdf',
+            pdfTitle: 'KHS-LG Deep Groove Ball Bearings Technical Catalogue'
           },
           {
             id: 'miniature-ball-bearings',
@@ -82,9 +82,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Compact envelope with bore down to 1mm', 'High rotational precision (ABEC 5/7)', 'Stainless steel and chrome steel options'],
             series: ['MR Series', '680 Series', '690 Series', 'R Series', 'Flanged Series'],
             image: bearingImages['miniature-ball-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/19wkE7Inu8U93486AShFwXdRTiTvUc-XJ/view?usp=sharing',
-            pdfFileName: 'Deep Groove & Miniature Ball Bearings.pdf',
-            pdfTitle: 'Miniature Ball Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1hoytD11IgAScSTfV8NqDpn2gr14SJDXG/view?usp=sharing',
+            pdfFileName: '10. Deep Groove Ball Bearing_V7_1.pdf',
+            pdfTitle: 'KHS-LG Miniature & Deep Groove Ball Bearings Catalogue'
           },
           {
             id: 'precision-angular-contact-bearings',
@@ -101,9 +101,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['15°, 25°, and 40° contact angles', 'Universal matching in DB, DF, DT arrangements', 'Phenolic resin or machined brass cages'],
             series: ['7000 Series', '7200 Series', '7300 Series'],
             image: bearingImages['precision-angular-contact-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/11kvK6ozenEHBHCf4xlO-Wvyt8QXKqU0B/view',
-            pdfFileName: 'Precision Angular Contact Bearings.pdf',
-            pdfTitle: 'Angular Contact Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1S9LSF3mcw-hVhakGM-nm2PF6twv6evJ7/view?usp=sharing',
+            pdfFileName: 'Angular Contact Ball Bearing_V7.pdf',
+            pdfTitle: 'KHS-LG Precision Angular Contact Bearings Catalogue'
           },
           {
             id: 'self-aligning-ball-bearings',
@@ -120,9 +120,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Automatic alignment compensation up to 3°', 'Lowest friction of all rolling bearings', 'Available with cylindrical or tapered bores'],
             series: ['1200 Series', '1300 Series', '2200 Series', '2300 Series'],
             image: bearingImages['self-aligning-ball-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/1rVcLmek8uJsImMbeOSW9S3EBmSHtgVGb/view?usp=sharing',
-            pdfFileName: 'Self-Aligning Ball Bearings.pdf',
-            pdfTitle: 'Self-Aligning Ball Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1fn4cNetmIGzMhX2O-VAdrp5Zau_dZa49/view?usp=sharing',
+            pdfFileName: 'Self-aligning Ball Bearing_V3.pdf',
+            pdfTitle: 'KHS-LG Self-Aligning Ball Bearings Catalogue'
           },
           {
             id: 'thrust-ball-bearings',
@@ -139,9 +139,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Separable shaft and housing washers', 'Heavy axial load rating', 'Single and double direction executions'],
             series: ['51100 Series', '51200 Series', '51300 Series'],
             image: bearingImages['thrust-ball-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/19wkE7Inu8U93486AShFwXdRTiTvUc-XJ/view?usp=sharing',
-            pdfFileName: 'Thrust Ball Bearings.pdf',
-            pdfTitle: 'Thrust Ball Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1WAQKT69sj6tDY12vXLj4rn1dfzDXorDw/view?usp=sharing',
+            pdfFileName: '11 Thurst Ball Bearing.pdf',
+            pdfTitle: 'KHS-LG Thrust Ball Bearings Technical Catalogue'
           }
         ]
       },
@@ -165,9 +165,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Separable cone and cup design', 'Carries heavy simultaneous radial & thrust loads', 'Available in metric and inch sizes'],
             series: ['30200 Series', '30300 Series', '32200 Series', '32300 Series', '33200 Series'],
             image: bearingImages['taper-roller-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/1zO1KmbTLrYLaWoWLoegWXpUp3oTLBtH_/view?usp=sharing',
+            pdfUrl: 'https://drive.google.com/file/d/17jS8fVNbbfaFIx7wLd1mO0N9Yx3wk-Ce/view?usp=sharing',
             pdfFileName: 'TRB_V4.pdf',
-            pdfTitle: 'Taper Roller Bearings Catalogue'
+            pdfTitle: 'KHS-LG Taper Roller Bearings Technical Catalogue'
           },
           {
             id: 'spherical-roller-bearings',
@@ -184,9 +184,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Inherent self-alignment up to 2°', 'High dynamic load rating for shock environments', 'Available with brass (MB) or pressed steel (CC) cages'],
             series: ['22200 Series', '22300 Series', '23000 Series', '23100 Series', '23200 Series'],
             image: bearingImages['spherical-roller-bearings'],
-            pdfUrl: '/assets/iko-spherical-bushings-catalogue.pdf',
-            pdfFileName: 'iko-spherical-bushings-catalogue.pdf',
-            pdfTitle: 'IKO Spherical Bushings & Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/10QIf-QatdL28s90RiswOqehk4GpCGtna/view?usp=sharing',
+            pdfFileName: 'SRB_V3.pdf',
+            pdfTitle: 'KHS-LG Spherical Roller Bearings Technical Catalogue'
           },
           {
             id: 'cylindrical-roller-bearings',
@@ -203,9 +203,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Line contact for extreme radial capacity', 'Accommodates axial shaft expansion in NU/N types', 'High rigidity under dynamic load'],
             series: ['NU Series', 'NJ Series', 'NUP Series', 'N Series', 'NN Series'],
             image: bearingImages['cylindrical-roller-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/15s1fBLGxJ1lk43Yv--9ldww6RJLUOiCc/view?usp=sharing',
-            pdfFileName: 'Cylindrical Roller Bearings.pdf',
-            pdfTitle: 'Cylindrical Roller Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/19ONQ5qq-HcOjY2T0rZxWWCmMoKknELE2/view?usp=sharing',
+            pdfFileName: 'CRB_V7.pdf',
+            pdfTitle: 'KHS-LG Cylindrical Roller Bearings Technical Catalogue'
           },
           {
             id: 'cylindrical-roller-thrust-bearings',
@@ -222,9 +222,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Exceptional axial rigidity', 'Compact axial footprint', 'Precision machined cages'],
             series: ['811 Series', '812 Series', '893 Series'],
             image: bearingImages['cylindrical-roller-thrust-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/15s1fBLGxJ1lk43Yv--9ldww6RJLUOiCc/view?usp=sharing',
-            pdfFileName: 'Cylindrical Roller Thrust Bearings.pdf',
-            pdfTitle: 'Cylindrical Roller Thrust Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1wxUPyB9dqmJ8PQAEICGHj5sk7ZkCs8rm/view?usp=sharing',
+            pdfFileName: 'Cylindrical Roller Thrust Bearing_V6.pdf',
+            pdfTitle: 'KHS-LG Cylindrical Roller Thrust Bearings Catalogue'
           },
           {
             id: 'spherical-roller-thrust-bearings',
@@ -241,9 +241,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Self-aligning spherical raceway', 'Simultaneous heavy axial and radial load capacity', 'Oil-lubricated high-reliability designs'],
             series: ['29200 Series', '29300 Series', '29400 Series'],
             image: bearingImages['spherical-roller-thrust-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/1h7I5-VE-kHyyH1PGV9WDgdXTY5b75Apz/view?usp=sharing',
-            pdfFileName: 'Spherical Roller Thrust Bearings.pdf',
-            pdfTitle: 'Spherical Roller Thrust Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/11315zprBTocPdC4hK8HzAAnM7P6oSMsi/view?usp=sharing',
+            pdfFileName: 'Spherical Roller Thrust Bearing_V3.pdf',
+            pdfTitle: 'KHS-LG Spherical Roller Thrust Bearings Catalogue'
           }
         ]
       }
@@ -275,9 +275,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Tolerance class ISO h6 / h7', 'Surface finish Ra ≤ 0.2µm', 'Induction hardening depth 1.0 - 2.5mm'],
             series: ['C45E', 'Cf53', '100Cr6', 'X46Cr13'],
             image: bearingImages['hard-chrome-shafts'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Precision Shaft & Motion Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
+            pdfTitle: 'WON ST Precision Shafts & Guideway Catalogue'
           },
           {
             id: 'shaft-was-solid',
@@ -294,9 +294,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Solid core for high bending stiffness', 'Precision ground to h6', 'Available cut to length with chamfered ends'],
             series: ['WAS 12', 'WAS 16', 'WAS 20', 'WAS 25', 'WAS 30', 'WAS 40', 'WAS 50'],
             image: bearingImages['shaft-was-solid'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Solid Linear Shafts Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
+            pdfTitle: 'WAS Solid Induction Hardened Shafts Catalogue'
           },
           {
             id: 'shaft-custom-made',
@@ -313,9 +313,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Custom end machining to drawing', 'Internal & external threading', 'Special length & tolerance options'],
             series: ['Custom Machined Ends', 'Special Diameters', 'Flanged Ends', 'Keyways & Tapers'],
             image: bearingImages['shaft-custom-made'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'Custom Linear Shafts Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
+            pdfTitle: 'Custom Precision Linear Shafts Catalogue'
           }
         ]
       },
@@ -339,9 +339,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Rigid extruded aluminum base rail', 'Pre-drilled base mounting holes', 'Compatible with open linear ball bearing blocks'],
             series: ['SBR Series', 'TBR Series', 'SA Series'],
             image: bearingImages['shafts-with-support'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Supported Shaft & Rails Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1j07mM1F1uPtXYK0lu_VNpp6xhJ9KNeZD/view?usp=sharing',
+            pdfFileName: 'DUAL SHAFT GUIDES_V3.pdf',
+            pdfTitle: 'KHS-LG Supported Shaft Rails Catalogue'
           },
           {
             id: 'shaft-st',
@@ -358,9 +358,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Low profile design', 'Direct machine frame bolting', 'Precision matched shaft and rail'],
             series: ['ST 16', 'ST 20', 'ST 25', 'ST 30', 'ST 40'],
             image: bearingImages['shaft-st'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'ST Supported Shaft Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1j07mM1F1uPtXYK0lu_VNpp6xhJ9KNeZD/view?usp=sharing',
+            pdfFileName: 'DUAL SHAFT GUIDES_V3.pdf',
+            pdfTitle: 'ST Supported Shaft Rails Catalogue'
           },
           {
             id: 'shaft-stu',
@@ -377,9 +377,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Continuous support along entire length', 'Precision joint capability for unlimited travel', 'High load capacity'],
             series: ['STU 16', 'STU 20', 'STU 25', 'STU 30', 'STU 40'],
             image: bearingImages['shaft-stu'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'STU Shaft Rails Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1j07mM1F1uPtXYK0lu_VNpp6xhJ9KNeZD/view?usp=sharing',
+            pdfFileName: 'DUAL SHAFT GUIDES_V3.pdf',
+            pdfTitle: 'STU Supported Shaft Rails Catalogue'
           },
           {
             id: 'linear-motion-shafts-with-support',
@@ -396,9 +396,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Complete pre-aligned assembly', 'Low profile envelope', 'High resistance to torsional flex'],
             series: ['Supported Shaft Series', 'Shaft Support Series'],
             image: bearingImages['linear-motion-shafts-with-support'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Supported Linear Shafts Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1j07mM1F1uPtXYK0lu_VNpp6xhJ9KNeZD/view?usp=sharing',
+            pdfFileName: 'DUAL SHAFT GUIDES_V3.pdf',
+            pdfTitle: 'KHS-LG Supported Linear Shafts & Rails Catalogue'
           }
         ]
       },
@@ -422,8 +422,8 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Anodized aluminum body', 'Integrated pinch clamping screw', 'Standardized base mounting holes'],
             series: ['SK Series', 'SHF Series', 'WA Series'],
             image: bearingImages['shaft-supporting-units'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
             pdfTitle: 'WON ST Shaft Supporting Units Catalogue'
           },
           {
@@ -441,9 +441,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Precise centerline height tolerance', 'Uniform bolt hole pattern', 'Quick shaft replacement'],
             series: ['S-ST 12', 'S-ST 16', 'S-ST 20', 'S-ST 25', 'S-ST 30'],
             image: bearingImages['shaft-s-st'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'S-ST Shaft Support Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
+            pdfTitle: 'S-ST Shaft Support Units Catalogue'
           },
           {
             id: 'shaft-s-stu',
@@ -460,9 +460,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Reinforced flange mounting pattern', 'Resistant to moment deflection', 'High clamping torque tolerance'],
             series: ['S-STU 12', 'S-STU 16', 'S-STU 20', 'S-STU 25', 'S-STU 30'],
             image: bearingImages['shaft-s-stu'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'S-STU Support Units Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
+            pdfTitle: 'S-STU Flanged Shaft Support Units Catalogue'
           }
         ]
       }
@@ -494,9 +494,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Low friction coefficient (µ = 0.001 - 0.003)', 'Available in standard, flanged (LMF/LMK), and open types', 'Double lip wiper seals for dust protection'],
             series: ['LM Series', 'LME Series', 'LMEK Series', 'LMF Series', 'LM-AJ Series', 'LM-OP Series'],
             image: bearingImages['linear-motion-bearings'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Linear Motion Guide & Crossed Roller Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1H4Li6i2sWsLAlNg87CMTzgFb-JxZfANp/view?usp=sharing',
+            pdfFileName: 'Linear-Motion-Bearings_V2.pdf',
+            pdfTitle: 'KHS-LG Linear Motion Bearings Catalogue'
           },
           {
             id: 'dual-shaft-guides',
@@ -513,9 +513,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Speeds up to 10 m/s with low noise', 'Adjustable preload roller bearings inside block', 'High resistance to contamination'],
             series: ['Dual Guide Series', 'Compact Series', 'External/Internal Roller Types'],
             image: bearingImages['dual-shaft-guides'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Dual Shaft Guides Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1j07mM1F1uPtXYK0lu_VNpp6xhJ9KNeZD/view?usp=sharing',
+            pdfFileName: 'DUAL SHAFT GUIDES_V3.pdf',
+            pdfTitle: 'KHS-LG Dual Shaft Guides Catalogue'
           },
           {
             id: 'cross-roller-guideway',
@@ -532,9 +532,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Extremely high rigidity and load capacity', 'Zero stick-slip and sub-micron positioning accuracy', 'Cage creep prevention options'],
             series: ['CB Series', 'CS Series', 'VR Series', 'Cross Roller Table Series'],
             image: bearingImages['linear-motion-bearings'],
-            pdfUrl: '/assets/won-st-linear-motion-guide-catalogue.pdf',
-            pdfFileName: 'won-st-linear-motion-guide-catalogue.pdf',
-            pdfTitle: 'WON ST Crossed Roller Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1CoboGCWg74D0CdFhK3od70o-OLVdetP5/view?usp=sharing',
+            pdfFileName: 'won-catalogue.pdf',
+            pdfTitle: 'WON ST Crossed Roller Guideway Catalogue'
           }
         ]
       }
@@ -566,9 +566,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Smallest radial section of all rolling bearings', 'High rotational speed capability', 'High load capacity in limited space'],
             series: ['K Series', 'KZK Series', 'KT...N Series'],
             image: bearingImages['needle-roller-and-cage-assemblies'],
-            pdfUrl: '/assets/iko-needle-roller-cages-catalogue.pdf',
-            pdfFileName: 'iko-needle-roller-cages-catalogue.pdf',
-            pdfTitle: 'IKO Needle Roller & Cage Assemblies Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1Hx3hJDXsRAidqsy8WdclZ21NLR2UF_fe/view?usp=sharing',
+            pdfFileName: 'MACHINED NEEDLE ROLLER BEARINGS_V2.pdf',
+            pdfTitle: 'KHS-LG Needle Roller Bearings Technical Catalogue'
           },
           {
             id: 'machined-type-needle-roller-bearings',
@@ -585,9 +585,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High dynamic load ratings', 'Available with integral oil holes and grooves', 'Available with contact rubber seals (2RS)'],
             series: ['NA Series', 'RNA Series', 'NKI Series', 'NK Series'],
             image: bearingImages['machined-type-needle-roller-bearings'],
-            pdfUrl: '/assets/iko-needle-roller-cages-catalogue.pdf',
-            pdfFileName: 'iko-needle-roller-cages-catalogue.pdf',
-            pdfTitle: 'IKO Needle Roller Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1Hx3hJDXsRAidqsy8WdclZ21NLR2UF_fe/view?usp=sharing',
+            pdfFileName: 'MACHINED NEEDLE ROLLER BEARINGS_V2.pdf',
+            pdfTitle: 'KHS-LG Machined Type Needle Roller Bearings Catalogue'
           },
           {
             id: 'thrust-needle-roller-bearings',
@@ -604,9 +604,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Very compact axial section (from 2mm thickness)', 'High axial rigidity', 'Can be combined with thin AS raceway washers'],
             series: ['AXK Series', 'AS Series', 'LS Series', 'GS/WS Series'],
             image: bearingImages['thrust-needle-roller-bearings'],
-            pdfUrl: 'https://drive.google.com/file/d/1ph9S7mUIvVcCztHV5dfix5Ax4aRZGK4B/view?usp=sharing',
+            pdfUrl: 'https://drive.google.com/file/d/1rcdtDTlqXtHR1HjtPBR0kKhea2pqgYRD/view?usp=sharing',
             pdfFileName: 'Thrust needle roller bearings_V1 (1).pdf',
-            pdfTitle: 'Thrust Needle Roller Bearings Catalogue'
+            pdfTitle: 'KHS-LG Thrust Needle Roller Bearings Technical Catalogue'
           },
           {
             id: 'drawn-cup-needle-roller-bearings',
@@ -623,9 +623,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Economical high-volume production design', 'Press-fit installation without snap rings', 'Available with open or closed end'],
             series: ['HK Series', 'BK Series', 'HMK Series', 'SCE Series'],
             image: bearingImages['drawn-cup-needle-roller-bearings'],
-            pdfUrl: '/assets/iko-needle-roller-cages-catalogue.pdf',
-            pdfFileName: 'iko-needle-roller-cages-catalogue.pdf',
-            pdfTitle: 'IKO Needle Roller Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/18Nx72MlYM_ElnRkhPK_qo8bEhOJbkZUl/view?usp=sharing',
+            pdfFileName: 'DRAWN CUP ROLLER CLUTCHES_V2.pdf',
+            pdfTitle: 'KHS-LG Drawn Cup Needle Roller Bearings Catalogue'
           },
           {
             id: 'flat-roller-cages',
@@ -642,9 +642,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High rigidity in flat profile', 'Smooth travel without backlash', 'Available in multi-row configurations'],
             series: ['Flat Cage Series', 'FF Series', 'BF Series'],
             image: bearingImages['flat-roller-cages'],
-            pdfUrl: 'https://drive.google.com/file/d/1-4uxDpKL3yifw_X7LH0kd7a4EUVjZhh-/view?usp=sharing',
-            pdfFileName: 'Flat Roller Cages.pdf',
-            pdfTitle: 'Flat Roller Cages Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1NWrpNZ0kb8Py4LCy7p25nRZrVfEExmh9/view?usp=sharing',
+            pdfFileName: 'FLAT NEEDLE ROLLER CAGES_V2.pdf',
+            pdfTitle: 'KHS-LG Flat Needle Roller Cages Catalogue'
           }
         ]
       }
@@ -676,9 +676,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Available in male and female threads (metric and inch)', 'Steel-on-steel or maintenance-free PTFE lined', 'Withstands alternating shock loads'],
             series: ['SI Series', 'SA Series', 'PHS Series', 'POS Series', 'LHSA / LHS Series'],
             image: bearingImages['rod-end-bearings'],
-            pdfUrl: '/assets/iko-rod-ends-l-balls-catalogue.pdf',
-            pdfFileName: 'iko-rod-ends-l-balls-catalogue.pdf',
-            pdfTitle: 'IKO Rod Ends & L-Balls Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/19h-_N5QV7MEBg0lyTCi29Ii3MmDxzsVp/view?usp=sharing',
+            pdfFileName: 'ROD-END-Bearings_V2.pdf',
+            pdfTitle: 'KHS-LG Rod Ends & Spherical Bearings Catalogue'
           },
           {
             id: 'radial-spherical-plain-bearings',
@@ -695,9 +695,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Very high static and dynamic load capacity', 'Steel/Steel and Maintenance-free PTFE types', 'Angular tilt compensation up to 15°'],
             series: ['GE...E Series', 'GE...ES Series', 'GE...EC Series', 'GEZ Series', 'SB / SB...A Series'],
             image: bearingImages['radial-spherical-plain-bearings'],
-            pdfUrl: '/assets/iko-spherical-bushings-catalogue.pdf',
-            pdfFileName: 'iko-spherical-bushings-catalogue.pdf',
-            pdfTitle: 'IKO Spherical Bushings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1MWAVlvysOf0Fblppr5-85W5Iqo9uH88u/view?usp=sharing',
+            pdfFileName: 'RADIAL SPHERICAL PLAIN BEARING.pdf',
+            pdfTitle: 'KHS-LG Radial Spherical Plain Bearings Catalogue'
           }
         ]
       },
@@ -721,9 +721,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Thick-walled outer ring withstands track shock loads', 'Crowned outer ring prevents edge loading', 'Available with integral mounting stud or yoke bore'],
             series: ['CF Series', 'CFKR Series', 'KR Series', 'NUKR Series', 'RNAST Series'],
             image: bearingImages['stud-and-yoke-track-roller-bearings'],
-            pdfUrl: '/assets/iko-cam-and-roller-followers-catalogue.pdf',
-            pdfFileName: 'iko-cam-and-roller-followers-catalogue.pdf',
-            pdfTitle: 'IKO Cam & Roller Followers Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1rrwTfk_XtuRC55CLDcnkArsmZKPa3SVC/view?usp=sharing',
+            pdfFileName: 'Stud-yoke-type-track-roller-bearings_V4 (1).pdf',
+            pdfTitle: 'KHS-LG Cam Followers & Track Rollers Catalogue'
           },
           {
             id: 'stud-type-track-roller-bearings',
@@ -740,9 +740,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Hexagon socket on both ends (Double Hex)', 'Full complement needle roller options', 'Crowned or cylindrical outer diameter'],
             series: ['CFKR 22', 'CFKR 26', 'CF...B Series', 'CFS Series'],
             image: bearingImages['stud-and-yoke-track-roller-bearings'],
-            pdfUrl: '/assets/iko-double-hex-cam-followers-catalogue.pdf',
-            pdfFileName: 'iko-double-hex-cam-followers-catalogue.pdf',
-            pdfTitle: 'IKO Double Hex Cam Followers Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1rrwTfk_XtuRC55CLDcnkArsmZKPa3SVC/view?usp=sharing',
+            pdfFileName: 'Stud-yoke-type-track-roller-bearings_V4 (1).pdf',
+            pdfTitle: 'KHS-LG Stud Type Track Roller Bearings Catalogue'
           },
           {
             id: 'track-roller-bearings',
@@ -759,9 +759,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Yoke type pin mounting', 'Withstands heavy radial and moment forces', 'Full complement cylindrical roller design (NUTR)'],
             series: ['NATR Series', 'NATV Series', 'NUTR Series', 'PWTR Series'],
             image: bearingImages['track-roller-bearings'],
-            pdfUrl: '/assets/iko-cam-and-roller-followers-catalogue.pdf',
-            pdfFileName: 'iko-cam-and-roller-followers-catalogue.pdf',
-            pdfTitle: 'IKO Roller Followers Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/1Irk-v9HJeS4QwI8oZGMd1L5zmZtsgJMs/view?usp=sharing',
+            pdfFileName: 'TRACK ROLLER BEARINGS_V2(1).pdf',
+            pdfTitle: 'KHS-LG Track Roller Bearings Technical Catalogue'
           }
         ]
       }
@@ -793,9 +793,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Self-aligning spherical insert', 'Set-screw or eccentric locking collar', 'Pre-lubricated with grease fitting'],
             series: ['UCP Series', 'UCF Series', 'UCFL Series', 'UCT Series'],
             image: bearingImages['pillow-block-bearings'],
-            pdfUrl: 'https://www.khslg.com/wp-content/uploads/2022/04/Pillow-block-bearing_V1_CORRECTIONS_MARKED-2_compressed.pdf',
+            pdfUrl: 'https://drive.google.com/file/d/1GP5PrTNCLKtPcC8dfLrTecLtBIsPESo7/view?usp=sharing',
             pdfFileName: 'Pillow-block-bearing_V1_CORRECTIONS_MARKED-2_compressed.pdf',
-            pdfTitle: 'Pillow Block Bearings Catalogue'
+            pdfTitle: 'KHS-LG Bearing Units & Housings Catalogue'
           },
           {
             id: 'heavy-duty-pillow-block-bearings',
@@ -812,9 +812,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High-grade grey or spheroidal graphite cast iron', 'Multiple labyrinth and taconite seal options', 'Split housing for easy bearing replacement'],
             series: ['SNL Series', 'SNH Series', 'SAF Series'],
             image: bearingImages['pillow-block-bearings'],
-            pdfUrl: 'https://www.khslg.com/wp-content/uploads/2022/04/Pillow-block-bearing_V1_CORRECTIONS_MARKED-2_compressed.pdf',
+            pdfUrl: 'https://drive.google.com/file/d/1GP5PrTNCLKtPcC8dfLrTecLtBIsPESo7/view?usp=sharing',
             pdfFileName: 'Pillow-block-bearing_V1_CORRECTIONS_MARKED-2_compressed.pdf',
-            pdfTitle: 'Pillow Block Units Catalogue'
+            pdfTitle: 'KHS-LG Heavy Duty Pillow Block Bearings Catalogue'
           }
         ]
       }
@@ -846,9 +846,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Very compact radial cross-section', 'Instantaneous backstop lockup with zero backlash', 'Available with integrated supporting needle bearings (HFL)'],
             series: ['HF Series', 'HFL Series'],
             image: bearingImages['drawn-cup-needle-roller-clutches'],
-            pdfUrl: 'https://drive.google.com/file/d/1kuPQzZtzUMa_NZRcFOLrTcLH1WO-Nmc8/view?usp=sharing',
-            pdfFileName: 'Drawn Cup Roller Clutches.pdf',
-            pdfTitle: 'Drawn Cup Clutches Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/18Nx72MlYM_ElnRkhPK_qo8bEhOJbkZUl/view?usp=sharing',
+            pdfFileName: 'DRAWN CUP ROLLER CLUTCHES_V2.pdf',
+            pdfTitle: 'KHS-LG Drawn Cup Roller Clutches & Bushings Catalogue'
           },
           {
             id: 'one-way-clutch',
@@ -865,9 +865,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High torque capacity in standard ball bearing dimensions', 'Keyway mounting on shaft or housing (CSK...2RS, CSK...PP)', 'Reliable sprag lockup mechanism'],
             series: ['CSK Series', 'CSK..PP Series', 'AS Series', 'NSS Series'],
             image: bearingImages['one-way-clutch'],
-            pdfUrl: 'https://drive.google.com/file/d/1kuPQzZtzUMa_NZRcFOLrTcLH1WO-Nmc8/view?usp=sharing',
-            pdfFileName: 'One-Way Clutch Bearings.pdf',
-            pdfTitle: 'One-Way Clutch Bearings Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/18Nx72MlYM_ElnRkhPK_qo8bEhOJbkZUl/view?usp=sharing',
+            pdfFileName: 'DRAWN CUP ROLLER CLUTCHES_V2.pdf',
+            pdfTitle: 'KHS-LG One-Way Clutch Bearings Catalogue'
           },
           {
             id: 'permaglide-dry-bush',
@@ -884,9 +884,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['100% maintenance-free dry operation', 'Extremely low stick-slip and friction', 'Wide temperature range from -200°C to +280°C'],
             series: ['P Series (PTFE)', 'E Series (POM)', 'Flanged Bushes', 'Thrust Washers'],
             image: bearingImages['permaglide-dry-bush'],
-            pdfUrl: 'https://drive.google.com/file/d/1kuPQzZtzUMa_NZRcFOLrTcLH1WO-Nmc8/view?usp=sharing',
-            pdfFileName: 'Permaglide Dry Bush.pdf',
-            pdfTitle: 'Permaglide Dry Bush Catalogue'
+            pdfUrl: 'https://drive.google.com/file/d/18Nx72MlYM_ElnRkhPK_qo8bEhOJbkZUl/view?usp=sharing',
+            pdfFileName: 'DRAWN CUP ROLLER CLUTCHES_V2.pdf',
+            pdfTitle: 'KHS-LG Dry Bush & Clutch Technical Specifications'
           }
         ]
       }
@@ -918,9 +918,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['High tensile cords resist stretching', 'Anti-static, oil and heat resistant jacket', 'Matched set precision'],
             series: ['A Section', 'B Section', 'C Section', 'D Section'],
             image: '/assets/products/v-belt.png',
-            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
-            pdfFileName: 'KHS-LG Classical Wrapped V-Belts Specifications.pdf',
-            pdfTitle: 'Classical Wrapped V-Belts Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1qubqf-7G0JqqBsZwnvjtmb1g8BlhQ8AG/view?usp=sharing',
+            pdfFileName: 'KHS-PRODUCT-BROCHURE-8-10-2021-CTC belts 1.pdf',
+            pdfTitle: 'KHS-LG Industrial V-Belts & Timing Belts Technical Brochure'
           },
           {
             id: 'wedge-cogged-v-belt',
@@ -937,9 +937,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Molded cogs allow small pulley diameters', 'Raw edge sidewalls provide superior grip', 'Lower operating temperature'],
             series: ['SPZ Section', 'SPA Section', 'SPB Section', 'SPC Section'],
             image: '/assets/products/v-belt.png',
-            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
-            pdfFileName: 'KHS-LG Wedge Cogged V-Belts Specifications.pdf',
-            pdfTitle: 'Wedge Cogged V-Belts Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1qubqf-7G0JqqBsZwnvjtmb1g8BlhQ8AG/view?usp=sharing',
+            pdfFileName: 'KHS-PRODUCT-BROCHURE-8-10-2021-CTC belts 1.pdf',
+            pdfTitle: 'KHS-LG Wedge Cogged V-Belts Technical Brochure'
           },
           {
             id: 'poly-ribbed-v-belt',
@@ -956,9 +956,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Exceptional flexibility over backside idlers', 'High power transmission per unit width', 'Quiet and smooth operation'],
             series: ['PH', 'PJ', 'PK', 'PL', 'PM'],
             image: '/assets/products/v-belt.png',
-            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
-            pdfFileName: 'KHS-LG Poly-Ribbed V-Belts Specifications.pdf',
-            pdfTitle: 'Poly-Ribbed V-Belts Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1qubqf-7G0JqqBsZwnvjtmb1g8BlhQ8AG/view?usp=sharing',
+            pdfFileName: 'KHS-PRODUCT-BROCHURE-8-10-2021-CTC belts 1.pdf',
+            pdfTitle: 'KHS-LG Poly-Ribbed V-Belts Technical Brochure'
           }
         ]
       },
@@ -982,9 +982,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Zero slip positive engagement', 'No lubrication required', 'Curvilinear tooth profiles (HTD / STD)'],
             series: ['HTD (3M, 5M, 8M, 14M)', 'STD', 'Trapezoidal (XL, L, H, XH)'],
             image: '/assets/products/timing-belt.png',
-            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
-            pdfFileName: 'KHS-LG Rubber Timing Belts Specifications.pdf',
-            pdfTitle: 'Rubber Timing Belts Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1qubqf-7G0JqqBsZwnvjtmb1g8BlhQ8AG/view?usp=sharing',
+            pdfFileName: 'KHS-PRODUCT-BROCHURE-8-10-2021-CTC belts 1.pdf',
+            pdfTitle: 'KHS-LG Rubber Timing Belts Technical Brochure'
           },
           {
             id: 'industrial-pu-timing-belt',
@@ -1001,9 +1001,9 @@ export const PRODUCT_CATEGORIES_TREE: TreeCategory[] = [
             features: ['Steel cord tension members for high tensile modulus', 'Clean, dust-free polyurethane compound', 'Available open-ended or truly endless'],
             series: ['T5', 'T10', 'AT5', 'AT10', 'AT20'],
             image: '/assets/products/timing-belt.png',
-            pdfUrl: '/assets/khs-iso-9001-certification.pdf',
-            pdfFileName: 'KHS-LG Polyurethane Timing Belts Specifications.pdf',
-            pdfTitle: 'PU Timing Belts Brochure'
+            pdfUrl: 'https://drive.google.com/file/d/1qubqf-7G0JqqBsZwnvjtmb1g8BlhQ8AG/view?usp=sharing',
+            pdfFileName: 'KHS-PRODUCT-BROCHURE-8-10-2021-CTC belts 1.pdf',
+            pdfTitle: 'KHS-LG Polyurethane Timing Belts Technical Brochure'
           }
         ]
       }

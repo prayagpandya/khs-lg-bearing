@@ -112,6 +112,7 @@ const CATEGORY_TREE: CategoryNode[] = [
     subcategories: [
       { id: 'brand-iko', label: 'IKO Nippon Thompson' },
       { id: 'brand-won', label: 'WON ST Linear' },
+      { id: 'brand-tpi', label: 'TPI Precision Bearings' },
       { id: 'brand-stieber', label: 'STIEBER Clutch' },
       { id: 'brand-ina-fag', label: 'INA / FAG' }
     ]
@@ -243,12 +244,17 @@ export function Catalogue() {
         list = list.filter((c) => !c.id.includes('timing'));
       }
     } else if (activeCategory === 'brands') {
-      if (activeSub === 'brand-iko') {
+      if (!activeSub || activeSub === 'all-brands') {
+        list = list.filter((c) => c.group === 'Partner Brands');
+      } else if (activeSub === 'brand-iko') {
         const ikoIds = ['machined-type-needle-roller-bearings', 'stud-and-yoke-track-roller-bearings', 'radial-spherical-plain-bearings', 'linear-motion-bearings', 'rod-end-bearings', 'cylindrical-roller-bearings'];
-        list = list.filter((c) => ikoIds.includes(c.id));
+        list = list.filter((c) => c.categoryTag?.includes('IKO') || ikoIds.includes(c.id));
       } else if (activeSub === 'brand-won') {
         const wonIds = ['linear-motion-bearings', 'linear-motion-shafts-with-support', 'dual-shaft-guides', 'shaft-st', 'shaft-was-solid'];
-        list = list.filter((c) => wonIds.includes(c.id));
+        list = list.filter((c) => c.categoryTag?.includes('WON') || wonIds.includes(c.id));
+      } else if (activeSub === 'brand-tpi') {
+        const tpiIds = ['deep-groove-ball-bearings', 'miniature-ball-bearings', 'precision-angular-contact-bearings'];
+        list = list.filter((c) => c.categoryTag?.includes('TPI') || tpiIds.includes(c.id));
       } else if (activeSub === 'brand-stieber') {
         const stieberIds = ['one-way-clutch', 'drawn-cup-needle-roller-clutches', 'permaglide-dry-bush'];
         list = list.filter((c) => stieberIds.includes(c.id));
